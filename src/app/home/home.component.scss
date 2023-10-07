@@ -2,33 +2,33 @@
   height : 550px;
   width: 440px;
   margin-right : 7px;
-  filter : grayscale(40%);
+  filter : grayscale(20%);
 }
 
 .img2 {
   height:550px;
   width:366px;
   margin-right: 7px;
-  filter : grayscale(50%);
+  filter : grayscale(30%);
 }
 
 .img3 {
   height: 550px;
   width : 313px;
-  filter : grayscale(50%);
+  filter : grayscale(30%);
 }
 
 img {
   height: 550px;
   width : 367px;
   margin-right: 7px;
-  filter : grayscale(50%);
+  filter : grayscale(30%);
 }
 
 img6 {
   height: 550px;
   width : 367px;
-  filter : grayscale(50%);
+  filter : grayscale(30%);
 }
 
 .home-component {
@@ -92,7 +92,7 @@ home {
 
 .debut_accueil {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 65px;
 }
 
 .component-voyage {
@@ -113,7 +113,7 @@ home {
 .voyage3 img {
   width : 480px;
   height : 360px;
-  filter: brightness(1.1) grayscale(40%);
+  filter: brightness(1.1) grayscale(30%);
   transition: transform 0.3s ease-in-out;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -149,7 +149,7 @@ home {
 .voyage2 img {
   height : 360px;
   width: 480px;
-  filter: grayscale(50%);
+  filter: grayscale(30%);
   transition: transform 0.3s ease-in-out;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -180,7 +180,7 @@ home {
 .voyage1 img {
   width: 416px;
   height: 740px;
-  filter: grayscale(50%);
+  filter: grayscale(30%);
   transition: transform 0.3s ease-in-out;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
 }
