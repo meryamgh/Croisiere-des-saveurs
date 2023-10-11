@@ -1,18 +1,18 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
 
-@Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class MapComponent implements AfterViewInit {
+export class MapService {
   private map!: any;
 
-  private initMap(): void {
+  constructor() { }
+
+  initMap(): void {
     this.map = L.map('map', {
-      center: [ 20, 0 ], // Centre de la carte
-      zoom: 2 ,// Niveau de zoom
+      center: [20, 0], // Centre de la carte
+      zoom: 2, // Niveau de zoom
       minZoom: 1,
       maxZoom: 18,
     });
@@ -24,7 +24,6 @@ export class MapComponent implements AfterViewInit {
     });
 
     tiles.addTo(this.map);
-
 
     const countries = [
       { name: 'France', coordinates: [46.2276, 2.2137] },
@@ -40,12 +39,5 @@ export class MapComponent implements AfterViewInit {
         .addTo(this.map)
         .bindPopup(country.name);
     });
-
-  }
-
-  constructor() { }
-
-  ngAfterViewInit(): void {
-    this.initMap();
   }
 }
