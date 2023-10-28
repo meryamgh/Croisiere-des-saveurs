@@ -24,5 +24,12 @@ export class FavorisService {
       const jsonBody = JSON.stringify(newFavoris);
       return this.http.post(this.favorisUrl, jsonBody);
     }
+
+
+
+    public delFavoris(newFavoris: Favoris) {
+        const jsonBody = JSON.stringify(newFavoris);
+        return this.http.delete(`${this.favorisUrl}/${newFavoris.user}/${newFavoris.favoris}`);
+    }
 }
 

@@ -65,6 +65,27 @@ export default () => {
                 return schema.db['favoris'].insert(favoris);
             });
 
+
+
+            this.delete('/favoris/:user/:recette', (schema, request) => {
+                const recetteName = request.params['recette'];
+                const user = request.params['user'];
+                console.log(user);
+                console.log(recetteName);
+
+                 const fav = schema.db['favoris'].findBy({user: user});
+                console.log(fav);
+            //    const f = fav.findBy({favoris: recette});
+                const favoris = schema.db['favoris'].findBy({user: user, favoris: recetteName});
+                schema.db['favoris'].remove(favoris);
+                console.log(favoris);
+                return favoris;
+
+            });
+
+
+
+
         }
     });
 };

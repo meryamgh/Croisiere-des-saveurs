@@ -2,10 +2,10 @@ import {Recette} from "./recette.model";
 import {FavorisComponent} from "../components/favoris/favoris.component";
 
 export class Favoris {
-    public favoris: Recette;
+    public favoris: string;
     public user: string;
 
-    constructor(favorisFav: Recette, userFav: string) {
+    constructor(favorisFav: string, userFav: string) {
         this.favoris = favorisFav;
         this.user = userFav;
     }
