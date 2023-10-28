@@ -7,12 +7,12 @@ export class Recette {
     ingredients: string;
     difficulte: string;
     calorie: number;
-    commentaire!: string[];
+
 
 
     constructor(name: string, country: string, content: string, category: string,
                 time: number, elements: string, dificulty: string,
-                clr: number, comments: string[]) {
+                clr: number) {
         this.nom = name;
         this.pays = country;
         this.contenu = content;
@@ -21,7 +21,7 @@ export class Recette {
         this.ingredients = elements;
         this.difficulte = dificulty;
         this.calorie = clr;
-        this.commentaire = comments;
+
 
 
     }

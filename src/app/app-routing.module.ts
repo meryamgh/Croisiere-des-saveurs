@@ -16,7 +16,7 @@ const routes: Routes = [
     {path: "profil", component: ProfilComponent},
     {path: "recette-detail/:nom", component: RecetteComponent},
     {path: "country-recipe/:nom", component:CountryRecipeComponent},
-    {path: "**", redirectTo: '', pathMatch: 'full'},
+    {path: "**", redirectTo: '/Accueil', pathMatch: 'full'},
 ];
 
 @NgModule({
