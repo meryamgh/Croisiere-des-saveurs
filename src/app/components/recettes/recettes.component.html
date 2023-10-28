@@ -1,0 +1,10 @@
+<div class="search-bar">
+    <input [(ngModel)]="term" placeholder="Rechercher une recette...">
+</div>
+
+<div *ngIf="recettes" class="recipe-container">
+    <div *ngFor="let recette of recettes | customFilter:term" class="recipe-item">
+        <h1>{{ recette.nom }}</h1>
+        <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
+    </div>
+</div>

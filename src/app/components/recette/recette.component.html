@@ -1,0 +1,25 @@
+<div class="recette-info-container" *ngIf="currentReciepie">
+    <h1>{{ currentReciepie.nom }}</h1>
+    <p><span class="label">Pays:</span> <span class="valeur">{{ currentReciepie.pays }}</span></p>
+    <p><span class="label">Ingrédients:</span> <span class="valeur">{{ currentReciepie.ingredients }}</span></p>
+    <p><span class="label">Difficulté:</span> <span class="valeur">{{ currentReciepie.difficulte }}</span></p>
+    <p><span class="label">Temps de préparation:</span> <span class="valeur">{{ currentReciepie.temp_preparation }}
+        min</span></p>
+    <p><span class="label">Catégorie:</span> <span class="valeur categorie">{{ currentReciepie.categorie }}</span></p>
+    <p><span class="label">Calories:</span> <span class="valeur">{{ currentReciepie.calorie }}</span></p>
+    <p><span class="label">Contenu:</span> <span class="valeur">{{ currentReciepie.contenu }}</span></p>
+
+    <button (click)="getComments()">Commentaires</button>
+    <div class="commentaires-container">
+        <h2>Commentaires ({{ commentaires.length }})</h2>
+        <div *ngFor="let comment of commentaires" class="commentaire">
+            <span class="user">{{ comment.user }} {{ comment.user }}:</span>
+            <span class="texte">{{ comment.commentaire }}</span>
+        </div>
+    </div>
+
+    <div class="ajout-commentaire-container">
+        <input [(ngModel)]="newComment" placeholder="Ajouter un commentaire..." class="comment-input">
+        <button class="ajouter-commentaire" (click)="ajoutCommentaire()">Ajouter</button>
+    </div>
+</div>

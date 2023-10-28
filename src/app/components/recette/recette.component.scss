@@ -1,0 +1,97 @@
+.recette-info-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  .commentaires-container {
+    margin-top: 20px;
+    h2 {
+      font-size: 18px;
+    }
+    .commentaire {
+      margin-top: 10px;
+      .user {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .ajout-commentaire-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+
+    .comment-input {
+      flex: 1;
+      height: 36px;
+      padding: 0 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .ajouter-commentaire {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
+}
+
+.recette-info-container h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.recette-info-container p {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.recette-info-container .label {
+  font-weight: bold;
+  color: #555;
+}
+
+.recette-info-container .valeur {
+  margin-left: 10px;
+  color: #333;
+}
+
+.recette-info-container .categorie {
+  color: #ff6600;
+}
+
+
+button {
+  background-color: #4c82af;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+
+button:hover {
+  background-color: #62afd7;
+}
+
+button:active {
+  background-color: #39b498;
+}
