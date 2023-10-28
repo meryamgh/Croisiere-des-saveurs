@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Recette} from "../../models/recette.model";
+import {recettes} from "../../data/data-loader-recettes";
 import {RecetteService} from "../../services/recette/recette.service";
 import {User} from "../../models/user.model";
 import {Favoris} from "../../models/favoris.model";
@@ -19,6 +20,16 @@ export class RecettesComponent {
     public term!: string;
     public currentUser!: User;
 
+    paysFiltre: string = '';
+    categorieFiltre: string = '';
+    difficulteFiltre: string = '';
+
+    paysOptions: string[] = [];
+    categorieOptions: string[] = [];
+    difficulteOptions: string[] = [];
+
+    public allRecipes !: Recette[];
+
     constructor(private recetteService: RecetteService, private favorisService: FavorisService) {
         this.loadData()
     }
@@ -26,12 +37,25 @@ export class RecettesComponent {
     public getAllRecipes() {
         this.recetteService.getRecettes().subscribe(recettesData => {
             this.recipes = recettesData;
-
+            this.allRecipes = recettesData;
             recettesData.forEach((recette: Recette) => {
                 this.recettes.set(recette.nom, "false");
                 this.recipeNbrLikes.set(recette.nom, 0);
             });
         });
+    }
+
+    appliquerFiltres(): void {
+            this.recipes = this.allRecipes;
+            const resultatsFiltres: Recette[] = this.recipes.filter((recette: Recette) => {
+            const passeFiltrePays = !this.paysFiltre || recette.pays === this.paysFiltre;
+            const passeFiltreCategorie = !this.categorieFiltre || recette.categorie === this.categorieFiltre;
+            const passeFiltreDifficulte = !this.difficulteFiltre || recette.difficulte === this.difficulteFiltre;
+
+            return passeFiltrePays && passeFiltreCategorie && passeFiltreDifficulte;
+        });
+
+        this.recipes = resultatsFiltres;
     }
 
     public getLikedRecipesByUser() {
@@ -42,7 +66,6 @@ export class RecettesComponent {
             this.favorisService.getFavorisUser(this.currentUser.email).subscribe(favorisData => {
                 favorisData.forEach((favoris: Favoris) => {
                     this.recettes.set(favoris.favoris, "true");
-                    console.log(this.recettes.get(favoris.favoris));
                 });
             });
         }
@@ -51,16 +74,23 @@ export class RecettesComponent {
     public getLikesByRecipes() {
         this.favorisService.getFavoris().subscribe(data => {
             data.forEach((favoris: Favoris) => {
-                console.log("ici")
                 const previousLikeNbr = this.recipeNbrLikes.get(favoris.favoris);
-                console.log(previousLikeNbr)
                 if (previousLikeNbr != undefined) {
-                    console.log("ertghbvcx");
                     this.recipeNbrLikes.set(favoris.favoris, previousLikeNbr + 1);
                 }
 
             })
         })
+
+    }
+
+    public getFilteredReceipes() {
+
+        this.paysOptions = [...new Set(recettes.map(recette => recette.pays))];
+
+        this.categorieOptions = [...new Set(recettes.map(recette => recette.categorie))];
+
+        this.difficulteOptions = [...new Set(recettes.map(recette => recette.difficulte))];
 
     }
 
@@ -70,7 +100,7 @@ export class RecettesComponent {
         this.getAllRecipes();
         this.getLikedRecipesByUser();
         this.getLikesByRecipes();
-
+        this.getFilteredReceipes();
     }
 
 

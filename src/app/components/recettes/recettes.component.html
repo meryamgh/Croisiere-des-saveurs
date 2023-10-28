@@ -2,6 +2,24 @@
     <input [(ngModel)]="term" placeholder="Rechercher une recette...">
 </div>
 
+<div class="filter-bar">
+    <select [(ngModel)]="paysFiltre" (ngModelChange)="appliquerFiltres()">
+        <option value="">Tous les pays</option>
+        <option *ngFor="let pays of paysOptions" [value]="pays">{{ pays }}</option>
+    </select>
+
+    <select [(ngModel)]="categorieFiltre" (ngModelChange)="appliquerFiltres()">
+        <option value="">Toutes les catégories</option>
+        <option *ngFor="let categorie of categorieOptions" [value]="categorie">{{ categorie }}</option>
+    </select>
+
+    <select [(ngModel)]="difficulteFiltre" (ngModelChange)="appliquerFiltres()">
+        <option value="">Toutes les difficultés</option>
+        <option *ngFor="let difficulte of difficulteOptions" [value]="difficulte">{{ difficulte }}</option>
+    </select>
+</div>
+
+
 <div *ngIf="recettes" class="recipe-container">
     <div *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
         <h1>{{ recette.nom }}</h1>
