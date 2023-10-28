@@ -7,8 +7,10 @@ import {InscriptionComponent} from "./components/inscription/inscription.compone
 import {ProfilComponent} from "./components/profil/profil.component";
 import {RecetteComponent} from "./components/recette/recette.component";
 import {CountryRecipeComponent} from "./components/country-recipe/country-recipe.component";
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
+    {path: "Accueil", component: HomeComponent},
     {path: "map", component: MapComponent},
     {path: "recettes", component: RecettesComponent},
     {path: "login", component: LoginComponent},
