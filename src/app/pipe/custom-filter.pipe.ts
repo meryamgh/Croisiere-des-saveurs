@@ -5,12 +5,13 @@ import {Recette} from "../models/recette.model";
     name: 'customFilter'
 })
 export class CustomFilterPipe implements PipeTransform {
-    public transform(recettes: Recette[], term: string): Recette[] {
+
+    public transform(recettes: Map<Recette, boolean>, term: string): Recette[] {
         if (!term || term === '') {
-            return recettes;
+            return Array.from(recettes.keys());
         }
 
-        return recettes.filter(recette =>
+        return Array.from(recettes.keys()).filter(recette =>
             recette.nom.toLowerCase().includes(term.toLowerCase())
         );
     }

@@ -1,0 +1,6 @@
+<div *ngIf="favoris" class="recipe-container">
+    <div *ngFor="let fav of favoris" class="recipe-item">
+        <h1>{{ fav.favoris.nom }}</h1>
+        <a [routerLink]="['/recette-detail', fav.favoris.nom]">Consulter la recette</a>
+    </div>
+</div>

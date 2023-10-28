@@ -7,7 +7,8 @@ import {InscriptionComponent} from "./components/inscription/inscription.compone
 import {ProfilComponent} from "./components/profil/profil.component";
 import {RecetteComponent} from "./components/recette/recette.component";
 import {CountryRecipeComponent} from "./components/country-recipe/country-recipe.component";
-import {HomeComponent} from "./home/home.component";
+import {HomeComponent} from "./components/home/home.component";
+import {FavorisComponent} from "./components/favoris/favoris.component";
 
 const routes: Routes = [
     {path: "Accueil", component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
     {path: "profil", component: ProfilComponent},
     {path: "recette-detail/:nom", component: RecetteComponent},
     {path: "country-recipe/:nom", component:CountryRecipeComponent},
+    {path: "favoris", component:FavorisComponent},
     {path: "**", redirectTo: '/Accueil', pathMatch: 'full'},
 ];
 

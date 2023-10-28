@@ -15,10 +15,11 @@ import {ProfilComponent} from './components/profil/profil.component';
 import {RecetteComponent} from './components/recette/recette.component';
 import {CustomFilterPipe} from './pipe/custom-filter.pipe';
 import { CountryRecipeComponent } from './components/country-recipe/country-recipe.component';
-import {HeaderComponent} from "./header/header.component";
-import {HomeComponent} from "./home/home.component";
-import {SlideComponent} from "./slide/slide.component";
-import {FooterComponent} from "./footer/footer.component";
+import {HeaderComponent} from "./components/header/header.component";
+import {HomeComponent} from "./components/home/home.component";
+import {SlideComponent} from "./components/slide/slide.component";
+import {FooterComponent} from "./components/footer/footer.component";
+import { FavorisComponent } from './components/favoris/favoris.component';
 
 mockServer();
 
@@ -36,7 +37,8 @@ mockServer();
         HomeComponent,
         SlideComponent,
         FooterComponent,
-        CountryRecipeComponent
+        CountryRecipeComponent,
+        FavorisComponent
     ],
     imports: [
         BrowserModule,

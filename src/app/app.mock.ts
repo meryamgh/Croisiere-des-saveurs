@@ -1,12 +1,15 @@
 import {Server} from 'miragejs';
-import {commentaires, recettes, users} from "./data/data-loader";
+import {commentaires} from "./data/data-loader-commentaire";
+import {recettes} from "./data/data-loader-recettes";
+import {users} from "./data/data-loader-user";
+import {favoris} from "./data/data-loader-favoris";
 
 
 export default () => {
     new Server({
         seeds(server) {
             server.db.loadData({
-                users, recettes, commentaires,
+                users, recettes, commentaires,favoris
             });
         },
         routes() {
@@ -48,6 +51,18 @@ export default () => {
             this.post('/commentaires', (schema, request) => {
                 const commentaire = JSON.parse(request.requestBody);
                 return schema.db['commentaires'].insert(commentaire);
+            });
+
+            this.get('/favoris', schema => schema.db['favoris']);
+            this.get('/favoris/:nomUser', (schema, request) => {
+                const user = request.params['nomUser'];
+                const userFind = schema.db['users'].findBy({email: user});
+                return schema.db['favoris'].where({user: userFind.email});
+            });
+
+            this.post('/favoris', (schema, request) => {
+                const favoris = JSON.parse(request.requestBody);
+                return schema.db['favoris'].insert(favoris);
             });
 
         }

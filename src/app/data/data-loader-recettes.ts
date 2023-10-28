@@ -1,6 +1,4 @@
-import {User} from "../models/user.model";
 import {Recette} from "../models/recette.model";
-import {Commentaire} from "../models/commentaire.model";
 
 export const recetteData = [
     {nom: "chorba", pays: "algerie", contenu: "soupe traditionnelle aux légumes et viande", categorie: "entrée", temp_preparation: 45, ingredients: "tomates, pois chiches, viande d'agneau, vermicelles", difficulte: "facile", calorie: 350},
@@ -31,52 +29,3 @@ export const recettes: Recette[] = recetteData.map(recetteData => {
         recetteData.difficulte, recetteData.calorie
     );
 });
-
-
-export const usersData = [
-    {
-        nom: 'Dupont', prenom: 'John', email: 'john@example.com',
-        favoris: recettes.slice(6, 9),
-        password: "test123"
-    },
-
-    {
-        nom: 'Smith', prenom: 'Alice', email: 'alice@example.com',
-        favoris: recettes.slice(1, 5),
-        password: "test123"
-    },
-
-    {
-        nom: 'Johnson', prenom: 'Michael', email: 'michael@example.com',
-        favoris: recettes.slice(3, 5),
-        password: "test123"
-    },
-
-    {
-        nom: 'Lee', prenom: 'Emma', email: 'emma@example.com',
-        favoris: recettes.slice(3, 5),
-        password: "test123"
-    },
-
-    {
-        nom: 'Kim', prenom: 'David', email: 'david@example.com',
-        favoris: recettes.slice(1, 5),
-        password: "test123"
-    }
-];
-
-export const users: User[] = usersData.map(userData => {
-    return new User(userData.nom, userData.prenom, userData.email, userData.favoris, userData.password);
-});
-
-
-export const commentaireData = [
-    {commentaire: "délicieux", user: users[1].email, recette: recettes[1].nom},
-    {commentaire: "new !!!", user: users[2].email, recette: recettes[1].nom},
-    {commentaire: "ca passe", user: users[3].email, recette: recettes[5].nom},
-    {commentaire: "délicieux", user: users[2].email, recette: recettes[3].nom}
-]
-
-export const commentaires: Commentaire[] = commentaireData.map(commentaireData => {
-    return new Commentaire(commentaireData.commentaire, commentaireData.user, commentaireData.recette);
-})
