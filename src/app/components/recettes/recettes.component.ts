@@ -4,8 +4,6 @@ import {RecetteService} from "../../services/recette/recette.service";
 import {User} from "../../models/user.model";
 import {Favoris} from "../../models/favoris.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
-import {recettes} from "../../data/data-loader-recettes";
-import {favoris} from "../../data/data-loader-favoris";
 
 
 @Component({
@@ -15,17 +13,17 @@ import {favoris} from "../../data/data-loader-favoris";
 })
 export class RecettesComponent {
 
-    public recettes : Map<string, string> = new Map<string, string>();
-    public recipeNbrLikes : Map<string, number> = new Map<string, number>();
+    public recettes: Map<string, string> = new Map<string, string>();
+    public recipeNbrLikes: Map<string, number> = new Map<string, number>();
     public recipes !: Recette[];
     public term!: string;
     public currentUser!: User;
 
-    constructor(private recetteService: RecetteService, private favorisService : FavorisService) {
+    constructor(private recetteService: RecetteService, private favorisService: FavorisService) {
         this.loadData()
     }
 
-    public getAllRecipes(){
+    public getAllRecipes() {
         this.recetteService.getRecettes().subscribe(recettesData => {
             this.recipes = recettesData;
 
@@ -36,7 +34,7 @@ export class RecettesComponent {
         });
     }
 
-    public getLikedRecipesByUser(){
+    public getLikedRecipesByUser() {
         const storedUser = sessionStorage.getItem("userLogged");
         if (storedUser) {
             this.currentUser = JSON.parse(storedUser) as User;
@@ -50,15 +48,15 @@ export class RecettesComponent {
         }
     }
 
-    public getLikesByRecipes(){
+    public getLikesByRecipes() {
         this.favorisService.getFavoris().subscribe(data => {
             data.forEach((favoris: Favoris) => {
                 console.log("ici")
-                const previousLikeNbr =  this.recipeNbrLikes.get(favoris.favoris);
+                const previousLikeNbr = this.recipeNbrLikes.get(favoris.favoris);
                 console.log(previousLikeNbr)
-                if(previousLikeNbr!= undefined){
+                if (previousLikeNbr != undefined) {
                     console.log("ertghbvcx");
-                    this.recipeNbrLikes.set(favoris.favoris, previousLikeNbr+1);
+                    this.recipeNbrLikes.set(favoris.favoris, previousLikeNbr + 1);
                 }
 
             })
@@ -69,26 +67,25 @@ export class RecettesComponent {
 
     public loadData(): void {
 
-         this.getAllRecipes();
-         this.getLikedRecipesByUser();
+        this.getAllRecipes();
+        this.getLikedRecipesByUser();
         this.getLikesByRecipes();
 
     }
 
 
     getMap() {
-    console.log(this.recettes);
+        console.log(this.recettes);
         console.log(this.recipeNbrLikes);
 
-  }
+    }
 
-    addFavoris(recetteClicked : Recette) {
+    addFavoris(recetteClicked: Recette) {
         const recetteBoolean = this.recettes.get(recetteClicked.nom);
-        const newFavoris = new Favoris(recetteClicked.nom,this.currentUser.email);
+        const newFavoris = new Favoris(recetteClicked.nom, this.currentUser.email);
         const nbrLikes = this.recipeNbrLikes.get(recetteClicked.nom);
-        if(nbrLikes!= undefined) {
+        if (nbrLikes != undefined) {
             if (recetteBoolean === "true") {
-
                 this.recettes.set(recetteClicked.nom, "false");
                 this.recipeNbrLikes.set(recetteClicked.nom, nbrLikes - 1);
                 this.favorisService.delFavoris(newFavoris).subscribe();
