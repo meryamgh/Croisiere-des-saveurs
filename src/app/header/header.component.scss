@@ -1,0 +1,39 @@
+.menu_nav {
+  overflow: auto;
+  height : 120px;
+  margin-bottom : 40px;
+  background: linear-gradient(to bottom, #dddddd 0%, #ffffff 100%);
+  letter-spacing: 0.06rem;
+}
+
+.menu_nav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 50px 30px;
+  text-decoration: none;
+  font-size: small;
+}
+
+.menu_nav a:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.logo {
+  height: 110px;
+  width: 183px;
+  float: left;
+  margin-left: 50px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.profil {
+  height : 20px;
+  width : 20px;
+  float : right;
+  padding: 45px 30px;
+  cursor: pointer;
+}
+
