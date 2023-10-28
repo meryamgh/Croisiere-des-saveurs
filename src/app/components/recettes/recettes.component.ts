@@ -4,7 +4,7 @@ import {RecetteService} from "../../services/recette/recette.service";
 import {User} from "../../models/user.model";
 import {Favoris} from "../../models/favoris.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
-import {favoris, favorisData} from "../../data/data-loader-favoris";
+
 
 @Component({
     selector: 'app-recettes',
@@ -13,7 +13,8 @@ import {favoris, favorisData} from "../../data/data-loader-favoris";
 })
 export class RecettesComponent {
 
-    public recettes !: Map<Recette, boolean>;
+    public recettes : Map<Recette, boolean> = new Map<Recette, boolean>();
+    public recipes !: Recette[];
     public term!: string;
     public currentUser!: User;
 
@@ -22,20 +23,35 @@ export class RecettesComponent {
     }
 
     public loadData(): void {
-        this.recetteService.getRecettes().subscribe(data =>
-            (data.forEach((recette: Recette) => {
-                this.recettes.set(recette, false);
-            })));
-        const storedUser = sessionStorage.getItem("userLogged");
-        if (storedUser) {
-            this.currentUser = JSON.parse(storedUser) as User;
-            this.favorisService.getFavorisUser(this.currentUser.email).subscribe(data =>
-                (data.forEach((favoris: Favoris) => {
-                    this.recettes.set(favoris.favoris, true);
-                })))
-        }
+
+      this.recetteService.getRecettes().subscribe(recettesData => {
+        this.recipes = recettesData;
+        this.recettes = new Map<Recette, boolean>();
+
+        recettesData.forEach((recette: Recette) => {
+          this.recettes.set(recette, false);
+        });
+      });
+
+      const storedUser = sessionStorage.getItem("userLogged");
+
+      if (storedUser) {
+        this.currentUser = JSON.parse(storedUser) as User;
+
+        this.favorisService.getFavorisUser(this.currentUser.email).subscribe(favorisData => {
+          favorisData.forEach((favoris: Favoris) => {
+            this.recettes.set(favoris.favoris, true);
+            console.log(this.recettes.get(favoris.favoris));
+          });
+        });
+      }
+
+
+
     }
 
 
-    protected readonly favoris = favoris;
+  getMap() {
+    console.log(this.recettes);
+  }
 }

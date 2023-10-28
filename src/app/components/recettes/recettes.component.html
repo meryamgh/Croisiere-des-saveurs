@@ -3,9 +3,11 @@
 </div>
 
 <div *ngIf="recettes" class="recipe-container">
-    <div *ngFor="let recette of recettes | customFilter:term" class="recipe-item">
-        <h1>{{ recette }}</h1>
+    <div *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
+        <h1>{{ recette.nom }}</h1>
         <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
+      <p>{{ recettes.get(recette) }}</p>
 <!--        <button [ngClass]="like"></button>-->
     </div>
+  <button (click)="getMap()">tst</button>
 </div>
