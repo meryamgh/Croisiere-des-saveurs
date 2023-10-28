@@ -8,7 +8,7 @@
         <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
       <p>{{ recettes.get(recette.nom) }}</p>
         <button [ngClass]="recettes.get(recette.nom)" (click)="addFavoris(recette)">{{ recettes.get(recette.nom) }}</button>
-
+        <p>NBR LIKE : {{ recipeNbrLikes.get(recette.nom) }}</p>
     </div>
   <button (click)="getMap()">tst</button>
 </div>
