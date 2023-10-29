@@ -19,26 +19,24 @@ export default () => {
 
 
             this.get('/users/:email', (schema, request) => {
-                const userEmail = request.params['email'];
+                const userEmail:string = request.params['email'];
                 return schema.db['users'].findBy({email: userEmail});
             });
 
             this.post('/users/', (schema, request) => {
                 const user = JSON.parse(request.requestBody);
-                console.log(user);
                 schema.db['users'].insert(user);
-                console.log(schema.db['users']);
                 return user;
             });
 
 
             this.get('/recettes', schema => schema.db['recettes']);
             this.get('/recettes/:nom', (schema, request) => {
-                const recetteNom = request.params['nom'];
+                const recetteNom:string = request.params['nom'];
                 return schema.db['recettes'].findBy({nom: recetteNom});
             })
             this.put('recettes/:nom', (schema, request) => {
-                const nomRecette = request.params['nom'];
+                const nomRecette:string = request.params['nom'];
                 const recetteFind = schema.db['recettes'].findBy({nom: nomRecette});
                 recetteFind.commentaire.push(request.requestBody);
                 return recetteFind;
@@ -47,13 +45,13 @@ export default () => {
 
             this.get('/commentaires', schema => schema.db['commentaires']);
             this.get('/commentaires/:nomRecette', (schema, request) => {
-                const recette = request.params['nomRecette'];
+                const recette:string = request.params['nomRecette'];
                 const recetteFind = schema.db['recettes'].findBy({nom: recette});
                 return schema.db['commentaires'].where({recette: recetteFind.nom});
             });
 
             this.get('/commentaires/user/:nomUser',(schema,request )=>{
-              const userFind = request.params['nomUser'];
+              const userFind:string = request.params['nomUser'];
               return schema.db['commentaires'].where({user: userFind});
             })
 
@@ -65,23 +63,21 @@ export default () => {
 
 
           this.get('/favoris/user-recette/:nomUser/:recette', (schema,request) =>{
-            const userFind = request.params['nomUser'];
-            const recetteName = request.params['recette'];
+            const userFind:string = request.params['nomUser'];
+            const recetteName:string = request.params['recette'];
             return schema.db['favoris'].where({user: userFind, favoris: recetteName});
           });
 
           this.get('/favoris/recette/:recette', (schema,request) =>{
-            const recetteName = request.params['recette'];
+            const recetteName:string = request.params['recette'];
             return schema.db['favoris'].where({favoris: recetteName});
           });
 
             this.get('/favoris', schema => schema.db['favoris']);
             this.get('/favoris/user/:nomUser', (schema, request) => {
-                const user = request.params['nomUser'];
-                console.log(user);
-                const userFind = schema.db['users'].findBy({email: user});
-                console.log(userFind);
-                return schema.db['favoris'].where({user: userFind.email});
+                const user:string = request.params['nomUser'];
+
+                return schema.db['favoris'].where({user: user});
             });
 
             this.post('/favoris', (schema, request) => {
@@ -92,17 +88,10 @@ export default () => {
 
 
             this.delete('/favoris/:user/:recette', (schema, request) => {
-                const recetteName = request.params['recette'];
-                const user = request.params['user'];
-                console.log(user);
-                console.log(recetteName);
-
-                 const fav = schema.db['favoris'].findBy({user: user});
-                console.log(fav);
-            //    const f = fav.findBy({favoris: recette});
+                const recetteName:string = request.params['recette'];
+                const user:string = request.params['user'];
                 const favoris = schema.db['favoris'].findBy({user: user, favoris: recetteName});
                 schema.db['favoris'].remove(favoris);
-                console.log(favoris);
                 return favoris;
 
             });

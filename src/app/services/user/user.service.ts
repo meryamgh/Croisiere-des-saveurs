@@ -7,10 +7,10 @@ import { Observable, Subject } from "rxjs";
     providedIn: 'root'
 })
 export class UserService {
-    private usersUrl = '/api/users/';
-    private userSubject: Subject<User | null> = new Subject<User | null>();
+    public usersUrl = '/api/users/';
+    public userSubject: Subject<User | null> = new Subject<User | null>();
 
-    constructor(private http: HttpClient) {
+    public constructor(private http: HttpClient) {
     }
 
     public getUsers(): Observable<User[]> {

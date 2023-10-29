@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {User} from "../../models/user.model";
-import {ActivatedRoute, Router} from "@angular/router";
 import {Favoris} from "../../models/favoris.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
 
@@ -13,7 +12,7 @@ export class FavorisComponent {
   public favoris !: Favoris[];
   public currentUser!: User;
 
-  constructor(private favorisService: FavorisService) {
+  public constructor(private favorisService: FavorisService) {
     this.getFavoris();
   }
 

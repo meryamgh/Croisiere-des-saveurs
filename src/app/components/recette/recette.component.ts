@@ -24,7 +24,7 @@ export class RecetteComponent {
   public nbrFav !: number;
   public recetteFav: boolean = false;
 
-  constructor(private recetteService: RecetteService, private commentaireService: CommentaireService,
+  public constructor(private recetteService: RecetteService, private commentaireService: CommentaireService,
               private route: ActivatedRoute, private router: Router,
               private favorisService: FavorisService, private userService : UserService) {
     this.getReciepie();
@@ -108,4 +108,6 @@ export class RecetteComponent {
     }
 
   }
+
+
 }

@@ -7,17 +7,17 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  slides = [
+  public slides = [
     ['image2.png', 'image1.png', 'image3.png'],
     ['image5.png', 'image4.png', 'image6.png']
   ];
-  index = 0;
+  public index = 0;
   constructor() {}
-  showNextSlide(): void {
+  public showNextSlide(): void {
     this.index = (this.index + 1) % 2;
     setTimeout(() => this.showNextSlide(), 2300);
   }
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.showNextSlide();
   }
 }

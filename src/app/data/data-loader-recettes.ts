@@ -415,6 +415,6 @@ export const recetteData = [
 export const recettes: Recette[] = recetteData.map(recetteData => {
     return new Recette(recetteData.nom, recetteData.pays, recetteData.contenu,
         recetteData.categorie, recetteData.temp_preparation, recetteData.ingredients,
-        recetteData.difficulte, recetteData.calorie, recetteData.preparation, "assets/recettes/dz/chorba.png"
+        recetteData.difficulte, recetteData.calorie, recetteData.preparation, "assets/recettes/"+recetteData.pays+"/"+recetteData.pays+".png"
     );
 });

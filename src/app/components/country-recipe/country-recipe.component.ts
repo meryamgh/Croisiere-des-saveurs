@@ -7,11 +7,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./country-recipe.component.scss']
 })
 export class CountryRecipeComponent implements OnInit {
-  countryName!: string;
+  public countryName!: string;
 
-  constructor(private route: ActivatedRoute) { }
+  public constructor(private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.countryName = params['nom'];
     });

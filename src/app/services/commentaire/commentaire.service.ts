@@ -8,25 +8,25 @@ import {Observable} from "rxjs";
     providedIn: 'root'
 })
 export class CommentaireService {
-    public commentaireUrl = '/api/commentaires';
+    public commentaireUrl:string = '/api/commentaires';
 
-    constructor(private http: HttpClient) {
+    public constructor(private http: HttpClient) {
     }
 
-    public getComments() {
+    public getComments(): Observable<Commentaire[]> {
         return this.http.get<Commentaire[]>(this.commentaireUrl);
     }
 
-    public getUserComments(user : string){
+    public getUserComments(user : string):Observable<Commentaire[]>{
       return this.http.get<Commentaire[]>(`${this.commentaireUrl}/user/${user}`);
   }
 
-    public getCommentsRecipie(currentReciepie: string) {
+    public getCommentsRecipie(currentReciepie: string):Observable<Commentaire[]> {
         return this.http.get<Commentaire[]>(`${this.commentaireUrl}/${currentReciepie}`);
     }
 
     public addComment(newComment: Commentaire) {
-        const jsonBody = JSON.stringify(newComment);
+        const jsonBody:string = JSON.stringify(newComment);
         return this.http.post(this.commentaireUrl, jsonBody);
     }
 
