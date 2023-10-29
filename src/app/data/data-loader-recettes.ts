@@ -105,7 +105,7 @@ export const recetteData = [
   }
   ,
   {
-    nom: "PariBrest",
+    nom: "Paris-Brest",
     pays: "France",
     contenu: "Pâtisserie délicieuse",
     categorie: "Dessert",
@@ -126,7 +126,7 @@ export const recetteData = [
   }
   ,
   {
-    nom: "Quiche Lorraine",
+    nom: "Quiche lorraine",
     pays: "France",
     contenu: "Tarte salée aux lardons et fromage",
     categorie: "Plat",
@@ -169,26 +169,6 @@ export const recetteData = [
   ,
 
   //USA
-  {
-    nom: "Hamburger",
-    pays: "États-Unis",
-    contenu: "Classique burger américain",
-    categorie: "Plat",
-    temp_preparation: 30,
-    ingredients: "Pain à hamburger, steak haché, fromage, laitue, tomate, oignon, ketchup, moutarde",
-    difficulte: "Facile",
-    calorie: 500,
-    preparation: [
-      "Préchauffez votre grill ou votre poêle à feu moyen.",
-      "Divisez le steak haché en portions égales et façonnez-les en galettes de la taille des pains à hamburger.",
-      "Faites cuire les galettes de steak haché sur le grill ou dans la poêle pendant environ 3-4 minutes de chaque côté, ou jusqu'à ce qu'elles atteignent la cuisson désirée.",
-      "Pendant ce temps, faites griller les pains à hamburger sur le grill ou dans un grille-pain jusqu'à ce qu'ils soient dorés.",
-      "Coupez la laitue, la tomate et l'oignon en tranches fines.",
-      "Assemblez les hamburgers : placez une galette de steak haché sur le bas du pain, ajoutez une tranche de fromage, de la laitue, des tranches de tomate et d'oignon. Ajoutez du ketchup et de la moutarde selon votre goût. Recouvrez avec le haut du pain à hamburger.",
-      "Servez les hamburgers chauds, accompagnés de frites ou de salade pour un repas classique à l'américaine."
-    ]
-  }
-  ,
   {
     nom: "Hamburger",
     pays: "États-Unis",
