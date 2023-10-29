@@ -1,21 +1,24 @@
 <div class="container">
     <form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()">
         <div>
-            <label for="nom">Nom :</label>
+            <label for="nom">Nom</label>
             <input type="text" id="nom" formControlName="nom">
         </div>
         <div>
-            <label for="prenom">Prénom :</label>
+            <label for="prenom">Prénom</label>
             <input type="text" id="prenom" formControlName="prenom">
         </div>
         <div>
-            <label for="email">Email :</label>
+            <label for="email">Email</label>
             <input type="email" id="email" formControlName="email">
         </div>
         <div>
-            <label for="password">Mot de passe :</label>
+            <label for="password">Mot de passe</label>
             <input type="password" id="password" formControlName="password">
         </div>
         <button type="submit" [disabled]="!inscriptionForm.valid">Inscription</button>
+        <div class="login-link">
+          <p><a routerLink="/login">Déjà un compte ? <i><u>Connectez-vous</u></i></a></p>
+        </div>
     </form>
 </div>
