@@ -4,15 +4,15 @@ export const recetteData = [
 
   //ALGERIE
   {
-    nom: "chorba",
-    pays: "algerie",
-    contenu: "soupe traditionnelle aux légumes et viande",
-    categorie: "entrée",
+    nom: "Chorba",
+    pays: "Algérie",
+    contenu: "Soupe traditionnelle aux légumes et viande",
+    categorie: "Entrée",
     temp_preparation: 45,
     ingredients: "500g de semoule, 1 courgette, 2 carottes, 1 poivron, 1 oignon, 500g de viande d'agneau, " +
       "2 cuillères à soupe d'huile d'olive, 1 cuillère à café de cumin, " +
       "1 cuillère à café de coriandre en poudre, sel, poivre",
-    difficulte: "facile",
+    difficulte: "Facile",
     calorie: 350,
     preparation: [
       "Épluchez et coupez tous les légumes en petits morceaux.",
@@ -24,13 +24,13 @@ export const recetteData = [
     ]
   },
   {
-    nom: "couscous",
-    pays: "algerie",
-    contenu: "délicieux plat traditionnel algérien",
-    categorie: "plat",
+    nom: "Couscous",
+    pays: "Algérie",
+    contenu: "Délicieux plat traditionnel algérien",
+    categorie: "Plat",
     temp_preparation: 60,
     ingredients: "500g de semoule, légumes variés (carottes, courgettes, poivrons), viande au choix (agneau, poulet, merguez), épices (cumin, coriandre, sel, poivre)",
-    difficulte: "facile",
+    difficulte: "Facile",
     calorie: 400,
     preparation: [
       "Préparez la semoule selon les indications sur l'emballage.",
@@ -41,13 +41,13 @@ export const recetteData = [
   }
   ,
   {
-    nom: "tajine",
-    pays: "algerie",
-    contenu: "savoureux plat cuit lentement",
-    categorie: "plat",
+    nom: "Tajine",
+    pays: "Algérie",
+    contenu: "Savoureux plat cuit lentement",
+    categorie: "Plat",
     temp_preparation: 90,
     ingredients: "Viande au choix (agneau, poulet, bœuf), légumes variés (oignons, carottes, pommes de terre), épices (cumin, coriandre, paprika, cannelle), huile d'olive, citron confit, olives",
-    difficulte: "moyen",
+    difficulte: "Moyen",
     calorie: 450,
     preparation: [
       "Faites chauffer l'huile d'olive dans un tajine ou une cocotte.",
@@ -59,13 +59,13 @@ export const recetteData = [
   }
   ,
   {
-    nom: "crêpe mille trous",
-    pays: "algerie",
-    contenu: "délicates crêpes avec des trous",
-    categorie: "dessert",
+    nom: "Crêpe mille trous",
+    pays: "Algérie",
+    contenu: "Délicates crêpes avec des trous",
+    categorie: "Dessert",
     temp_preparation: 45,
     ingredients: "250g de farine, 1 cuillère à café de levure chimique, 1/2 cuillère à café de sel, 1 cuillère à soupe de sucre, 1 cuillère à soupe d'eau de fleur d'oranger, 1 cuillère à soupe de levure boulangère, Eau tiède",
-    difficulte: "facile",
+    difficulte: "Facile",
     calorie: 300,
     preparation: [
       "Dans un bol, mélangez la farine, la levure chimique, le sel et le sucre.",
@@ -82,13 +82,13 @@ export const recetteData = [
   //FRANCE
   ,
   {
-    nom: "macaron",
-    pays: "france",
-    contenu: "douceurs sucrées",
-    categorie: "dessert",
+    nom: "Macaron",
+    pays: "France",
+    contenu: "Douceurs sucrées",
+    categorie: "Dessert",
     temp_preparation: 120,
     ingredients: "125g de poudre d'amandes, 200g de sucre glace, 3 blancs d'œufs, 25g de sucre en poudre, Colorant alimentaire (facultatif)",
-    difficulte: "moyen",
+    difficulte: "Moyen",
     calorie: 200,
     preparation: [
       "Préchauffez le four à 150°C (thermostat 5).",
@@ -106,12 +106,12 @@ export const recetteData = [
   ,
   {
     nom: "PariBrest",
-    pays: "france",
-    contenu: "pâtisserie délicieuse",
-    categorie: "dessert",
+    pays: "France",
+    contenu: "Pâtisserie délicieuse",
+    categorie: "Dessert",
     temp_preparation: 90,
     ingredients: "Pour la pâte à choux : 125ml d'eau, 60g de beurre, 75g de farine, 3 œufs\nPour la crème pâtissière : 500ml de lait, 4 jaunes d'œufs, 100g de sucre, 40g de maïzena, 1 cuillère à café d'extrait de vanille\nSucre glace pour saupoudrer",
-    difficulte: "moyen",
+    difficulte: "Moyen",
     calorie: 350,
     preparation: [
       "Préparez la pâte à choux : Dans une casserole, portez l'eau et le beurre à ébullition. Retirez du feu et ajoutez la farine en une seule fois. Mélangez énergiquement jusqu'à obtenir une pâte lisse qui se détache des parois de la casserole.",
@@ -128,11 +128,11 @@ export const recetteData = [
   {
     nom: "Quiche Lorraine",
     pays: "France",
-    contenu: "tarte salée aux lardons et fromage",
-    categorie: "plat",
+    contenu: "Tarte salée aux lardons et fromage",
+    categorie: "Plat",
     temp_preparation: 75,
     ingredients: "1 pâte brisée, 200g de lardons, 200ml de crème fraîche, 3 œufs, sel, poivre, noix de muscade",
-    difficulte: "facile",
+    difficulte: "Facile",
     calorie: 400,
     preparation: [
       "Préchauffez le four à 180°C (thermostat 6).",
@@ -149,11 +149,11 @@ export const recetteData = [
   {
     nom: "Tartiflette",
     pays: "France",
-    contenu: "plat de pommes de terre, lardons et fromage",
-    categorie: "plat",
+    contenu: "Plat de pommes de terre, lardons et fromage",
+    categorie: "Plat",
     temp_preparation: 90,
     ingredients: "1 kg de pommes de terre, 200g de lardons, 1 reblochon, 2 oignons, 2 cuillères à soupe d'huile d'olive, sel, poivre",
-    difficulte: "moyen",
+    difficulte: "Moyen",
     calorie: 500,
     preparation: [
       "Préchauffez le four à 180°C (thermostat 6).",
@@ -171,12 +171,12 @@ export const recetteData = [
   //USA
   {
     nom: "Hamburger",
-    pays: "USA",
+    pays: "États-Unis",
     contenu: "Classique burger américain",
-    categorie: "plat",
+    categorie: "Plat",
     temp_preparation: 30,
     ingredients: "Pain à hamburger, steak haché, fromage, laitue, tomate, oignon, ketchup, moutarde",
-    difficulte: "facile",
+    difficulte: "Facile",
     calorie: 500,
     preparation: [
       "Préchauffez votre grill ou votre poêle à feu moyen.",
@@ -191,12 +191,12 @@ export const recetteData = [
   ,
   {
     nom: "Hamburger",
-    pays: "USA",
+    pays: "États-Unis",
     contenu: "Classique burger américain",
-    categorie: "plat",
+    categorie: "Plat",
     temp_preparation: 30,
     ingredients: "Pain à hamburger, steak haché, fromage, laitue, tomate, oignon, ketchup, moutarde",
-    difficulte: "facile",
+    difficulte: "Facile",
     calorie: 500,
     preparation: [
       "Préchauffez votre grill ou votre poêle à feu moyen.",
@@ -211,12 +211,12 @@ export const recetteData = [
   ,
   {
     nom: "Cheesecake",
-    pays: "USA",
+    pays: "États-Unis",
     contenu: "Dessert crémeux au fromage à la crème",
-    categorie: "dessert",
+    categorie: "Dessert",
     temp_preparation: 120,
     ingredients: "Biscuits (type biscuits Graham), fromage à la crème, sucre, œufs, extrait de vanille",
-    difficulte: "moyen",
+    difficulte: "Moyen",
     calorie: 450,
     preparation: [
       "Préchauffez votre four à 160°C (325°F).",
@@ -235,12 +235,12 @@ export const recetteData = [
   ,
   {
     nom: "Clam Chowder",
-    pays: "USA",
+    pays: "États-Unis",
     contenu: "Soupe crémeuse aux palourdes",
-    categorie: "entrée",
+    categorie: "Entrée",
     temp_preparation: 45,
     ingredients: "Palourdes, pommes de terre, oignon, crème, bacon",
-    difficulte: "moyen",
+    difficulte: "Moyen",
     calorie: 350,
     preparation: [
       "Nettoyez les palourdes en les rinçant sous l'eau froide pour éliminer le sable.",
@@ -260,10 +260,10 @@ export const recetteData = [
     nom: "Canard laqué",
     pays: "Chine",
     contenu: "Canard rôti avec une peau croustillante",
-    categorie: "plat",
+    categorie: "Plat",
     temp_preparation: 120,
     ingredients: "Canard, sauce soja, miel, gingembre, échalotes",
-    difficulte: "difficile",
+    difficulte: "Difficile",
     calorie: 600,
     preparation: [
       "Préparez le canard en le nettoyant et en enlevant l'excès de graisse. Frottez l'intérieur et l'extérieur du canard avec un mélange de sauce soja, de miel, de gingembre haché et d'échalotes hachées. Laissez mariner pendant au moins 2 heures ou toute une nuit.",
@@ -279,10 +279,10 @@ export const recetteData = [
     nom: "Raviolis vapeur",
     pays: "Chine",
     contenu: "Petits raviolis cuits à la vapeur",
-    categorie: "entrée",
+    categorie: "Entrée",
     temp_preparation: 60,
     ingredients: "Farce à base de porc, pâte à ravioli, sauce soja",
-    difficulte: "moyen",
+    difficulte: "Moyen",
     calorie: 350,
     preparation: [
       "Préparez la farce en mélangeant du porc haché avec des assaisonnements tels que de la sauce soja, du gingembre haché, de l'ail émincé et des oignons verts hachés.",
@@ -297,10 +297,10 @@ export const recetteData = [
     nom: "Poulet aux noix de cajou",
     pays: "Chine",
     contenu: "Poulet sauté avec des noix de cajou croquantes",
-    categorie: "plat",
+    categorie: "Plat",
     temp_preparation: 45,
     ingredients: "Poulet, noix de cajou, légumes, sauce soja",
-    difficulte: "facile",
+    difficulte: "Facile",
     calorie: 500,
     preparation: [
       "Coupez le poulet en morceaux et faites-le sauter dans une poêle avec un peu d'huile jusqu'à ce qu'il soit bien cuit et doré.",
@@ -316,10 +316,10 @@ export const recetteData = [
     nom: "Baozi",
     pays: "Chine",
     contenu: "Pain vapeur farci de viande ou de légumes",
-    categorie: "plat",
+    categorie: "Plat",
     temp_preparation: 60,
     ingredients: "Pâte à pain, farce au porc ou aux légumes",
-    difficulte: "moyen",
+    difficulte: "Moyen",
     calorie: 400,
     preparation: [
       "Préparez la pâte à pain en mélangeant de la farine, de l'eau, du sel et de la levure. Laissez-la reposer jusqu'à ce qu'elle double de volume.",
@@ -336,10 +336,10 @@ export const recetteData = [
     nom: "Poulet Kedjenou",
     pays: "Côte d'Ivoire",
     contenu: "Poulet mijoté avec des légumes et des épices",
-    categorie: "plat",
+    categorie: "Plat",
     temp_preparation: 90,
     ingredients: "1 poulet entier coupé en morceaux, 4 tomates moyennes hachées, 2 oignons moyens hachés, 1 piment selon le goût haché, 2 cuillères à soupe d'huile de palme, sel et poivre au goût",
-    difficulte: "moyen",
+    difficulte: "Moyen",
     calorie: 550,
     preparation: [
       "Dans une grande casserole, faites chauffer l'huile de palme à feu moyen.",
@@ -354,10 +354,10 @@ export const recetteData = [
     nom: "Attieke",
     pays: "Côte d'Ivoire",
     contenu: "Semoule de manioc fermentée, accompagnement populaire",
-    categorie: "plat",
+    categorie: "Plat",
     temp_preparation: 30,
     ingredients: "300g d'attieke, 500g de poisson (au choix), 4 tomates moyennes hachées, 2 oignons moyens hachés, 2 piments selon le goût hachés, sel et poivre au goût",
-    difficulte: "facile",
+    difficulte: "Facile",
     calorie: 300,
     preparation: [
       "Rincez l'attieke à l'eau froide et laissez-le égoutter.",
@@ -374,10 +374,10 @@ export const recetteData = [
     nom: "Alloco",
     pays: "Côte d'Ivoire",
     contenu: "Bananes plantains frites, souvent servies avec une sauce épicée",
-    categorie: "plat",
+    categorie: "Plat",
     temp_preparation: 20,
     ingredients: "4 bananes plantains mûres, huile de friture, piment (selon le goût), 2 oignons rouges, sel au goût",
-    difficulte: "facile",
+    difficulte: "Facile",
     calorie: 400,
     preparation: [
       "Pelez les bananes plantains et coupez-les en rondelles épaisses.",
@@ -394,10 +394,10 @@ export const recetteData = [
     nom: "Bouillie",
     pays: "Côte d'Ivoire",
     contenu: "Papier de maïs sucré, souvent servi au petit déjeuner",
-    categorie: "dessert",
+    categorie: "Dessert",
     temp_preparation: 25,
     ingredients: "1 tasse de maïs, 2 tasses d'eau, 1/4 de tasse de sucre, 1 tasse de lait, extrait de vanille au goût",
-    difficulte: "facile",
+    difficulte: "Facile",
     calorie: 250,
     preparation: [
       "Dans une casserole, faites bouillir l'eau.",
@@ -415,6 +415,6 @@ export const recetteData = [
 export const recettes: Recette[] = recetteData.map(recetteData => {
     return new Recette(recetteData.nom, recetteData.pays, recetteData.contenu,
         recetteData.categorie, recetteData.temp_preparation, recetteData.ingredients,
-        recetteData.difficulte, recetteData.calorie, recetteData.preparation, "assets/recettes/dz/chorba.png"
+        recetteData.difficulte, recetteData.calorie, recetteData.preparation, "assets/recettes/"+recetteData.pays+"/"+recetteData.nom+".png"
     );
 });
