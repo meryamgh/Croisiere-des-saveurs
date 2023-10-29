@@ -17,16 +17,19 @@
         <option value="">Toutes les difficultés</option>
         <option *ngFor="let difficulte of difficulteOptions" [value]="difficulte">{{ difficulte }}</option>
     </select>
+
+  <input [(ngModel)]="tempsPreparationFiltre" (ngModelChange)="appliquerFiltres()" type="number" placeholder="Temps de préparation (minutes)">
+
 </div>
 
 
 <div *ngIf="recettes" class="recipe-container">
     <div *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
         <h1>{{ recette.nom }}</h1>
+      <img src="{{recette.picture}}" alt="picture-recette"/>
         <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
       <p>{{ recettes.get(recette.nom) }}</p>
         <button [ngClass]="recettes.get(recette.nom)" (click)="addFavoris(recette)">{{ recettes.get(recette.nom) }}</button>
         <p>NBR LIKE : {{ recipeNbrLikes.get(recette.nom) }}</p>
     </div>
-  <button (click)="getMap()">tst</button>
 </div>

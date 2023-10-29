@@ -1,36 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
+  slides = [
+    ['image2.png', 'image1.png', 'image3.png'],
+    ['image5.png', 'image4.png', 'image6.png']
+  ];
   index = 0;
-  slides!: HTMLCollectionOf<HTMLElement>;
-  total!: number;
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.slides = document.getElementsByClassName('slide') as HTMLCollectionOf<HTMLElement>;
-    this.total = this.slides.length;
-    this.showNextSlide();
+  constructor() {}
+  showNextSlide(): void {
+    this.index = (this.index + 1) % 2;
+    setTimeout(() => this.showNextSlide(), 2300);
   }
-
-  showNextSlide() {
-    this.slides[this.index].style.display = 'none';
-
-    this.index++;
-
-    if (this.index === this.total) {
-      this.index = 0;
-    }
-
-    this.slides[this.index].style.display = 'block';
-
-    setTimeout(() => {
-      this.showNextSlide();
-    }, 2300);
+  ngOnInit(): void {
+    this.showNextSlide();
   }
 }

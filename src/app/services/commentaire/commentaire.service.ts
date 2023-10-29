@@ -17,6 +17,10 @@ export class CommentaireService {
         return this.http.get<Commentaire[]>(this.commentaireUrl);
     }
 
+    public getUserComments(user : string){
+      return this.http.get<Commentaire[]>(`${this.commentaireUrl}/user/${user}`);
+  }
+
     public getCommentsRecipie(currentReciepie: string) {
         return this.http.get<Commentaire[]>(`${this.commentaireUrl}/${currentReciepie}`);
     }

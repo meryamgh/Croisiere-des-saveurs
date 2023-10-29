@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user/user.service";
 import {Router} from "@angular/router";
 
+
 @Component({
     selector: 'app-inscription',
     templateUrl: './inscription.component.html',
@@ -22,12 +23,21 @@ export class InscriptionComponent {
     }
 
     public onSubmit() {
-        if (this.inscriptionForm.valid) {
-
-            alert("ok");
-            this.userService.createUser(this.inscriptionForm.value).subscribe();
-            this.router.navigate(['/login']);
-        }
+        alert(this.inscriptionForm.get('email')?.value);
+        this.userService.getUser(this.inscriptionForm.get('email')?.value).subscribe(user => {
+            alert(user);
+            if (user === null) {
+                if (this.inscriptionForm.valid) {
+                    this.userService.createUser(this.inscriptionForm.value).subscribe(() => {
+                        alert("ok");
+                        this.router.navigate(['/login']);
+                    });
+                }
+            } else {
+                alert("nonoo");
+            }
+        });
     }
+
 
 }

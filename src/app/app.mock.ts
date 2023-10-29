@@ -22,9 +22,13 @@ export default () => {
                 const userEmail = request.params['email'];
                 return schema.db['users'].findBy({email: userEmail});
             });
+
             this.post('/users/', (schema, request) => {
                 const user = JSON.parse(request.requestBody);
-                return schema.db['users'].insert(user);
+                console.log(user);
+                schema.db['users'].insert(user);
+                console.log(schema.db['users']);
+                return user;
             });
 
 
@@ -48,15 +52,35 @@ export default () => {
                 return schema.db['commentaires'].where({recette: recetteFind.nom});
             });
 
+            this.get('/commentaires/user/:nomUser',(schema,request )=>{
+              const userFind = request.params['nomUser'];
+              return schema.db['commentaires'].where({user: userFind});
+            })
+
             this.post('/commentaires', (schema, request) => {
                 const commentaire = JSON.parse(request.requestBody);
                 return schema.db['commentaires'].insert(commentaire);
             });
 
+
+
+          this.get('/favoris/user-recette/:nomUser/:recette', (schema,request) =>{
+            const userFind = request.params['nomUser'];
+            const recetteName = request.params['recette'];
+            return schema.db['favoris'].where({user: userFind, favoris: recetteName});
+          });
+
+          this.get('/favoris/recette/:recette', (schema,request) =>{
+            const recetteName = request.params['recette'];
+            return schema.db['favoris'].where({favoris: recetteName});
+          });
+
             this.get('/favoris', schema => schema.db['favoris']);
-            this.get('/favoris/:nomUser', (schema, request) => {
+            this.get('/favoris/user/:nomUser', (schema, request) => {
                 const user = request.params['nomUser'];
+                console.log(user);
                 const userFind = schema.db['users'].findBy({email: user});
+                console.log(userFind);
                 return schema.db['favoris'].where({user: userFind.email});
             });
 

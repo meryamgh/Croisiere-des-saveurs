@@ -20,6 +20,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {SlideComponent} from "./components/slide/slide.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import { FavorisComponent } from './components/favoris/favoris.component';
+import {NgOptimizedImage} from "@angular/common";
 
 mockServer();
 
@@ -46,6 +47,7 @@ mockServer();
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        NgOptimizedImage,
     ],
     providers: [UserService],
     bootstrap: [AppComponent]

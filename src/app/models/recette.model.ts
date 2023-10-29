@@ -7,12 +7,13 @@ export class Recette {
     ingredients: string;
     difficulte: string;
     calorie: number;
-
+    preparation: string[];
+    picture: string;
 
 
     constructor(name: string, country: string, content: string, category: string,
                 time: number, elements: string, dificulty: string,
-                clr: number) {
+                clr: number,stepsPreparation : string[], image : string ) {
         this.nom = name;
         this.pays = country;
         this.contenu = content;
@@ -21,10 +22,8 @@ export class Recette {
         this.ingredients = elements;
         this.difficulte = dificulty;
         this.calorie = clr;
-
-
+        this.preparation = stepsPreparation;
+        this.picture = image;
 
     }
-
-
 }
