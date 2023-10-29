@@ -1,6 +1,3 @@
-import {Recette} from "./recette.model";
-import {FavorisComponent} from "../components/favoris/favoris.component";
-
 export class Favoris {
     public favoris: string;
     public user: string;

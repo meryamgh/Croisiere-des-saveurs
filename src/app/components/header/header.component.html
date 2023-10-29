@@ -5,9 +5,10 @@
   <div *ngIf="currentUser != null; else elseBlock">
     <a (click)="logOut()" routerLink="/" class="nav-link"> Deconnexion </a>
     <a routerLink="/profil" class="nav-link"> Profil </a>
+    <a routerLink="/favoris">MES FAVORIS</a>
   </div>
   <a routerLink="/recettes">TOUTES LES SAVEURS</a>
-  <a routerLink="/favoris">MES FAVORIS</a>
+
   <img src="../../../assets/connecter.svg" alt="logo" class="profil">
 </div>
 <ng-template #elseBlock>

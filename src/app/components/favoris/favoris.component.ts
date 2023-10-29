@@ -19,6 +19,7 @@ export class FavorisComponent {
 
 
   public getFavoris() {
+
     const storedUser = sessionStorage.getItem("userLogged");
       if(storedUser) {
         this.currentUser = JSON.parse(storedUser) as User;

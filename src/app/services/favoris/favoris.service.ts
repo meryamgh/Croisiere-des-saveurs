@@ -17,8 +17,19 @@ export class FavorisService {
   }
 
   public getFavorisUser(currentUser: string) {
-      return this.http.get<Favoris[]>(`${this.favorisUrl}/${currentUser}`);
+      console.log(currentUser);
+      return this.http.get<Favoris[]>(`${this.favorisUrl}/user/${currentUser}`);
     }
+
+  public getFavorisRecette(recette: string) {
+
+    return this.http.get<Favoris[]>(`${this.favorisUrl}/recette/${recette}`);
+  }
+
+  public getFavorisUserRecette(currentUser: string,recette: string) {
+    console.log(currentUser);
+    return this.http.get<Favoris[]>(`${this.favorisUrl}/user-recette/${currentUser}/${recette}`);
+  }
 
   public addFavoris(newFavoris: Favoris) {
       const jsonBody = JSON.stringify(newFavoris);

@@ -29,11 +29,9 @@ export class LoginComponent {
                 if (data == null) {
                     alert("erreur");
                 } else {
-                    const user: any = data;
-                    if (user.password == password) {
-                        this.userService.isLogged(user);
-
-                        this.router.navigate(['/']);
+                    if (data.password == password) {
+                        this.userService.isLogged(data);
+                        this.router.navigate(['/Accueil']);
                     } else {
                         alert("mot de passe incorrect");
                     }

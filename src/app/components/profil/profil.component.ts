@@ -11,6 +11,7 @@ export class ProfilComponent implements OnInit {
     public currentUser!: User;
 
     constructor() {
+
     }
 
     ngOnInit(): void {
