@@ -36,7 +36,7 @@ export class MapService {
         const countries = [
             {name: 'France', coordinates: [46.2276, 2.2137], flagUrl: 'assets/flags/france.png'},
             {name: 'États-Unis', coordinates: [37.0902, -95.7129], flagUrl: 'assets/flags/us.png'},
-            {name: 'Algérie', coordinates: [28.0339, 1.6596], flagUrl: 'assets/flags/dz.png'},
+            {name: 'Algérie', coordinates: [28.0339, 1.6596], flagUrl: 'assets/flags/Algérie.png'},
             {name: 'Chine', coordinates: [35.8617, 104.1954], flagUrl: 'assets/flags/chine.png'},
             {name: 'Côte d\'Ivoire', coordinates: [7.5400, -5.5471], flagUrl: 'assets/flags/cote-d-ivoire.png'}
         ];

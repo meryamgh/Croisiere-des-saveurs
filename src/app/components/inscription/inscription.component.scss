@@ -1,24 +1,16 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #3498db;
+  min-height: 90vh;
+  margin-bottom: 50px;
 }
-
 
 form {
   width: 300px;
   padding: 20px;
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -33,7 +25,7 @@ label {
 }
 
 input[type="text"], input[type="email"], input[type="password"] {
-  width: 100%;
+  width: 93%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -41,17 +33,31 @@ input[type="text"], input[type="email"], input[type="password"] {
 }
 
 button[type="submit"] {
+  margin-top: 15px;
+  margin-bottom: 10px;
   width: 100%;
-  padding: 10px;
-  background-color: #2980b9;
-  color: #fff;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
+  background-color: white;
+  color: black;
+  border: 1px solid #000;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  border-radius: 3px;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 button[type="submit"]:hover {
-  background-color: #1a5276;
+  background-color: black;
+  color: white;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.login-link a {
+  text-decoration: underline;
+  font-style: italic;
 }

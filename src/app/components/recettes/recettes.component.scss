@@ -106,3 +106,8 @@
   height: auto;
   margin-bottom: 15px;
 }
+
+.recipe-item img {
+  image-rendering: pixelated;
+  filter : grayscale(15%);
+}
