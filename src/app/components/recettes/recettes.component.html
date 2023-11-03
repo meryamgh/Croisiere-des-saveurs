@@ -1,35 +1,38 @@
 <div class="search-bar">
-    <input [(ngModel)]="term" placeholder="Rechercher une recette...">
+  <input [(ngModel)]="term" placeholder="Rechercher une recette...">
 </div>
 
 <div class="filter-bar">
-    <select [(ngModel)]="paysFiltre" (ngModelChange)="appliquerFiltres()">
-        <option value="">Tous les pays</option>
-        <option *ngFor="let pays of paysOptions" [value]="pays">{{ pays }}</option>
-    </select>
+  <select [(ngModel)]="paysFiltre" (ngModelChange)="appliquerFiltres()">
+    <option value="">Tous les pays</option>
+    <option *ngFor="let pays of paysOptions" [value]="pays">{{ pays }}</option>
+  </select>
 
-    <select [(ngModel)]="categorieFiltre" (ngModelChange)="appliquerFiltres()">
-        <option value="">Toutes les catégories</option>
-        <option *ngFor="let categorie of categorieOptions" [value]="categorie">{{ categorie }}</option>
-    </select>
+  <select [(ngModel)]="categorieFiltre" (ngModelChange)="appliquerFiltres()">
+    <option value="">Toutes les catégories</option>
+    <option *ngFor="let categorie of categorieOptions" [value]="categorie">{{ categorie }}</option>
+  </select>
 
-    <select [(ngModel)]="difficulteFiltre" (ngModelChange)="appliquerFiltres()">
-        <option value="">Toutes les difficultés</option>
-        <option *ngFor="let difficulte of difficulteOptions" [value]="difficulte">{{ difficulte }}</option>
-    </select>
+  <select [(ngModel)]="difficulteFiltre" (ngModelChange)="appliquerFiltres()">
+    <option value="">Toutes les difficultés</option>
+    <option *ngFor="let difficulte of difficulteOptions" [value]="difficulte">{{ difficulte }}</option>
+  </select>
 
-  <input [(ngModel)]="tempsPreparationFiltre" (ngModelChange)="appliquerFiltres()" type="number" placeholder="Temps de préparation (minutes)">
+  <input [(ngModel)]="tempsPreparationFiltre" (ngModelChange)="appliquerFiltres()" type="number"
+         placeholder="Temps de préparation (minutes)">
 
 </div>
 
 
 <div *ngIf="recettes" class="recipe-container">
-    <div *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
-        <h1>{{ recette.nom }}</h1>
-      <img src="{{recette.picture}}" alt="picture-recette"/>
-        <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
-      <p>{{ recettes.get(recette.nom) }}</p>
-        <button [ngClass]="recettes.get(recette.nom)" (click)="addFavoris(recette)">{{ recettes.get(recette.nom) }}</button>
-        <p>NBR LIKE : {{ recipeNbrLikes.get(recette.nom) }}</p>
-    </div>
+  <div *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
+    <h1 class="title_recette">{{ recette.nom }}</h1>
+    <img src="{{recette.picture}}" alt="picture-recette" class="recipe-img"/>
+    <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
+    <span class="like">
+      <img [src]="recettes.get(recette.nom) === 'true' ? 'assets/coeur_true.svg' : 'assets/coeur.svg'"
+           alt="Coeur" class="like-img" (click)="addFavoris(recette)"/>
+      {{ recipeNbrLikes.get(recette.nom) }}
+      </span>
+  </div>
 </div>
