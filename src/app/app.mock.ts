@@ -3,13 +3,14 @@ import {commentaires} from "./data/data-loader-commentaire";
 import {recettes} from "./data/data-loader-recettes";
 import {users} from "./data/data-loader-user";
 import {favoris} from "./data/data-loader-favoris";
+import {countries} from "./data/data-loader-country";
 
 
 export default () => {
     new Server({
         seeds(server) {
             server.db.loadData({
-                users, recettes, commentaires,favoris
+                users, recettes, commentaires,favoris, countries
             });
         },
         routes() {
@@ -60,6 +61,20 @@ export default () => {
                 return schema.db['commentaires'].insert(commentaire);
             });
 
+            this.put('/commentaires/:idCommentaire', (schema,request)=>{
+              const commentaireId:string = request.params['idCommentaire'];
+              const newCommentaire = JSON.parse(request.requestBody);
+              const commentaire = schema.db['commentaires'].findBy({idCommentaire: commentaireId});
+              commentaire.commentaire = newCommentaire;
+              return commentaire;
+            })
+
+          this.delete('/commentaires/:idCommentaire', (schema,request)=>{
+            const commentaire = schema.db['commentaires'].findBy({idCommentaire: request.params['idCommentaire']});
+            schema.db['commentaires'].remove(commentaire);
+            return commentaire;
+          })
+
 
 
           this.get('/favoris/user-recette/:nomUser/:recette', (schema,request) =>{
@@ -95,6 +110,11 @@ export default () => {
                 return favoris;
 
             });
+
+
+          this.get('/countries', schema => schema.db['countries']);
+
+
 
 
 

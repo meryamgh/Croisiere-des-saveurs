@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RecetteService} from "../../services/recette/recette.service";
 import {CommentaireService} from "../../services/commentaire/commentaire.service";
 import {Recette} from "../../models/recette.model";
@@ -7,28 +7,25 @@ import {Commentaire} from "../../models/commentaire.model";
 import {User} from "../../models/user.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
 import {Favoris} from "../../models/favoris.model";
-import {UserService} from "../../services/user/user.service";
+
 
 @Component({
   selector: 'app-recette',
   templateUrl: './recette.component.html',
   styleUrls: ['./recette.component.scss']
 })
-export class RecetteComponent {
+export class RecetteComponent implements OnInit{
   public currentReciepie !: Recette;
-  public commentaires !: Commentaire[];
-  public userComments !: Commentaire[];
-  public usersComments = new Map<string, string>;
-  public newComment!: string;
   public currentUser!: User;
+  public commentaires!:Commentaire[];
   public nbrFav !: number;
   public recetteFav: boolean = false;
+  public usersComments: Map<string,string> = new Map<string, string>;
+  public newComment!: string;
 
-  public constructor(private recetteService: RecetteService, private commentaireService: CommentaireService,
+  public constructor(private recetteService: RecetteService, private commentaireService : CommentaireService,
               private route: ActivatedRoute, private router: Router,
-              private favorisService: FavorisService, private userService : UserService) {
-    this.getReciepie();
-    this.getUser();
+              private favorisService: FavorisService) {
   }
 
 
@@ -38,6 +35,20 @@ export class RecetteComponent {
       this.recetteService.getRecette(recetteId).subscribe(data => {
         this.currentReciepie = data;
         this.getNbrFavRecette();
+      });
+    });
+  }
+
+  public getComments() {
+    this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
+      this.commentaires = data;
+      data.forEach((comment: Commentaire) => {
+        if(comment.user === this.currentUser.email){
+          this.usersComments.set(comment.user, "user-logged");
+        }else{
+          this.usersComments.set(comment.user, "user-notLogged");
+        }
+
       });
     });
   }
@@ -54,20 +65,6 @@ export class RecetteComponent {
   }
 
 
-  public getComments() {
-    this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
-      this.commentaires = data;
-      data.forEach((comment: Commentaire) => {
-        if(comment.user === this.currentUser.email){
-          alert("okkokok")
-          this.usersComments.set(comment.user, "user-logged");
-        }else{
-          this.usersComments.set(comment.user, "user-notLogged");
-        }
-
-      });
-    });
-  }
 
 
   public getUser() {
@@ -78,19 +75,7 @@ export class RecetteComponent {
     }
   }
 
-  public ajoutCommentaire() {
 
-    if (this.currentUser) {
-
-      const commentToAdd = new Commentaire(this.newComment, this.currentUser.email, this.currentReciepie.nom, new Date());
-      this.usersComments.set(this.currentUser.email, "user-logged");
-      this.commentaireService.addComment(commentToAdd).subscribe();
-      this.commentaires.push(commentToAdd);
-    } else {
-      this.router.navigate(['/login']);
-    }
-
-  }
 
   public addToFav() {
     if (this.currentUser) {
@@ -109,5 +94,46 @@ export class RecetteComponent {
 
   }
 
+  deleteCommentaireSend(commentId: number): void {
+    this.commentaireService.deleteComment(commentId).subscribe(() => {
+      this.commentaires = this.commentaires.filter(
+        (comment:Commentaire):boolean => comment.idCommentaire !== commentId
+      );
+    });
+  }
 
+  public ajoutCommentaire() {
+
+    if (this.currentUser) {
+
+      const commentToAdd = new Commentaire(this.newComment, this.currentUser.email,
+        this.currentReciepie.nom, new Date());
+      this.usersComments.set(this.currentUser.email, "user-logged");
+      this.commentaireService.addComment(commentToAdd).subscribe();
+      this.commentaires.push(commentToAdd);
+    } else {
+      this.router.navigate(['/login']);
+    }
+
+  }
+
+  ngOnInit(): void {
+    this.getReciepie();
+    this.getUser();
+  }
+
+  updateCommentaire(commentToUpdate: Commentaire) {
+    alert(commentToUpdate.commentaire)
+    this.commentaireService.updateComment(commentToUpdate.idCommentaire,commentToUpdate.commentaire)
+      .subscribe((updatedComment:Commentaire) => {
+        this.commentaires = this.commentaires.map((comment) => {
+          if (comment.idCommentaire === commentToUpdate.idCommentaire) {
+            return updatedComment;
+          }
+          return comment;
+        });
+
+      });
+
+  }
 }

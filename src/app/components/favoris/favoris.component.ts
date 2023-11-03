@@ -1,19 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/user.model";
 import {Favoris} from "../../models/favoris.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
+
 
 @Component({
   selector: 'app-favoris',
   templateUrl: './favoris.component.html',
   styleUrls: ['./favoris.component.scss']
 })
-export class FavorisComponent {
+export class FavorisComponent implements OnInit{
   public favoris !: Favoris[];
   public currentUser!: User;
 
   public constructor(private favorisService: FavorisService) {
-    this.getFavoris();
   }
 
 
@@ -27,5 +27,9 @@ export class FavorisComponent {
         )
       }
     };
+
+  ngOnInit(): void {
+    this.getFavoris();
+  }
 
 }
