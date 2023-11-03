@@ -7,17 +7,16 @@ import {Observable} from "rxjs";
     providedIn: 'root'
 })
 export class RecetteService {
-    recettesUrl = '/api/recettes';
+    public recettesUrl = '/api/recettes';
 
     constructor(private http: HttpClient) {
     }
 
-    public getRecettes() {
+    public getRecettes(): Observable<Recette[]> {
         return this.http.get<Recette[]>(this.recettesUrl);
     }
 
-    public getRecette(nomRecette: string) {
-        console.log(nomRecette);
+    public getRecette(nomRecette: string): Observable<Recette>  {
         return this.http.get<Recette>(`${this.recettesUrl}/${nomRecette}`);
     }
 

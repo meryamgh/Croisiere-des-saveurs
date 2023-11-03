@@ -16,7 +16,7 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
 
-    constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+    public constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     }
 
 

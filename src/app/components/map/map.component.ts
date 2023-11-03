@@ -8,10 +8,10 @@ import {MapService} from "../../services/map/map.service";
 })
 export class MapComponent implements AfterViewInit {
 
-    constructor(private mapService: MapService) {
+    public constructor(private mapService: MapService) {
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.mapService.initMap();
     }
 }

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class MapService {
     private map!: any;
 
-    constructor(private router: Router) {
+    public constructor(private router: Router) {
     }
 
 

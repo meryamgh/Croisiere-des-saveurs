@@ -10,11 +10,11 @@ import {User} from "../../models/user.model";
 export class ProfilComponent implements OnInit {
     public currentUser!: User;
 
-    constructor() {
+    public constructor() {
 
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         const storedUser = sessionStorage.getItem("userLogged");
 
         if (storedUser) {
