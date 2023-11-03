@@ -1,28 +1,30 @@
-<div class="search-bar">
-  <input [(ngModel)]="term" placeholder="Rechercher une recette...">
-</div>
-
 <div class="filter-bar">
-  <select [(ngModel)]="paysFiltre" (ngModelChange)="appliquerFiltres()">
+  <section class="first-filter">
+  <select [(ngModel)]="paysFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
+    <label for="paysFiltre">Sélectionnez un pays :</label>
     <option value="">Tous les pays</option>
     <option *ngFor="let pays of paysOptions" [value]="pays">{{ pays }}</option>
   </select>
 
-  <select [(ngModel)]="categorieFiltre" (ngModelChange)="appliquerFiltres()">
+  <select [(ngModel)]="categorieFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
     <option value="">Toutes les catégories</option>
     <option *ngFor="let categorie of categorieOptions" [value]="categorie">{{ categorie }}</option>
   </select>
 
-  <select [(ngModel)]="difficulteFiltre" (ngModelChange)="appliquerFiltres()">
+  <select [(ngModel)]="difficulteFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
     <option value="">Toutes les difficultés</option>
     <option *ngFor="let difficulte of difficulteOptions" [value]="difficulte">{{ difficulte }}</option>
   </select>
 
   <input [(ngModel)]="tempsPreparationFiltre" (ngModelChange)="appliquerFiltres()" type="number"
-         placeholder="Temps de préparation (minutes)">
+         placeholder="Temps de préparation (minutes)" class="filter">
+  </section>
 
+  <div class="filter-search">
+  <input [(ngModel)]="term" placeholder="Rechercher une recette...">
+  <img class="search" src="../../../assets/search.svg">
+  </div>
 </div>
-
 
 <div *ngIf="recettes" class="recipe-container">
   <div *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
