@@ -31,6 +31,7 @@ export class CommentaireService {
 
     public updateComment(idComment : number,newComment:string):Observable<Commentaire>{
         const jsonBody:string = JSON.stringify(newComment);
+        console.log("dans le service "+jsonBody);
         return this.http.put<Commentaire>(`${this.commentaireUrl}/${idComment}`, jsonBody);
     }
 

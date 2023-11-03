@@ -18,6 +18,7 @@ export class CommentaireComponent {
   public isEditing:boolean=false;
 
 
+
   public sendUpdateComment(comment : Commentaire){
     this.isEditing = false;
     this.updateComment.emit(comment)

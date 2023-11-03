@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {MapComponent} from "./components/map/map.component";
 import {HttpClientModule} from "@angular/common/http";
 import mockServer from './app.mock';
-import {UserService} from "./services/user/user.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RecettesComponent} from './components/recettes/recettes.component';
 import {LoginComponent} from './components/login/login.component';
@@ -51,7 +50,7 @@ mockServer();
         ReactiveFormsModule,
         NgOptimizedImage,
     ],
-    providers: [UserService],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

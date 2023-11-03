@@ -7,6 +7,7 @@ import {Commentaire} from "../../models/commentaire.model";
 import {User} from "../../models/user.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
 import {Favoris} from "../../models/favoris.model";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -21,20 +22,25 @@ export class RecetteComponent implements OnInit{
   public nbrFav !: number;
   public recetteFav: boolean = false;
   public usersComments: Map<string,string> = new Map<string, string>;
-  public newComment!: string;
+  public commentaireForm:FormGroup = this.fb.group({
+    commentaire: ['', Validators.required]
+  });
 
   public constructor(private recetteService: RecetteService, private commentaireService : CommentaireService,
               private route: ActivatedRoute, private router: Router,
-              private favorisService: FavorisService) {
+              private favorisService: FavorisService,
+                     private fb: FormBuilder) {
   }
 
 
   public getReciepie() {
+
     this.route.params.subscribe(params => {
       const recetteId = params['nom'];
       this.recetteService.getRecette(recetteId).subscribe(data => {
         this.currentReciepie = data;
         this.getNbrFavRecette();
+
       });
     });
   }
@@ -42,6 +48,7 @@ export class RecetteComponent implements OnInit{
   public getComments() {
     this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
       this.commentaires = data;
+      console.log(data);
       data.forEach((comment: Commentaire) => {
         if(comment.user === this.currentUser.email){
           this.usersComments.set(comment.user, "user-logged");
@@ -104,15 +111,20 @@ export class RecetteComponent implements OnInit{
 
   public ajoutCommentaire() {
 
-    if (this.currentUser) {
+    if (this.commentaireForm.valid) {
+      if (this.currentUser) {
+        const commentaire = this.commentaireForm.get('commentaire')?.value;
+        const commentToAdd = new Commentaire(commentaire, this.currentUser.email,
+          this.currentReciepie.nom, new Date());
+        this.usersComments.set(this.currentUser.email, "user-logged");
+        this.commentaireService.addComment(commentToAdd).subscribe();
+        this.commentaires.push(commentToAdd);
+        this.commentaireForm.reset();
 
-      const commentToAdd = new Commentaire(this.newComment, this.currentUser.email,
-        this.currentReciepie.nom, new Date());
-      this.usersComments.set(this.currentUser.email, "user-logged");
-      this.commentaireService.addComment(commentToAdd).subscribe();
-      this.commentaires.push(commentToAdd);
-    } else {
-      this.router.navigate(['/login']);
+
+      } else {
+        this.router.navigate(['/login']);
+      }
     }
 
   }
@@ -123,7 +135,6 @@ export class RecetteComponent implements OnInit{
   }
 
   updateCommentaire(commentToUpdate: Commentaire) {
-    alert(commentToUpdate.commentaire)
     this.commentaireService.updateComment(commentToUpdate.idCommentaire,commentToUpdate.commentaire)
       .subscribe((updatedComment:Commentaire) => {
         this.commentaires = this.commentaires.map((comment) => {
@@ -134,6 +145,7 @@ export class RecetteComponent implements OnInit{
         });
 
       });
+    console.log(this.commentaires);
 
   }
 }

@@ -28,10 +28,11 @@
         </div>
 
 </div>
-    <div class="ajout-commentaire-container">
-      <input [(ngModel)]="newComment" placeholder="Ajouter un commentaire..." class="comment-input">
+    <div class="ajout-commentaire-container" [formGroup]="commentaireForm">
+      <input formControlName="commentaire" placeholder="Ajouter un commentaire..." class="comment-input">
       <button class="ajouter-commentaire" (click)="ajoutCommentaire()">Ajouter</button>
     </div>
+
 
   </div>
 </div>
