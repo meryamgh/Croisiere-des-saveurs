@@ -21,6 +21,7 @@ import {FooterComponent} from "./components/footer/footer.component";
 import { FavorisComponent } from './components/favoris/favoris.component';
 import {NgOptimizedImage} from "@angular/common";
 import { CommentaireComponent } from './components/commentaire/commentaire.component';
+import { PopupComponent } from './components/popup/popup.component';
 
 mockServer();
 
@@ -40,7 +41,8 @@ mockServer();
         FooterComponent,
         CountryRecipeComponent,
         FavorisComponent,
-        CommentaireComponent
+        CommentaireComponent,
+        PopupComponent
     ],
     imports: [
         BrowserModule,

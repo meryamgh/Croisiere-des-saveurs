@@ -1,38 +1,61 @@
 <div class="recette-info-container" *ngIf="currentReciepie">
-  <h1>{{ currentReciepie.nom }}</h1>
-  <img src="{{currentReciepie.picture}}" alt="picture-recette"/>
-  <p><span class="label">Pays:</span> <span class="valeur">{{ currentReciepie.pays }}</span></p>
-  <p><span class="label">Ingrédients:</span> <span class="valeur">{{ currentReciepie.ingredients }}</span></p>
-  <p><span class="label">Difficulté:</span> <span class="valeur">{{ currentReciepie.difficulte }}</span></p>
-  <p><span class="label">Temps de préparation:</span> <span class="valeur">{{ currentReciepie.temp_preparation }} min</span></p>
-  <p><span class="label">Catégorie:</span> <span class="valeur categorie">{{ currentReciepie.categorie }}</span></p>
-  <p><span class="label">Calories:</span> <span class="valeur">{{ currentReciepie.calorie }}</span></p>
-  <p><span class="label">Contenu:</span> <span class="valeur">{{ currentReciepie.contenu }}</span></p>
+  <div class="recette-photo">
+    <img src="{{currentReciepie.picture}}" alt="picture-recette" class="recette-info-container-image"/>
+  </div>
+  <div class="recette-details">
 
-  <p><span class="label">Préparation:</span></p>
-  <ul>
-    <li *ngFor="let step of currentReciepie.preparation">{{ step }}</li>
-  </ul>
-<p>FAVORIS:{{ nbrFav }}</p>
-  <button [ngClass]="recetteFav.toString()" (click)="addToFav()">Ajouter au favoris</button>
-  <button (click)="getComments()">Commentaires</button>
-  <div class="commentaires-container" *ngIf="commentaires">
-    <h2>Commentaires ({{ commentaires.length }})</h2>
-    <div *ngFor="let comment of commentaires" class="commentaire">
-      <div [ngClass]="usersComments.get(comment.user)" >
-   <app-commentaire [currentUserSend]="currentUser" [currentReciepieSend]="currentReciepie"
-   [commentaireSend]="comment"
-                    (deleteComment)="deleteCommentaireSend($event)"
-                    (updateComment)="updateCommentaire($event)"
-   ></app-commentaire>
+    <div class="first-part">
+      <div class="name-country">
+        <h1>{{ currentReciepie.nom }}</h1>
+        <span class="valeur_pays">{{ currentReciepie.pays }}</span>
+      </div>
+      <span class="like">
+      <img [src]="recetteFav.toString() === 'true' ? 'assets/coeur_true.svg' : 'assets/coeur.svg'"
+      alt="Coeur" class="like-img" (click)="addToFav()"/>
+        {{ nbrFav }}
+      </span>
+    </div>
+    <hr>
+
+
+    <p><span class="label">Ingrédients:</span> <span class="valeur">{{ currentReciepie.ingredients }}</span></p>
+    <p><span class="label">Difficulté:</span> <span class="valeur">{{ currentReciepie.difficulte }}</span></p>
+    <p><span class="label">Temps de préparation:</span> <span class="valeur">{{ currentReciepie.temp_preparation }}
+      min</span></p>
+    <p><span class="label">Catégorie:</span> <span class="valeur categorie">{{ currentReciepie.categorie }}</span></p>
+    <p><span class="label">Calories:</span> <span class="valeur">{{ currentReciepie.calorie }}</span></p>
+    <p><span class="label">Contenu:</span> <span class="valeur">{{ currentReciepie.contenu }}</span></p>
+
+    <button (click)="openPreparationPopup()" class="preparation">Voir la préparation</button>
+
+    <button (click)="getComments()">Commentaires</button>
+    <br><br>
+    <div class="commentaires-container" *ngIf="commentaires">
+      <h2>Commentaires ({{ commentaires.length }})</h2>
+      <div *ngFor="let comment of commentaires" class="commentaire">
+        <div [ngClass]="usersComments.get(comment.user)">
+          <app-commentaire [currentUserSend]="currentUser" [currentReciepieSend]="currentReciepie"
+                           [commentaireSend]="comment"
+                           (deleteComment)="deleteCommentaireSend($event)"
+                           (updateComment)="updateCommentaire($event)"
+          ></app-commentaire>
         </div>
 
-</div>
-    <div class="ajout-commentaire-container" [formGroup]="commentaireForm">
-      <input formControlName="commentaire" placeholder="Ajouter un commentaire..." class="comment-input">
-      <button class="ajouter-commentaire" (click)="ajoutCommentaire()">Ajouter</button>
+      </div>
+      <div class="ajout-commentaire-container" [formGroup]="commentaireForm">
+        <input formControlName="commentaire" placeholder="Ajouter un commentaire..." class="comment-input">
+        <button class="ajouter-commentaire" (click)="ajoutCommentaire()">Ajouter</button>
+      </div>
     </div>
+  </div>
 
 
+  <div class="popup-overlay">
+    <app-popup
+      *ngIf="etapesPreparationPopupOpen"
+      [etapesPreparation]="currentReciepie.preparation"
+      (popupFerme)="fermerPreparationPopup()">
+    </app-popup>
   </div>
 </div>
+

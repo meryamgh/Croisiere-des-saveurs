@@ -1,0 +1,15 @@
+<div class="popup-overlay">
+  <div class="popup-content">
+    <h2>Étapes de préparation</h2>
+    <div class="container-image">
+      <img src="/assets/ingredients.png" class="image-hr">
+      <hr>
+    </div>
+    <ul>
+      <li *ngFor="let etape of etapesPreparation">{{ etape }}</li>
+    </ul>
+    <button (click)="fermerPopup()">Fermer</button>
+    <img src="/assets/ingredients2.png" class="image">
+  </div>
+</div>
+
