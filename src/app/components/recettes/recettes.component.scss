@@ -1,3 +1,19 @@
+.decouverte {
+  text-align: center;
+  font-family: serif;
+}
+
+.font {
+  text-align: center;
+  font-family: serif;
+  color: #666;
+  margin: 0;
+}
+
+.text {
+  margin-bottom: 60px;
+}
+
 .like {
   vertical-align: middle;
 }
@@ -79,6 +95,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 .search {
