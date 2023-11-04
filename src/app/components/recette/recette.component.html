@@ -1,7 +1,28 @@
 <div class="recette-info-container" *ngIf="currentReciepie">
   <div class="recette-photo">
     <img src="{{currentReciepie.picture}}" alt="picture-recette" class="recette-info-container-image"/>
+
+    <br><br>
+
+
+    <div class="commentaires-container" *ngIf="commentaires">
+      <h2>Commentaires ({{ commentaires.length }})</h2>
+      <div *ngFor="let comment of commentaires" class="commentaire">
+        <div [ngClass]="usersComments.get(comment.user)">
+          <app-commentaire [currentUserSend]="currentUser" [currentReciepieSend]="currentReciepie"
+                           [commentaireSend]="comment"
+                           (deleteComment)="deleteCommentaireSend($event)"
+                           (updateComment)="updateCommentaire($event)"
+          ></app-commentaire>
+        </div>
+      </div>
+      <div class="ajout-commentaire-container" [formGroup]="commentaireForm">
+        <input formControlName="commentaire" placeholder="Ajouter un commentaire..." class="comment-input">
+        <button class="ajouter-commentaire" (click)="ajoutCommentaire()">Ajouter</button>
+      </div>
+    </div>
   </div>
+
   <div class="recette-details">
 
     <div class="first-part">
@@ -28,25 +49,16 @@
 
     <button (click)="openPreparationPopup()" class="preparation">Voir la préparation</button>
 
-    <button (click)="getComments()">Commentaires</button>
-    <br><br>
-    <div class="commentaires-container" *ngIf="commentaires">
-      <h2>Commentaires ({{ commentaires.length }})</h2>
-      <div *ngFor="let comment of commentaires" class="commentaire">
-        <div [ngClass]="usersComments.get(comment.user)">
-          <app-commentaire [currentUserSend]="currentUser" [currentReciepieSend]="currentReciepie"
-                           [commentaireSend]="comment"
-                           (deleteComment)="deleteCommentaireSend($event)"
-                           (updateComment)="updateCommentaire($event)"
-          ></app-commentaire>
-        </div>
-
-      </div>
-      <div class="ajout-commentaire-container" [formGroup]="commentaireForm">
-        <input formControlName="commentaire" placeholder="Ajouter un commentaire..." class="comment-input">
-        <button class="ajouter-commentaire" (click)="ajoutCommentaire()">Ajouter</button>
-      </div>
+    <div class="text">
+      <p class="font"><i>Avez-vous essayé cette recette ?</i></p>
+      <p class="font"><i>Faites-nous part de vos impressions dans les commentaires.</i></p>
+      <p class="font"><i>Nous attendons vos retours !</i></p>
     </div>
+
+    <div class="bouton-container">
+    <button (click)="getComments()" class="button_commentaire">Laissez votre avis</button>
+    </div>
+
   </div>
 
 

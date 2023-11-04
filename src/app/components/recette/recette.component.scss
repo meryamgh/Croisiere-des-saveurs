@@ -20,7 +20,7 @@
 }
 
 .recette-info-container-image {
-  width: 440px;
+  width: 420px;
   margin-bottom: 15px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -66,9 +66,9 @@
 }
 
 .preparation {
-  margin-top : 20px;
+  margin-top : 25px;
   width : 100%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   background-color: white;
   color: black;
   border: 1px solid #000;
@@ -83,6 +83,65 @@
 .preparation:hover {
   background-color: black;
   color: white;
+}
+
+.recette-photo {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.font {
+  text-align: center;
+  font-family: serif;
+  color: #666;
+  margin: 0;
+}
+
+.text {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.bouton-container {
+  text-align: center;
+}
+
+.button_commentaire {
+  width: 200px;
+  background-color: white;
+  color: black;
+  border: 1px solid #000;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.button_commentaire:hover {
+  background-color: black;
+  color: white;
+}
+
+.commentaires-container {
+  margin-top: 20px;
+  h2 {
+    font-size: 18px;
+  }
+  .commentaire {
+    margin-top: 10px;
+    .user {
+      font-weight: bold;
+    }
+  }
+}
+
+.recette-info-container {
+  display: flex;
+  margin: 0 auto;
+  padding: 60px;
+  border-radius: 10px;
 }
 
 .recette-info-container {
@@ -139,31 +198,6 @@
       }
     }
   }
-}
-
-.recette-info-container p {
-  font-size: 18px;
-  margin-bottom: 15px;
-  color: #555;
-}
-
-button {
-  background-color: #4c82af;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-
-
-
-button:active {
-  background-color: #39b498;
 }
 
 .true{
