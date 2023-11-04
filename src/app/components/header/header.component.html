@@ -2,7 +2,7 @@
   <img src="/assets/logoSAVEURS.svg" alt="logo" class="logo">
   <a routerLink="/Accueil">ACCUEIL</a>
   <a routerLink="/map">CUISINE DU MONDE</a>
-  <div *ngIf="currentUser != null; else elseBlock">
+  <div *ngIf="currentUser; else elseBlock">
     <a (click)="logOut()" routerLink="/" class="nav-link"> Deconnexion </a>
     <a routerLink="/profil" class="nav-link"> Profil </a>
     <a routerLink="/favoris">MES FAVORIS</a>
@@ -16,7 +16,7 @@
   <a routerLink="/login" class="nav-link">Connexion</a>
 </ng-template>
 
-<div *ngIf="currentUser != null">
+<div *ngIf="currentUser">
   <h1>Connecté, Mr {{ currentUser.nom }}</h1>
   <h1>{{ currentUser.prenom }}</h1>
 </div>

@@ -1,7 +1,7 @@
  <span class="user">{{ commentaireSend.user }} :</span>
  <span>{{ commentaireSend.dateTime | date: 'short' }}</span>
  <span class="texte">{{ commentaireSend.commentaire }}</span>
- <div *ngIf="currentUserSend.email === commentaireSend.user">
+ <div *ngIf="currentUserSend && currentUserSend.email === commentaireSend.user">
    <button (click)="isEditing = true">Modifier</button>
    <button  (click)="sendDeleteComment(commentaireSend.idCommentaire)">Supprimer</button>
    <div *ngIf="isEditing">

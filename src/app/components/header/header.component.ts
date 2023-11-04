@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { User } from "../../models/user.model";
 import { UserService } from "../../services/user/user.service";
 
@@ -8,26 +8,20 @@ import { UserService } from "../../services/user/user.service";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent{
 
-  public currentUser!: User;
+  @Input() currentUser: User | undefined;
+  @Input() isLoggedIn = false;
 
   constructor(private userService: UserService) {
   }
 
   public logOut(): void {
     this.userService.getDeconnected();
+    this.isLoggedIn = false;
+    this.currentUser = undefined;
   }
 
-
-  ngOnInit(): void {
-
-    const storedUser = sessionStorage.getItem("userLogged") ;
-    if(storedUser) {
-      this.currentUser = JSON.parse(storedUser) as User;
-
-    }
-  }
 }
 
 
