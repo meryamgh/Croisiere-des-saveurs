@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Recette} from "../../models/recette.model";
 import {recettes} from "../../data/data-loader-recettes";
 import {RecetteService} from "../../services/recette/recette.service";
@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
   templateUrl: './recettes.component.html',
   styleUrls: ['./recettes.component.scss']
 })
-export class RecettesComponent implements OnInit{
+export class RecettesComponent {
 
   public recettes: Map<string, string> = new Map<string, string>();
   public recipeNbrLikes: Map<string, number> = new Map<string, number>();
@@ -35,6 +35,13 @@ export class RecettesComponent implements OnInit{
 
   public constructor(private recetteService: RecetteService, private favorisService: FavorisService,
                      private router: Router) {
+    this.loadData();
+  }
+
+  public ngOnInit() {
+    this.paysFiltre = "";
+    this.categorieFiltre = "";
+    this.difficulteFiltre = "";
   }
 
   public getAllRecipes() {
@@ -127,9 +134,5 @@ export class RecettesComponent implements OnInit{
       this.router.navigate(['/login']);
     }
 
-  }
-
-  ngOnInit(): void {
-    this.loadData();
   }
 }

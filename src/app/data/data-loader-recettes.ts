@@ -2,85 +2,7 @@ import {Recette} from "../models/recette.model";
 
 export const recetteData = [
 
-  //ALGERIE
-  {
-    nom: "Chorba",
-    pays: "Algérie",
-    contenu: "Soupe traditionnelle aux légumes et viande",
-    categorie: "Entrée",
-    temp_preparation: 45,
-    ingredients: "500g de semoule, 1 courgette, 2 carottes, 1 poivron, 1 oignon, 500g de viande d'agneau, " +
-      "2 cuillères à soupe d'huile d'olive, 1 cuillère à café de cumin, " +
-      "1 cuillère à café de coriandre en poudre, sel, poivre",
-    difficulte: "Facile",
-    calorie: 350,
-    preparation: [
-      "Épluchez et coupez tous les légumes en petits morceaux.",
-      "Faites revenir la viande, les oignons, l'ail, le céleri, les carottes, les pommes de terre, les courgettes, les tomates et les pois chiches dans de l'huile d'olive.",
-      "Ajoutez les épices et laissez mijoter.",
-      "Ajoutez de l'eau et laissez cuire jusqu'à ce que la viande et les légumes soient tendres.",
-      "Ajoutez les vermicelles et faites cuire jusqu'à ce qu'elles soient tendres.",
-      "Saupoudrez de persil frais haché avant de servir."
-    ]
-  },
-  {
-    nom: "Couscous",
-    pays: "Algérie",
-    contenu: "Délicieux plat traditionnel algérien",
-    categorie: "Plat",
-    temp_preparation: 60,
-    ingredients: "500g de semoule, légumes variés (carottes, courgettes, poivrons), viande au choix (agneau, poulet, merguez), épices (cumin, coriandre, sel, poivre)",
-    difficulte: "Facile",
-    calorie: 400,
-    preparation: [
-      "Préparez la semoule selon les indications sur l'emballage.",
-      "Faites cuire la viande et les légumes à la vapeur ou dans un bouillon parfumé aux épices.",
-      "Disposez la semoule dans un grand plat, placez la viande et les légumes dessus.",
-      "Servez chaud, accompagné du bouillon et d'harissa pour ceux qui aiment épicé."
-    ]
-  }
-  ,
-  {
-    nom: "Tajine",
-    pays: "Algérie",
-    contenu: "Savoureux plat cuit lentement",
-    categorie: "Plat",
-    temp_preparation: 90,
-    ingredients: "Viande au choix (agneau, poulet, bœuf), légumes variés (oignons, carottes, pommes de terre), épices (cumin, coriandre, paprika, cannelle), huile d'olive, citron confit, olives",
-    difficulte: "Moyen",
-    calorie: 450,
-    preparation: [
-      "Faites chauffer l'huile d'olive dans un tajine ou une cocotte.",
-      "Faites revenir la viande et les oignons hachés jusqu'à ce qu'ils soient dorés.",
-      "Ajoutez les épices, les légumes coupés en morceaux, les olives et le citron confit.",
-      "Couvrez et laissez mijoter à feu doux pendant environ 1h30 ou jusqu'à ce que la viande et les légumes soient tendres.",
-      "Servez chaud, accompagné de pain ou de couscous."
-    ]
-  }
-  ,
-  {
-    nom: "Crêpe mille trous",
-    pays: "Algérie",
-    contenu: "Délicates crêpes avec des trous",
-    categorie: "Dessert",
-    temp_preparation: 45,
-    ingredients: "250g de farine, 1 cuillère à café de levure chimique, 1/2 cuillère à café de sel, 1 cuillère à soupe de sucre, 1 cuillère à soupe d'eau de fleur d'oranger, 1 cuillère à soupe de levure boulangère, Eau tiède",
-    difficulte: "Facile",
-    calorie: 300,
-    preparation: [
-      "Dans un bol, mélangez la farine, la levure chimique, le sel et le sucre.",
-      "Ajoutez l'eau de fleur d'oranger et la levure boulangère délayée dans un peu d'eau tiède. Mélangez bien.",
-      "Ajoutez progressivement de l'eau tiède en remuant jusqu'à obtenir une pâte liquide et homogène.",
-      "Couvrez le bol et laissez reposer la pâte pendant environ 30 minutes à 1 heure.",
-      "Dans une poêle antiadhésive, versez une petite louche de pâte et laissez cuire à feu doux jusqu'à ce que des petits trous se forment à la surface de la crêpe.",
-      "Retournez la crêpe et laissez cuire brièvement de l'autre côté.",
-      "Répétez l'opération avec le reste de la pâte.",
-      "Servez chaud, saupoudré de sucre glace ou de miel, selon votre préférence."
-    ]
-  }
-
   //FRANCE
-  ,
   {
     nom: "Macaron",
     pays: "France",
@@ -167,7 +89,83 @@ export const recetteData = [
     ]
   }
   ,
-
+  //ALGERIE
+  {
+    nom: "Chorba",
+    pays: "Algérie",
+    contenu: "Soupe traditionnelle aux légumes et viande",
+    categorie: "Entrée",
+    temp_preparation: 45,
+    ingredients: "500g de semoule, 1 courgette, 2 carottes, 1 poivron, 1 oignon, 500g de viande d'agneau, " +
+      "2 cuillères à soupe d'huile d'olive, 1 cuillère à café de cumin, " +
+      "1 cuillère à café de coriandre en poudre, sel, poivre",
+    difficulte: "Facile",
+    calorie: 350,
+    preparation: [
+      "Épluchez et coupez tous les légumes en petits morceaux.",
+      "Faites revenir la viande, les oignons, l'ail, le céleri, les carottes, les pommes de terre, les courgettes, les tomates et les pois chiches dans de l'huile d'olive.",
+      "Ajoutez les épices et laissez mijoter.",
+      "Ajoutez de l'eau et laissez cuire jusqu'à ce que la viande et les légumes soient tendres.",
+      "Ajoutez les vermicelles et faites cuire jusqu'à ce qu'elles soient tendres.",
+      "Saupoudrez de persil frais haché avant de servir."
+    ]
+  },
+  {
+    nom: "Couscous",
+    pays: "Algérie",
+    contenu: "Délicieux plat traditionnel algérien",
+    categorie: "Plat",
+    temp_preparation: 60,
+    ingredients: "500g de semoule, légumes variés (carottes, courgettes, poivrons), viande au choix (agneau, poulet, merguez), épices (cumin, coriandre, sel, poivre)",
+    difficulte: "Facile",
+    calorie: 400,
+    preparation: [
+      "Préparez la semoule selon les indications sur l'emballage.",
+      "Faites cuire la viande et les légumes à la vapeur ou dans un bouillon parfumé aux épices.",
+      "Disposez la semoule dans un grand plat, placez la viande et les légumes dessus.",
+      "Servez chaud, accompagné du bouillon et d'harissa pour ceux qui aiment épicé."
+    ]
+  }
+  ,
+  {
+    nom: "Tajine",
+    pays: "Algérie",
+    contenu: "Savoureux plat cuit lentement",
+    categorie: "Plat",
+    temp_preparation: 90,
+    ingredients: "Viande au choix (agneau, poulet, bœuf), légumes variés (oignons, carottes, pommes de terre), épices (cumin, coriandre, paprika, cannelle), huile d'olive, citron confit, olives",
+    difficulte: "Moyen",
+    calorie: 450,
+    preparation: [
+      "Faites chauffer l'huile d'olive dans un tajine ou une cocotte.",
+      "Faites revenir la viande et les oignons hachés jusqu'à ce qu'ils soient dorés.",
+      "Ajoutez les épices, les légumes coupés en morceaux, les olives et le citron confit.",
+      "Couvrez et laissez mijoter à feu doux pendant environ 1h30 ou jusqu'à ce que la viande et les légumes soient tendres.",
+      "Servez chaud, accompagné de pain ou de couscous."
+    ]
+  }
+  ,
+  {
+    nom: "Crêpe mille trous",
+    pays: "Algérie",
+    contenu: "Délicates crêpes avec des trous",
+    categorie: "Dessert",
+    temp_preparation: 45,
+    ingredients: "250g de farine, 1 cuillère à café de levure chimique, 1/2 cuillère à café de sel, 1 cuillère à soupe de sucre, 1 cuillère à soupe d'eau de fleur d'oranger, 1 cuillère à soupe de levure boulangère, Eau tiède",
+    difficulte: "Facile",
+    calorie: 300,
+    preparation: [
+      "Dans un bol, mélangez la farine, la levure chimique, le sel et le sucre.",
+      "Ajoutez l'eau de fleur d'oranger et la levure boulangère délayée dans un peu d'eau tiède. Mélangez bien.",
+      "Ajoutez progressivement de l'eau tiède en remuant jusqu'à obtenir une pâte liquide et homogène.",
+      "Couvrez le bol et laissez reposer la pâte pendant environ 30 minutes à 1 heure.",
+      "Dans une poêle antiadhésive, versez une petite louche de pâte et laissez cuire à feu doux jusqu'à ce que des petits trous se forment à la surface de la crêpe.",
+      "Retournez la crêpe et laissez cuire brièvement de l'autre côté.",
+      "Répétez l'opération avec le reste de la pâte.",
+      "Servez chaud, saupoudré de sucre glace ou de miel, selon votre préférence."
+    ]
+  }
+  ,
   //USA
   {
     nom: "Hamburger",
