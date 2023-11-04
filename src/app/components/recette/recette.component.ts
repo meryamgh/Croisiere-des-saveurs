@@ -48,7 +48,7 @@ export class RecetteComponent implements OnInit{
   public getComments() {
     this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
       this.commentaires = data;
-      console.log(data);
+
       data.forEach((comment: Commentaire) => {
         if(comment.user === this.currentUser.email){
           this.usersComments.set(comment.user, "user-logged");
@@ -145,7 +145,7 @@ export class RecetteComponent implements OnInit{
         });
 
       });
-    console.log(this.commentaires);
+
 
   }
 }

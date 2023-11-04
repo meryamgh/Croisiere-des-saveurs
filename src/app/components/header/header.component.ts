@@ -1,16 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { User } from "../../models/user.model";
 import { UserService } from "../../services/user/user.service";
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
-  public currentUser: User | null = null;
-  private userSubscription!: Subscription;
+export class HeaderComponent implements OnInit {
+
+  public currentUser!: User;
 
   constructor(private userService: UserService) {
   }
@@ -20,14 +20,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
 
-  ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
-  }
-
   ngOnInit(): void {
-    this.userSubscription = this.userService.getUserSubject().subscribe(user => {
-      this.currentUser = user;
-    });
+
+    const storedUser = sessionStorage.getItem("userLogged") ;
+    if(storedUser) {
+      this.currentUser = JSON.parse(storedUser) as User;
+
+    }
   }
 }
 
