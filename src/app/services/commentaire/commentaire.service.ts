@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Commentaire} from "../../models/commentaire.model";
-import {Recette} from "../../models/recette.model";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -28,6 +27,16 @@ export class CommentaireService {
     public addComment(newComment: Commentaire) {
         const jsonBody:string = JSON.stringify(newComment);
         return this.http.post(this.commentaireUrl, jsonBody);
+    }
+
+    public updateComment(idComment : number,newComment:string):Observable<Commentaire>{
+        const jsonBody:string = JSON.stringify(newComment);
+        console.log("dans le service "+jsonBody);
+        return this.http.put<Commentaire>(`${this.commentaireUrl}/${idComment}`, jsonBody);
+    }
+
+    public deleteComment(idCommentaire:number){
+      return this.http.delete(`${this.commentaireUrl}/${idCommentaire}`);
     }
 
 }

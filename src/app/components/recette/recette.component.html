@@ -20,18 +20,19 @@
     <h2>Commentaires ({{ commentaires.length }})</h2>
     <div *ngFor="let comment of commentaires" class="commentaire">
       <div [ngClass]="usersComments.get(comment.user)" >
-      <span class="user">{{ comment.user }} :</span>
-      <!-- Affichage de la date et de l'heure sans les secondes -->
-      <span>{{ comment.dateTime | date: 'short' }}</span>
+   <app-commentaire [currentUserSend]="currentUser" [currentReciepieSend]="currentReciepie"
+   [commentaireSend]="comment"
+                    (deleteComment)="deleteCommentaireSend($event)"
+                    (updateComment)="updateCommentaire($event)"
+   ></app-commentaire>
+        </div>
 
-      <span class="texte">{{ comment.commentaire }}</span>
-      </div>
-    </div>
-    <div class="ajout-commentaire-container">
-      <input [(ngModel)]="newComment" placeholder="Ajouter un commentaire..." class="comment-input">
+</div>
+    <div class="ajout-commentaire-container" [formGroup]="commentaireForm">
+      <input formControlName="commentaire" placeholder="Ajouter un commentaire..." class="comment-input">
       <button class="ajouter-commentaire" (click)="ajoutCommentaire()">Ajouter</button>
     </div>
+
+
   </div>
-
-
 </div>

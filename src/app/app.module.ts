@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {MapComponent} from "./components/map/map.component";
 import {HttpClientModule} from "@angular/common/http";
 import mockServer from './app.mock';
-import {UserService} from "./services/user/user.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RecettesComponent} from './components/recettes/recettes.component';
 import {LoginComponent} from './components/login/login.component';
@@ -21,6 +20,7 @@ import {SlideComponent} from "./components/slide/slide.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import { FavorisComponent } from './components/favoris/favoris.component';
 import {NgOptimizedImage} from "@angular/common";
+import { CommentaireComponent } from './components/commentaire/commentaire.component';
 
 mockServer();
 
@@ -39,7 +39,8 @@ mockServer();
         SlideComponent,
         FooterComponent,
         CountryRecipeComponent,
-        FavorisComponent
+        FavorisComponent,
+        CommentaireComponent
     ],
     imports: [
         BrowserModule,
@@ -49,7 +50,7 @@ mockServer();
         ReactiveFormsModule,
         NgOptimizedImage,
     ],
-    providers: [UserService],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {
