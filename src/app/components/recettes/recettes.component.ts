@@ -35,7 +35,13 @@ export class RecettesComponent {
 
   public constructor(private recetteService: RecetteService, private favorisService: FavorisService,
                      private router: Router) {
-    this.loadData()
+    this.loadData();
+  }
+
+  public ngOnInit() {
+    this.paysFiltre = "";
+    this.categorieFiltre = "";
+    this.difficulteFiltre = "";
   }
 
   public getAllRecipes() {

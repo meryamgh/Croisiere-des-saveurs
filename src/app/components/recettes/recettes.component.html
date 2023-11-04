@@ -1,7 +1,6 @@
 <div class="filter-bar">
   <section class="first-filter">
   <select [(ngModel)]="paysFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
-    <label for="paysFiltre">Sélectionnez un pays :</label>
     <option value="">Tous les pays</option>
     <option *ngFor="let pays of paysOptions" [value]="pays">{{ pays }}</option>
   </select>
@@ -17,7 +16,7 @@
   </select>
 
   <input [(ngModel)]="tempsPreparationFiltre" (ngModelChange)="appliquerFiltres()" type="number"
-         placeholder="Temps de préparation (minutes)" class="filter">
+         placeholder="Temps de préparation (minutes)" class="section-filter">
   </section>
 
   <div class="filter-search">
@@ -38,3 +37,4 @@
       </span>
   </div>
 </div>
+
