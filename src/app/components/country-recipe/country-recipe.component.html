@@ -1,9 +1,15 @@
-<div class="recipe-container">
-  <h1>Recettes de {{ countryName }}</h1>
-  <div class="recipe-list">
+<div class="presentation">
+  <p class="title">{{ countryName }}</p>
+  <hr>
+  <p class="decouverte"><i>"L'exploration d'un pays à travers ses saveurs."</i></p>
+  <br>
+</div>
+  <div class="recipe-container">
     <div *ngFor="let recette of recettes" class="recipe-item">
-      <h2>{{ recette.nom }}</h2>
-      <img src="{{ recette.picture }}" alt="recipe-picture">
+      <h1 class="title_recette">{{ recette.nom }}</h1>
+      <img src="{{ recette.picture }}" alt="recipe-picture" class="recipe-img">
+      <br>
+      <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
+      <br>
     </div>
   </div>
-</div>

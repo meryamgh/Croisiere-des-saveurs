@@ -1,3 +1,8 @@
+<div class="presentation">
+  <p class="title">MES FAVORIS</p>
+  <hr>
+  <p class="decouverte"><i>"Là où les saveurs deviennent des souvenirs."</i></p>
+</div>
 <div *ngIf="favoris" class="recipe-container">
     <div *ngFor="let fav of favoris" class="recipe-item">
         <h1 class="title_recette">{{ fav.favoris }}</h1>
@@ -5,3 +10,4 @@
         <a [routerLink]="['/recette-detail', fav.favoris]">Consulter la recette</a>
     </div>
 </div>
+

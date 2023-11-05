@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {User} from "../../models/user.model";
 
 
@@ -8,6 +8,7 @@ import {User} from "../../models/user.model";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
+
   public slides = [
     ['image2.png', 'image1.png', 'image3.png'],
     ['image5.png', 'image4.png', 'image6.png']
