@@ -42,6 +42,10 @@ export default () => {
                 recetteFind.commentaire.push(request.requestBody);
                 return recetteFind;
             });
+            this.get('/recettes/country/:countryName', (schema ,request) => {
+              const country = request.params['countryName'];
+              return schema.db['recettes'].where({pays: country});
+            });
 
 
             this.get('/commentaires', schema => schema.db['commentaires']);
