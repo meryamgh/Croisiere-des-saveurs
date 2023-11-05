@@ -98,7 +98,7 @@ export class RecetteComponent implements OnInit{
   public addToFav() {
     if (this.currentUser) {
 
-      const newFavoris = new Favoris(this.currentReciepie.nom, this.currentUser.email);
+      const newFavoris = new Favoris(this.currentReciepie.nom, this.currentUser.email, this.currentReciepie.picture);
       if (this.recetteFav) {
         this.nbrFav--;
         this.favorisService.delFavoris(newFavoris).subscribe();

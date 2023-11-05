@@ -1,6 +1,7 @@
 <div *ngIf="favoris" class="recipe-container">
     <div *ngFor="let fav of favoris" class="recipe-item">
-        <h1>{{ fav.favoris }}</h1>
+        <h1 class="title_recette">{{ fav.favoris }}</h1>
+        <img src="{{fav.picture}}" alt="assets/{{fav.favoris}}.png" class="recipe-img"/>
         <a [routerLink]="['/recette-detail', fav.favoris]">Consulter la recette</a>
     </div>
 </div>
