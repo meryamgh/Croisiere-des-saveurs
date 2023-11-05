@@ -110,7 +110,7 @@ export class RecettesComponent implements OnInit{
 
     if (this.currentUser) {
       const recetteBoolean = this.recettes.get(recetteClicked.nom);
-      const newFavoris = new Favoris(recetteClicked.nom, this.currentUser.email);
+      const newFavoris = new Favoris(recetteClicked.nom, this.currentUser.email, recetteClicked.picture);
       const nbrLikes = this.recipeNbrLikes.get(recetteClicked.nom);
       if (nbrLikes != undefined) {
         if (recetteBoolean === "true") {

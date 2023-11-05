@@ -8,6 +8,7 @@ import {User} from "../../models/user.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
 import {Favoris} from "../../models/favoris.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Renderer2, ElementRef } from '@angular/core';
 
 
 @Component({
@@ -21,17 +22,18 @@ export class RecetteComponent implements OnInit{
   public commentaires!:Commentaire[];
   public nbrFav !: number;
   public recetteFav: boolean = false;
+  etapesPreparationPopupOpen: boolean = false;
+
   public usersComments: Map<string,string> = new Map<string, string>;
   public commentaireForm:FormGroup = this.fb.group({
     commentaire: ['', Validators.required]
   });
 
   public constructor(private recetteService: RecetteService, private commentaireService : CommentaireService,
-              private route: ActivatedRoute, private router: Router,
-              private favorisService: FavorisService,
-                     private fb: FormBuilder) {
+                     private route: ActivatedRoute, private router: Router,
+                     private favorisService: FavorisService,
+                     private fb: FormBuilder, private renderer: Renderer2, private el: ElementRef) {
   }
-
 
   public getReciepie() {
 
@@ -96,7 +98,7 @@ export class RecetteComponent implements OnInit{
   public addToFav() {
     if (this.currentUser) {
 
-      const newFavoris = new Favoris(this.currentReciepie.nom, this.currentUser.email);
+      const newFavoris = new Favoris(this.currentReciepie.nom, this.currentUser.email, this.currentReciepie.picture);
       if (this.recetteFav) {
         this.nbrFav--;
         this.favorisService.delFavoris(newFavoris).subscribe();
@@ -158,4 +160,13 @@ export class RecetteComponent implements OnInit{
 
 
   }
+
+  openPreparationPopup() {
+    this.etapesPreparationPopupOpen = true;
+  }
+
+  fermerPreparationPopup() {
+    this.etapesPreparationPopupOpen = false;
+  }
+
 }
