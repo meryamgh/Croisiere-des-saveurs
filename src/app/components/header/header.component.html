@@ -6,8 +6,8 @@
   <a routerLink="/Accueil">ACCUEIL</a>
   <a routerLink="/map">CUISINE DU MONDE</a>
   <div *ngIf="currentUser; else elseBlock">
-    <a (click)="logOut()" routerLink="/" class="nav-link"> Deconnexion </a>
-    <a routerLink="/profil" class="nav-link"> Profil </a>
+    <a (click)="logOut()" routerLink="/" class="nav-link"> DECONNEXION </a>
+    <a routerLink="/profil" class="nav-link"> PROFIL </a>
     <a routerLink="/favoris">MES FAVORIS</a>
   </div>
   <a routerLink="/recettes">TOUTES LES SAVEURS</a>
@@ -15,6 +15,6 @@
   <img src="/assets/connecter.svg" alt="logo" class="profil">
 </div>
 <ng-template #elseBlock>
-  <a routerLink="/inscription" class="nav-link">Inscription</a>
-  <a routerLink="/login" class="nav-link">Connexion</a>
+  <a routerLink="/inscription" class="nav-link">INSCRIPTION</a>
+  <a routerLink="/login" class="nav-link">CONNEXION</a>
 </ng-template>
