@@ -10,8 +10,9 @@ import {FavorisService} from "../../services/favoris/favoris.service";
   styleUrls: ['./favoris.component.scss']
 })
 export class FavorisComponent implements OnInit{
-  public favoris !: Favoris[];
+  public favoris: Favoris[] = [];
   public currentUser!: User;
+  elseBlock: any;
 
   public constructor(private favorisService: FavorisService) {
   }
@@ -26,7 +27,9 @@ export class FavorisComponent implements OnInit{
             (this.favoris = data)
         )
       }
-    };
+      console.log(this.favoris);
+
+    }
 
   ngOnInit(): void {
     this.getFavoris();
