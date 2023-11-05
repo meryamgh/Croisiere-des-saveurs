@@ -10,8 +10,8 @@ import {User} from "../../models/user.model";
 export class HomeComponent implements OnInit{
 
   public slides = [
-    ['image2.png', 'image1.png', 'image3.png'],
-    ['image5.png', 'image4.png', 'image6.png']
+    ['image1.png', 'image2.png', 'image3.png'],
+    ['image4.png', 'image5.png', 'image6.png']
   ];
   public index = 0;
   public currentUser !:User;
