@@ -1,6 +1,7 @@
 <div class="debut_accueil">
   <p class="decouverte"><i>"La cuisine, un langage universel."</i></p>
-  <a routerLink="/map" class="bouton_decouvrir">Découvrir</a>
+  <br>
+  <a routerLink="/recettes" class="bouton_decouvrir">Découvrir</a>
 </div>
 
 <div *ngFor="let slide of slides; let i = index" [ngClass]="{'slide': true, 'active': i === index}">
@@ -19,7 +20,7 @@
   <a routerLink="/map" class="voyage1">
   <img src="/assets/image1-1.png" alt="Image 1">
   <div class="contenu">
-    <div class="texte">CUISINE DU MONDE</div>
+    <a routerLink="/map" class="texte">CUISINE DU MONDE</a>
   </div>
   </a>
 

@@ -1,33 +1,34 @@
 .img1 {
-  height : 550px;
-  width: 440px;
-  margin-right : 7px;
-  filter : grayscale(20%);
-}
-
-.img2 {
   height:550px;
-  width:366px;
   margin-right: 7px;
   filter : grayscale(30%);
 }
 
+.img2 {
+  height : 550px;
+  margin-right : 7px;
+  filter : grayscale(20%);
+}
+
 .img3 {
   height: 550px;
-  width : 313px;
   filter : grayscale(30%);
 }
 
-img {
+img4 {
   height: 550px;
-  width : 367px;
+  margin-right: 7px;
+  filter : grayscale(30%);
+}
+
+img5 {
+  height: 550px;
   margin-right: 7px;
   filter : grayscale(30%);
 }
 
 img6 {
   height: 550px;
-  width : 367px;
   filter : grayscale(30%);
 }
 
@@ -86,6 +87,7 @@ home {
   border-radius: 3px;
   transition: background-color 0.3s ease-in-out;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
 }
 
 .bouton_decouvrir:hover {
@@ -225,6 +227,7 @@ home {
   font-size: 24px;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
 }
 
 .paragraphe {
