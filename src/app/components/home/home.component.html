@@ -1,11 +1,11 @@
 <div class="debut_accueil">
   <p class="decouverte"><i>"La cuisine, un langage universel."</i></p>
-  <button class="bouton_decouvrir">Découvrir</button>
+  <a routerLink="/map" class="bouton_decouvrir">Découvrir</a>
 </div>
 
 <div *ngFor="let slide of slides; let i = index" [ngClass]="{'slide': true, 'active': i === index}">
   <div class="home-component">
-    <img *ngFor="let image of slide; let j = index" [src]="'../../../assets/' + image" [alt]="'Image ' + (j + 1)" [class]="'img' + (j + 1)">
+    <img *ngFor="let image of slide; let j = index" [src]="'/assets/' + image" [alt]="'Image ' + (j + 1)" [class]="'img' + (j + 1)">
   </div>
 </div>
 
@@ -16,32 +16,33 @@
 
 <div class="component-voyage">
 
-  <div class="voyage1">
+  <a routerLink="/map" class="voyage1">
   <img src="/assets/image1-1.png" alt="Image 1">
   <div class="contenu">
     <div class="texte">CUISINE DU MONDE</div>
   </div>
-  </div>
+  </a>
 
   <div class="images2">
 
-    <div class="voyage3">
+    <a routerLink="/recettes" class="voyage3">
     <img src="/assets/voyage2.png" alt="Image 3">
       <div class="contenu">
         <div class="texte">TOUTES LES SAVEURS</div>
       </div>
-    </div>
+    </a>
 
-    <div class="voyage2">
+    <a routerLink="{{ link }}" class="voyage2">
     <img src="/assets/voyage1.png" alt="Image 2">
       <div class="contenu">
-        <div class="texte">MES FAVORIS</div>
+          <div class="texte">MES FAVORIS</div>
       </div>
-    </div>
+    </a>
 
   </div>
 
 </div>
+
 
 <div class="paragraphe">
   <p class="font">Découvrez des recettes authentiques et explorez un monde de saveurs.</p>
@@ -49,8 +50,8 @@
   <p class="font">Inscrivez-vous aujourd'hui pour déverrouiller cette fonctionnalité exclusive et rejoindre notre communauté de passionnés de cuisine.</p>
 </div>
 
-<div class="debut_accueil">
-<button class="bouton_decouvrir">Je m'inscris</button>
+<div *ngIf="!currentUser" class="debut_accueil">
+<a routerLink="/inscription" class="bouton_decouvrir">Je m'inscris</a>
 </div>
 
 <app-slide></app-slide>

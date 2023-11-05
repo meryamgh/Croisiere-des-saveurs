@@ -8,7 +8,6 @@ import {User} from "../../models/user.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
 import {Favoris} from "../../models/favoris.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { Renderer2, ElementRef } from '@angular/core';
 
 
 @Component({
@@ -32,7 +31,7 @@ export class RecetteComponent implements OnInit{
   public constructor(private recetteService: RecetteService, private commentaireService : CommentaireService,
                      private route: ActivatedRoute, private router: Router,
                      private favorisService: FavorisService,
-                     private fb: FormBuilder, private renderer: Renderer2, private el: ElementRef) {
+                     private fb: FormBuilder) {
   }
 
   public getReciepie() {
