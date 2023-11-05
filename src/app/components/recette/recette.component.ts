@@ -48,18 +48,25 @@ export class RecetteComponent implements OnInit{
   }
 
   public getComments() {
-    this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
-      this.commentaires = data;
-      console.log(data);
-      data.forEach((comment: Commentaire) => {
-        if(comment.user === this.currentUser.email){
-          this.usersComments.set(comment.user, "user-logged");
-        }else{
-          this.usersComments.set(comment.user, "user-notLogged");
-        }
 
+      this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
+        this.commentaires = data;
+
+        data.forEach((comment: Commentaire) => {
+
+          if(this.currentUser) {
+            if (comment.user === this.currentUser.email) {
+              this.usersComments.set(comment.user, "user-logged");
+            } else {
+              this.usersComments.set(comment.user, "user-notLogged");
+            }
+          }else{
+            this.usersComments.set(comment.user, "user-notLogged");
+          }
+
+        });
       });
-    });
+
   }
 
 
@@ -67,10 +74,12 @@ export class RecetteComponent implements OnInit{
     this.favorisService.getFavorisRecette(this.currentReciepie.nom).subscribe(data =>
       (this.nbrFav = data.length)
     )
-    this.favorisService.getFavorisUserRecette(this.currentUser.email, this.currentReciepie.nom).subscribe(data => {
-        this.recetteFav = data.length !== 0;
-      }
-    )
+    if(this.currentUser) {
+      this.favorisService.getFavorisUserRecette(this.currentUser.email, this.currentReciepie.nom).subscribe(data => {
+          this.recetteFav = data.length !== 0;
+        }
+      )
+    }
   }
 
 
@@ -88,6 +97,7 @@ export class RecetteComponent implements OnInit{
 
   public addToFav() {
     if (this.currentUser) {
+
       const newFavoris = new Favoris(this.currentReciepie.nom, this.currentUser.email);
       if (this.recetteFav) {
         this.nbrFav--;
@@ -147,7 +157,7 @@ export class RecetteComponent implements OnInit{
         });
 
       });
-    console.log(this.commentaires);
+
 
   }
 

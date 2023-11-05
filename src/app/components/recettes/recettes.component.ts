@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Recette} from "../../models/recette.model";
 import {recettes} from "../../data/data-loader-recettes";
 import {RecetteService} from "../../services/recette/recette.service";
@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
   templateUrl: './recettes.component.html',
   styleUrls: ['./recettes.component.scss']
 })
-export class RecettesComponent {
+export class RecettesComponent implements OnInit{
 
   public recettes: Map<string, string> = new Map<string, string>();
   public recipeNbrLikes: Map<string, number> = new Map<string, number>();
@@ -21,9 +21,9 @@ export class RecettesComponent {
   public term!: string;
   public currentUser!: User;
 
-  public paysFiltre!: string;
-  public categorieFiltre!: string;
-  public difficulteFiltre!: string;
+  public paysFiltre: string="";
+  public categorieFiltre: string="";
+  public difficulteFiltre: string="";
   public tempsPreparationFiltre!: number;
 
   public paysOptions!: string[];
@@ -35,13 +35,6 @@ export class RecettesComponent {
 
   public constructor(private recetteService: RecetteService, private favorisService: FavorisService,
                      private router: Router) {
-  }
-
-  public ngOnInit() {
-    this.paysFiltre = "";
-    this.categorieFiltre = "";
-    this.difficulteFiltre = "";
-    this.loadData();
   }
 
   public getAllRecipes() {
@@ -134,5 +127,9 @@ export class RecettesComponent {
       this.router.navigate(['/login']);
     }
 
+  }
+
+  ngOnInit(): void {
+    this.loadData();
   }
 }

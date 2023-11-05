@@ -1,34 +1,27 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { User } from "../../models/user.model";
 import { UserService } from "../../services/user/user.service";
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
-  public currentUser: User | null = null;
-  private userSubscription!: Subscription;
+export class HeaderComponent{
+
+  @Input() currentUser: User | undefined;
+  @Input() isLoggedIn = false;
 
   constructor(private userService: UserService) {
   }
 
   public logOut(): void {
     this.userService.getDeconnected();
+    this.isLoggedIn = false;
+    this.currentUser = undefined;
   }
 
-
-  ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
-  }
-
-  ngOnInit(): void {
-    this.userSubscription = this.userService.getUserSubject().subscribe(user => {
-      this.currentUser = user;
-    });
-  }
 }
 
 

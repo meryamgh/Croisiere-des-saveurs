@@ -9,7 +9,7 @@ import {RecetteComponent} from "./components/recette/recette.component";
 import {CountryRecipeComponent} from "./components/country-recipe/country-recipe.component";
 import {HomeComponent} from "./components/home/home.component";
 import {FavorisComponent} from "./components/favoris/favoris.component";
-import {PopupComponent} from "./components/popup/popup.component";
+import {authGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
     {path: "Accueil", component: HomeComponent},
@@ -17,11 +17,10 @@ const routes: Routes = [
     {path: "recettes", component: RecettesComponent},
     {path: "login", component: LoginComponent},
     {path: "inscription", component: InscriptionComponent},
-    {path: "profil", component: ProfilComponent},
+    {path: "profil", component: ProfilComponent, canActivate: [authGuard]},
     {path: "recette-detail/:nom", component: RecetteComponent},
     {path: "country-recipe/:nom", component:CountryRecipeComponent},
-    {path: "favoris", component:FavorisComponent},
-    {path: "popup", component: PopupComponent},
+    {path: "favoris", component:FavorisComponent, canActivate: [authGuard]},
     {path: "**", redirectTo: '/Accueil', pathMatch: 'full'},
 ];
 
