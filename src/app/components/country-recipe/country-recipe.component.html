@@ -1,4 +1,9 @@
-<div>
-    <h1>Recettes de {{ countryName }}</h1>
-    <!-- Ajoutez ici la logique pour afficher les recettes du pays correspondant -->
+<div class="recipe-container">
+  <h1>Recettes de {{ countryName }}</h1>
+  <div class="recipe-list">
+    <div *ngFor="let recette of recettes" class="recipe-item">
+      <h2>{{ recette.nom }}</h2>
+      <img src="{{ recette.picture }}" alt="recipe-picture">
+    </div>
+  </div>
 </div>
