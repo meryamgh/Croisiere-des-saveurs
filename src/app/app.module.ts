@@ -22,6 +22,7 @@ import { FavorisComponent } from './components/favoris/favoris.component';
 import {NgOptimizedImage} from "@angular/common";
 import { CommentaireComponent } from './components/commentaire/commentaire.component';
 import { PopupComponent } from './components/popup/popup.component';
+import {NgParticlesModule} from "ng-particles";
 
 mockServer();
 
@@ -51,6 +52,7 @@ mockServer();
         FormsModule,
         ReactiveFormsModule,
         NgOptimizedImage,
+      NgParticlesModule
     ],
     providers: [],
     bootstrap: [AppComponent]

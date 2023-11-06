@@ -14,4 +14,6 @@ export class MapComponent implements AfterViewInit {
     public ngAfterViewInit(): void {
         this.mapService.initMap();
     }
+
+
 }
