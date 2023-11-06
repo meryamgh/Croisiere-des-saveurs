@@ -59,5 +59,8 @@ export class MapService {
 
     tiles.addTo(this.map);
     this.setCountries();
+
+
   }
+
 }

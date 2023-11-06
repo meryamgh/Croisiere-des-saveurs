@@ -1,4 +1,14 @@
+<div class="particles-container">
+  <ng-particles
+    [id]="id"
+    [options]="particlesOptions"
+    [particlesInit]="particlesInit"
+    (particlesLoaded)="particlesLoaded($event)"
+  ></ng-particles>
+</div>
+
 <div class="container login-container">
+
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <h2>CONNEXION</h2>
     <div class="form-group">
