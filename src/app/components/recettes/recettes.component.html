@@ -28,7 +28,7 @@
 
   <div class="filter-search">
   <input [(ngModel)]="term" placeholder="Rechercher une recette...">
-  <img class="search" src="../../../assets/search.svg">
+  <img class="search" src="../../../assets/icones/search.svg">
   </div>
 </div>
 
@@ -38,7 +38,7 @@
     <img src="{{recette.picture}}" alt="picture-recette" class="recipe-img"/>
     <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
     <span class="like">
-      <img [src]="recettes.get(recette.nom) === 'true' ? 'assets/coeur_true.svg' : 'assets/coeur.svg'"
+      <img [src]="recettes.get(recette.nom) === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
            alt="Coeur" class="like-img" (click)="addFavoris(recette)"/>
       {{ recipeNbrLikes.get(recette.nom) }}
     </span>

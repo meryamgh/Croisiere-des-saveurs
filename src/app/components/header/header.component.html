@@ -2,7 +2,7 @@
   <p>Bienvenue {{ currentUser.prenom }} !</p>
 </div>
 <nav class="menu_nav">
-  <img src="/assets/logoSAVEURS.svg" alt="logo" class="logo">
+  <img src="/assets/icones/logoSAVEURS.svg" alt="logo" class="logo">
   <a routerLink="/Accueil">ACCUEIL</a>
   <a routerLink="/map">CUISINE DU MONDE</a>
   <div *ngIf="currentUser; else elseBlock">
@@ -12,7 +12,7 @@
   </div>
   <a routerLink="/recettes">TOUTES LES SAVEURS</a>
 
-  <img src="/assets/connecter.svg" alt="logo" class="profil">
+  <img src="/assets/icones/connecter.svg" alt="logo" class="profil">
 </nav>
 <ng-template #elseBlock>
   <a routerLink="/inscription" class="nav-link">INSCRIPTION</a>

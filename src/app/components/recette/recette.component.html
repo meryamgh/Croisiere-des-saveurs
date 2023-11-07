@@ -33,7 +33,7 @@
         <span class="valeur_pays">{{ currentReciepie.pays }}</span>
       </div>
       <span class="like">
-      <img [src]="recetteFav.toString() === 'true' ? 'assets/coeur_true.svg' : 'assets/coeur.svg'"
+      <img [src]="recetteFav.toString() === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
       alt="Coeur" class="like-img" (click)="addToFav()"/>
         {{ nbrFav }}
       </span>
