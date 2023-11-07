@@ -37,7 +37,6 @@ export class FavorisService {
 
 
     public delFavoris(newFavoris: Favoris) {
-        const jsonBody:string = JSON.stringify(newFavoris);
         return this.http.delete(`${this.favorisUrl}/${newFavoris.user}/${newFavoris.favoris}`);
     }
 }

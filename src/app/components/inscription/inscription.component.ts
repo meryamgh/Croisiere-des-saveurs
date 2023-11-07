@@ -22,7 +22,7 @@ export class InscriptionComponent {
                 private userService: UserService) {
     }
 
-    public onSubmit() {
+    public onSubmit():void {
 
         this.userService.getUser(this.inscriptionForm.get('email')?.value).subscribe(user => {
 

@@ -11,26 +11,26 @@ import {UserService} from "../../services/user/user.service";
 export class ProfilComponent implements OnInit {
     public currentUser!: User;
     public editProfil:boolean = false;
-  elseBlock : any;
+
 
     public constructor(private userService : UserService) {
 
     }
 
     public ngOnInit(): void {
-        const storedUser = sessionStorage.getItem("userLogged");
+        const storedUser:string|null = sessionStorage.getItem("userLogged");
 
         if (storedUser) {
             this.currentUser = JSON.parse(storedUser) as User;
         }
     }
 
-    public updateProfil(){
+    public updateProfil():void{
       this.editProfil = true;
 
     }
 
-  validateProfil() {
+  validateProfil():void {
     this.editProfil = false;
     this.userService.updateUser(this.currentUser).subscribe();
   }

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {MoveDirection, ClickMode, HoverMode, OutMode, Engine, Container} from "tsparticles-engine";
+import {MoveDirection, ClickMode, HoverMode, OutMode, Engine} from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 
 
@@ -13,7 +13,7 @@ import { loadSlim } from "tsparticles-slim";
 })
 export class LoginComponent {
 
-  public id = "tsparticles";
+  public id:string = "tsparticles";
     public loginForm: FormGroup = this.formBuilder.group({
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(6)])
@@ -24,7 +24,7 @@ export class LoginComponent {
     }
 
 
-    public onSubmit() {
+    public onSubmit():void {
         if (this.loginForm.valid) {
 
             const email = this.loginForm.value.email;
@@ -122,7 +122,6 @@ export class LoginComponent {
     detectRetina: true,
   };
 
-  particlesLoaded(container: Container): void {}
 
   async particlesInit(engine: Engine): Promise<void> {
     await loadSlim(engine);

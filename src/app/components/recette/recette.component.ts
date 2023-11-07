@@ -34,7 +34,7 @@ export class RecetteComponent implements OnInit{
                      private fb: FormBuilder) {
   }
 
-  public getReciepie() {
+  public getReciepie():void {
 
     this.route.params.subscribe(params => {
       const recetteId = params['nom'];
@@ -46,7 +46,7 @@ export class RecetteComponent implements OnInit{
     });
   }
 
-  public getComments() {
+  public getComments():void {
 
       this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
         this.commentaires = data;
@@ -69,7 +69,7 @@ export class RecetteComponent implements OnInit{
   }
 
 
-  public getNbrFavRecette() {
+  public getNbrFavRecette():void {
     this.favorisService.getFavorisRecette(this.currentReciepie.nom).subscribe(data =>
       (this.nbrFav = data.length)
     )
@@ -84,7 +84,7 @@ export class RecetteComponent implements OnInit{
 
 
 
-  public getUser() {
+  public getUser():void {
     const storedUser = sessionStorage.getItem("userLogged");
 
     if (storedUser) {
@@ -94,7 +94,7 @@ export class RecetteComponent implements OnInit{
 
 
 
-  public addToFav() {
+  public addToFav():void {
     if (this.currentUser) {
 
       const newFavoris = new Favoris(this.currentReciepie.nom, this.currentUser.email, this.currentReciepie.picture);
@@ -120,7 +120,7 @@ export class RecetteComponent implements OnInit{
     });
   }
 
-  public ajoutCommentaire() {
+  public ajoutCommentaire():void {
 
     if (this.commentaireForm.valid) {
       if (this.currentUser) {
@@ -145,7 +145,7 @@ export class RecetteComponent implements OnInit{
     this.getUser();
   }
 
-  updateCommentaire(commentToUpdate: Commentaire) {
+  updateCommentaire(commentToUpdate: Commentaire):void {
     this.commentaireService.updateComment(commentToUpdate.idCommentaire,commentToUpdate.commentaire)
       .subscribe((updatedComment:Commentaire) => {
         this.commentaires = this.commentaires.map((comment) => {

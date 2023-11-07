@@ -38,7 +38,7 @@ export class RecettesComponent implements OnInit{
                      private router: Router,private animationService:AnimationService) {
   }
 
-  public getAllRecipes() {
+  public getAllRecipes():void {
     this.recetteService.getRecettes().subscribe(recettesData => {
       this.recipes = recettesData;
       this.allRecipes = recettesData;
@@ -60,7 +60,7 @@ export class RecettesComponent implements OnInit{
     });
   }
 
-  public getLikedRecipesByUser() {
+  public getLikedRecipesByUser():void {
     const storedUser = sessionStorage.getItem("userLogged");
     if (storedUser) {
       this.currentUser = JSON.parse(storedUser) as User;
@@ -74,7 +74,7 @@ export class RecettesComponent implements OnInit{
     }
   }
 
-  public getLikesByRecipes() {
+  public getLikesByRecipes():void {
     this.favorisService.getFavoris().subscribe(data => {
       data.forEach((favoris: Favoris) => {
         const previousLikeNbr = this.recipeNbrLikes.get(favoris.favoris);
@@ -87,7 +87,7 @@ export class RecettesComponent implements OnInit{
 
   }
 
-  public getFilteredReceipes() {
+  public getFilteredReceipes():void {
 
     this.paysOptions = [...new Set(recettes.map(recette => recette.pays))];
 
@@ -106,13 +106,13 @@ export class RecettesComponent implements OnInit{
     this.getFilteredReceipes();
   }
 
-  public addFavoris(recetteClicked: Recette) {
+  public addFavoris(recetteClicked: Recette):void {
 
 
     if (this.currentUser) {
-      const recetteBoolean = this.recettes.get(recetteClicked.nom);
-      const newFavoris = new Favoris(recetteClicked.nom, this.currentUser.email, recetteClicked.picture);
-      const nbrLikes = this.recipeNbrLikes.get(recetteClicked.nom);
+      const recetteBoolean:string|undefined = this.recettes.get(recetteClicked.nom);
+      const newFavoris:Favoris = new Favoris(recetteClicked.nom, this.currentUser.email, recetteClicked.picture);
+      const nbrLikes:number|undefined = this.recipeNbrLikes.get(recetteClicked.nom);
       if (nbrLikes != undefined) {
         if (recetteBoolean === "true") {
           this.recettes.set(recetteClicked.nom, "false");

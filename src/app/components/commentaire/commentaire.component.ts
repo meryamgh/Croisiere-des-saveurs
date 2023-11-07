@@ -19,12 +19,12 @@ export class CommentaireComponent {
 
 
 
-  public sendUpdateComment(comment : Commentaire){
+  public sendUpdateComment(comment : Commentaire):void{
     this.isEditing = false;
     this.updateComment.emit(comment)
   }
 
-  public sendDeleteComment(idComent :number){
+  public sendDeleteComment(idComent :number):void{
     this.deleteComment.emit(idComent);
   }
 

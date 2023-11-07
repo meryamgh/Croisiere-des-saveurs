@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/user.model";
 
 
@@ -9,14 +9,13 @@ import {User} from "../../models/user.model";
 })
 export class HomeComponent implements OnInit{
 
-  public slides = [
+  public slides:string[][] = [
     ['image1.png', 'image2.png', 'image3.png'],
     ['image4.png', 'image5.png', 'image6.png']
   ];
-  public index = 0;
+  public index:number = 0;
   public currentUser !:User;
-  public link = "/inscription";
-  elseBlock : any;
+  public link:string = "/inscription";
 
   public showNextSlide(): void {
     this.index = (this.index + 1) % 2;

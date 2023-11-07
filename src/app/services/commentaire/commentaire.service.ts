@@ -12,13 +12,7 @@ export class CommentaireService {
     public constructor(private http: HttpClient) {
     }
 
-    public getComments(): Observable<Commentaire[]> {
-        return this.http.get<Commentaire[]>(this.commentaireUrl);
-    }
 
-    public getUserComments(user : string):Observable<Commentaire[]>{
-      return this.http.get<Commentaire[]>(`${this.commentaireUrl}/user/${user}`);
-  }
 
     public getCommentsRecipie(currentReciepie: string):Observable<Commentaire[]> {
         return this.http.get<Commentaire[]>(`${this.commentaireUrl}/${currentReciepie}`);
@@ -31,7 +25,7 @@ export class CommentaireService {
 
     public updateComment(idComment : number,newComment:string):Observable<Commentaire>{
         const jsonBody:string = JSON.stringify(newComment);
-        console.log("dans le service "+jsonBody);
+
         return this.http.put<Commentaire>(`${this.commentaireUrl}/${idComment}`, jsonBody);
     }
 

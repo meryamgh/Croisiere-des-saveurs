@@ -17,7 +17,7 @@ export class MapService {
   }
 
 
-  public setCountries(){
+  public setCountries():void{
     this.countryService.getCountries().subscribe((data) => {
       data.forEach(country => {
         const [lat, lng] = country.coordinates;
@@ -51,7 +51,6 @@ export class MapService {
     });
 
     const tiles = L.tileLayer(this.TILE_LAYER_URL, {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: 'abcd',
       noWrap: true,
       maxZoom: 20

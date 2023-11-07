@@ -7,7 +7,7 @@ import { Observable, Subject } from "rxjs";
     providedIn: 'root'
 })
 export class UserService {
-    public usersUrl = '/api/users/';
+    public usersUrl:string = '/api/users/';
     public userSubject: Subject<User | null> = new Subject<User | null>();
 
     public constructor(private http: HttpClient) {

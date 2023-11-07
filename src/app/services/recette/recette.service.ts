@@ -20,7 +20,7 @@ export class RecetteService {
         return this.http.get<Recette>(`${this.recettesUrl}/${nomRecette}`);
     }
 
-    public getRecettesByCountry(countryName : string) {
+    public getRecettesByCountry(countryName : string):Observable<Recette[]> {
       return this.http.get<Recette[]>(`${this.recettesUrl}/country/${countryName}`);
     }
 
