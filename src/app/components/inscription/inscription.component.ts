@@ -23,13 +23,13 @@ export class InscriptionComponent {
     }
 
     public onSubmit() {
-        alert(this.inscriptionForm.get('email')?.value);
+
         this.userService.getUser(this.inscriptionForm.get('email')?.value).subscribe(user => {
-            alert(user);
+
             if (user === null) {
                 if (this.inscriptionForm.valid) {
                     this.userService.createUser(this.inscriptionForm.value).subscribe(() => {
-                        alert("ok");
+
                         this.router.navigate(['/login']);
                     });
                 }

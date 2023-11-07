@@ -4,6 +4,7 @@ import {Favoris} from "../../models/favoris.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
 
 
+
 @Component({
   selector: 'app-favoris',
   templateUrl: './favoris.component.html',
@@ -28,6 +29,11 @@ export class FavorisComponent implements OnInit{
         )
       }
       console.log(this.favoris);
+
+    }
+
+    public deleteFavoris(favItem:Favoris){
+      this.favorisService.delFavoris(favItem).subscribe();
 
     }
 
