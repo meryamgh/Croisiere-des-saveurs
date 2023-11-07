@@ -13,6 +13,7 @@ import { loadSlim } from "tsparticles-slim";
 })
 export class LoginComponent {
 
+  public id = "tsparticles";
     public loginForm: FormGroup = this.formBuilder.group({
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(6)])
@@ -45,13 +46,13 @@ export class LoginComponent {
         }
     }
 
-  id = "tsparticles";
 
 
-  particlesUrl = "http://foo.bar/particles.json";
 
 
-  particlesOptions = {
+
+
+  particlesOptions =  {
     background: {
       color: {
         value: "#ffffff",
@@ -121,12 +122,9 @@ export class LoginComponent {
     detectRetina: true,
   };
 
-  particlesLoaded(container: Container): void {
-    console.log(container);
-  }
+  particlesLoaded(container: Container): void {}
 
   async particlesInit(engine: Engine): Promise<void> {
-    console.log(engine);
     await loadSlim(engine);
   }
 

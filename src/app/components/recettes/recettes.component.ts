@@ -6,6 +6,7 @@ import {User} from "../../models/user.model";
 import {Favoris} from "../../models/favoris.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
 import {Router} from "@angular/router";
+import {AnimationService} from "../../services/animations/animation.service";
 
 
 @Component({
@@ -34,7 +35,7 @@ export class RecettesComponent implements OnInit{
   public allRecipes !: Recette[];
 
   public constructor(private recetteService: RecetteService, private favorisService: FavorisService,
-                     private router: Router) {
+                     private router: Router,private animationService:AnimationService) {
   }
 
   public getAllRecipes() {
@@ -121,12 +122,19 @@ export class RecettesComponent implements OnInit{
           this.recettes.set(recetteClicked.nom, "true");
           this.recipeNbrLikes.set(recetteClicked.nom, nbrLikes + 1);
           this.favorisService.addFavoris(newFavoris).subscribe();
+          this.playConfetti();
         }
       }
     } else {
       this.router.navigate(['/login']);
     }
 
+  }
+
+  public playConfetti(): void {
+    this.animationService.playConfettiAnimation(50, 2);
+    this.animationService.playConfettiAnimation(25, 3);
+    this.animationService.playConfettiAnimation(10, 4);
   }
 
   ngOnInit(): void {
