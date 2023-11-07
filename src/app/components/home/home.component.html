@@ -6,37 +6,40 @@
 
 <div *ngFor="let slide of slides; let i = index" [ngClass]="{'slide': true, 'active': i === index}">
   <div class="home-component">
-    <img *ngFor="let image of slide; let j = index" [src]="'/assets/home/' + image" [alt]="'Image ' + (j + 1)" [class]="'img' + (j + 1)">
+    <img *ngFor="let image of slide; let j = index" [src]="'/assets/home/' + image" [alt]="'Image ' + (j + 1)"
+         [class]="'img' + (j + 1)">
   </div>
 </div>
 
 <p class="decouverte"><i>"À bord de La Croisière des Saveurs, chaque recette est une nouvelle destination."</i></p>
-<p class="font">Embarquez avec nous pour un voyage à travers les cuisines du monde, où chaque plat raconte une histoire.</p>
-<p class="font">Que vous soyez novice en cuisine ou chef expérimenté, notre mission est de vous inspirer et de vous accompagner dans votre quête de découvertes culinaires.</p>
+<p class="font">Embarquez avec nous pour un voyage à travers les cuisines du monde, où chaque plat raconte une
+  histoire.</p>
+<p class="font">Que vous soyez novice en cuisine ou chef expérimenté, notre mission est de vous inspirer et de vous
+  accompagner dans votre quête de découvertes culinaires.</p>
 <p class="font">Nous vous souhaitons un bon voyage !</p>
 
 <div class="component-voyage">
 
   <a routerLink="/map" class="voyage1">
-  <img src="/assets/home/image1-1.png" alt="Image 1">
-  <div class="contenu">
-    <a routerLink="/map" class="texte">CUISINE DU MONDE</a>
-  </div>
+    <img src="/assets/home/image1-1.png" alt="Image 1">
+    <div class="contenu">
+      <a routerLink="/map" class="texte">CUISINE DU MONDE</a>
+    </div>
   </a>
 
   <div class="images2">
 
     <a routerLink="/recettes" class="voyage3">
-    <img src="/assets/home/voyage2.png" alt="Image 3">
+      <img src="/assets/home/voyage2.png" alt="Image 3">
       <div class="contenu">
         <div class="texte">TOUTES LES SAVEURS</div>
       </div>
     </a>
 
     <a routerLink="{{ link }}" class="voyage2">
-    <img src="/assets/home/voyage1.png" alt="Image 2">
+      <img src="/assets/home/voyage1.png" alt="Image 2">
       <div class="contenu">
-          <div class="texte">MES FAVORIS</div>
+        <div class="texte">MES FAVORIS</div>
       </div>
     </a>
 
@@ -48,11 +51,12 @@
 <div class="paragraphe">
   <p class="font">Découvrez des recettes authentiques et explorez un monde de saveurs.</p>
   <p class="font">Créez votre propre carnet de recettes favorites pour un accès instantané à vos plats préférés.</p>
-  <p class="font">Inscrivez-vous aujourd'hui pour déverrouiller cette fonctionnalité exclusive et rejoindre notre communauté de passionnés de cuisine.</p>
+  <p class="font">Inscrivez-vous aujourd'hui pour déverrouiller cette fonctionnalité exclusive et rejoindre notre
+    communauté de passionnés de cuisine.</p>
 </div>
 
 <div *ngIf="!currentUser" class="debut_accueil">
-<a routerLink="/inscription" class="bouton_decouvrir">Je m'inscris</a>
+  <a routerLink="/inscription" class="bouton_decouvrir">Je m'inscris</a>
 </div>
 
 <app-slide></app-slide>
