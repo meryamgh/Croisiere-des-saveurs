@@ -30,8 +30,15 @@ export default () => {
                 return user;
             });
 
+          this.put('/users/', (schema, request) => {
+            const updateUser = JSON.parse(request.requestBody);
+            schema.db['users'].update(schema.db['users'].findBy({email: updateUser.email}),updateUser)
+            return updateUser;
+          });
 
-            this.get('/recettes', schema => schema.db['recettes']);
+
+
+          this.get('/recettes', schema => schema.db['recettes']);
             this.get('/recettes/:nom', (schema, request) => {
                 const recetteNom: string = request.params['nom'];
                 return schema.db['recettes'].findBy({nom: recetteNom});

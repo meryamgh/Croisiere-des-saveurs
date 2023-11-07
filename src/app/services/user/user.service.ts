@@ -23,6 +23,12 @@ export class UserService {
         return this.http.post(this.usersUrl, jsonBody);
     }
 
+    public updateUser(newUser : User) : Observable<User> {
+      const jsonBody = JSON.stringify(newUser);
+      return this.http.put<User>(this.usersUrl, jsonBody);
+    }
+
+
     public isLogged(userLoggedId: User): void {
         sessionStorage.setItem("userLogged", JSON.stringify(userLoggedId));
         this.userSubject.next(userLoggedId);

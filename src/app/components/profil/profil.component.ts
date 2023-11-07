@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/user.model";
+import {UserService} from "../../services/user/user.service";
 
 
 @Component({
@@ -9,8 +10,10 @@ import {User} from "../../models/user.model";
 })
 export class ProfilComponent implements OnInit {
     public currentUser!: User;
+    public editProfil:boolean = false;
+  elseBlock : any;
 
-    public constructor() {
+    public constructor(private userService : UserService) {
 
     }
 
@@ -22,5 +25,13 @@ export class ProfilComponent implements OnInit {
         }
     }
 
+    public updateProfil(){
+      this.editProfil = true;
 
+    }
+
+  validateProfil() {
+    this.editProfil = false;
+    this.userService.updateUser(this.currentUser).subscribe();
+  }
 }
