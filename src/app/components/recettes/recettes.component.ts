@@ -14,7 +14,7 @@ import {AnimationService} from "../../services/animations/animation.service";
   templateUrl: './recettes.component.html',
   styleUrls: ['./recettes.component.scss']
 })
-export class RecettesComponent implements OnInit{
+export class RecettesComponent implements OnInit {
 
   public recettes: Map<string, string> = new Map<string, string>();
   public recipeNbrLikes: Map<string, number> = new Map<string, number>();
@@ -22,9 +22,9 @@ export class RecettesComponent implements OnInit{
   public term!: string;
   private currentUser!: User;
 
-  public paysFiltre: string="";
-  public categorieFiltre: string="";
-  public difficulteFiltre: string="";
+  public paysFiltre: string = "";
+  public categorieFiltre: string = "";
+  public difficulteFiltre: string = "";
   public tempsPreparationFiltre!: number;
 
   public paysOptions!: string[];
@@ -35,7 +35,7 @@ export class RecettesComponent implements OnInit{
   public allRecipes !: Recette[];
 
   public constructor(private recetteService: RecetteService, private favorisService: FavorisService,
-                     private router: Router,private animationService:AnimationService) {
+                     private router: Router, private animationService: AnimationService) {
   }
 
   public getAllRecipes():void {
