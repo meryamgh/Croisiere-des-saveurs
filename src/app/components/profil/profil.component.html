@@ -1,24 +1,34 @@
-<div class="profil">
+<div class="profil-info-container">
 
-</div>
 
-<div class="recette-info-container">
-  <div class="recette-photo">
-    <img src="/assets/icones/photo-profil.png" alt="profil" class="recette-info-container-image">
+
+
+  <div class="profil-photo">
+    <img src="/assets/icones/photo-profil.png" alt="profil" class="profil-info-container-image">
   </div>
 
-  <div class="recette-details">
-    <div class="first-part">
-      <h1 class="name-country">Mon profil</h1>
+  <div   class="profil-details">
+    <div *ngIf="!editProfil; else elseBlock" class="first-part">
+      <h1 class="title">Mon profil</h1>
       <hr>
       <p><span class="label">Nom :</span> <span class="valeur">{{ currentUser.nom }}</span></p>
       <p><span class="label">Prénom :</span> <span class="valeur">{{ currentUser.prenom }}</span></p>
       <p><span class="label">Email :</span> <span class="valeur">{{ currentUser.email }}</span></p>
+      <div class="bouton-container">
+        <a routerLink="/favoris" class="button">Mes favoris</a>
+        <button (click)="updateProfil()" class="button">Modifier profil</button>
+      </div>
     </div>
 
-    <div class="bouton-container">
-      <a routerLink="/favoris" class="button_commentaire">Mes favoris</a>
-    </div>
+
+    <ng-template #elseBlock>
+      <strong>Nom :</strong>
+      <input [(ngModel)]="currentUser.nom" name="nom" />
+      <strong>Prénom :</strong>
+      <input [(ngModel)]="currentUser.prenom" name="prenom" />
+      <button (click)="validateProfil()">Modifier profil</button>
+    </ng-template>
   </div>
+
 </div>
 

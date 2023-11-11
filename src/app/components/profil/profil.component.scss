@@ -1,23 +1,23 @@
-.recette-info-container {
+.profil-info-container {
   display: flex;
   margin: 0 auto;
   padding: 60px;
   border-radius: 10px;
 }
 
-.recette-photo {
+.profil-photo {
   flex: 1;
   margin-right: 20px;
 }
 
-.recette-info-container-image {
+.profil-info-container-image {
   width: 420px;
   margin-bottom: 15px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.recette-details {
+.profil-details {
   flex: 2;
 }
 
@@ -26,7 +26,7 @@
   flex-direction: column;
 }
 
-.name-country {
+.title {
   font-family: serif;
   margin-bottom: 10px;
   font-size: 20px;
@@ -34,18 +34,18 @@
   color: #6F6D63;
 }
 
-.recette-details hr {
+.profil-details hr {
   margin-top: 30px;
 }
 
-.recette-info-container .label {
+.profil-info-container .label {
   color: #555;
   text-transform: uppercase;
   font-family: serif;
   font-size: 16px;
 }
 
-.recette-info-container .valeur {
+.profil-info-container .valeur {
   margin-left: 10px;
   color: black;
   font-family: serif;
@@ -56,7 +56,7 @@
   text-align: center;
 }
 
-.button_commentaire {
+.button {
   width: 200px;
   background-color: white;
   color: black;
@@ -75,3 +75,20 @@
   color: white;
 }
 
+.edit-mode {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.edit-mode strong {
+  margin-top: 10px;
+}
+
+.edit-mode input {
+  margin-bottom: 10px;
+}
+
+.edit-mode button {
+  margin-top: 10px;
+}
