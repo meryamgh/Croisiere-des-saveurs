@@ -19,12 +19,12 @@ export class UserService {
     }
 
     public createUser(user: User): Observable<Object> {
-        const jsonBody = JSON.stringify(user);
+        const jsonBody:string = JSON.stringify(user);
         return this.http.post(this.usersUrl, jsonBody);
     }
 
     public updateUser(newUser : User) : Observable<User> {
-      const jsonBody = JSON.stringify(newUser);
+      const jsonBody:string = JSON.stringify(newUser);
       return this.http.put<User>(this.usersUrl, jsonBody);
     }
 
