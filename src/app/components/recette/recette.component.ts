@@ -15,20 +15,20 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   templateUrl: './recette.component.html',
   styleUrls: ['./recette.component.scss']
 })
-export class RecetteComponent implements OnInit{
+export class RecetteComponent implements OnInit {
   public currentReciepie !: Recette;
   public currentUser!: User;
-  public commentaires!:Commentaire[];
+  public commentaires!: Commentaire[];
   public nbrFav !: number;
   public recetteFav: boolean = false;
   etapesPreparationPopupOpen: boolean = false;
 
-  public usersComments: Map<string,string> = new Map<string, string>;
-  public commentaireForm:FormGroup = this.fb.group({
+  public usersComments: Map<string, string> = new Map<string, string>;
+  public commentaireForm: FormGroup = this.fb.group({
     commentaire: ['', Validators.required]
   });
 
-  public constructor(private recetteService: RecetteService, private commentaireService : CommentaireService,
+  public constructor(private recetteService: RecetteService, private commentaireService: CommentaireService,
                      private route: ActivatedRoute, private router: Router,
                      private favorisService: FavorisService,
                      private fb: FormBuilder) {
@@ -48,23 +48,23 @@ export class RecetteComponent implements OnInit{
 
   public getComments() {
 
-      this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
-        this.commentaires = data;
+    this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
+      this.commentaires = data;
 
-        data.forEach((comment: Commentaire) => {
+      data.forEach((comment: Commentaire) => {
 
-          if(this.currentUser) {
-            if (comment.user === this.currentUser.email) {
-              this.usersComments.set(comment.user, "user-logged");
-            } else {
-              this.usersComments.set(comment.user, "user-notLogged");
-            }
-          }else{
+        if (this.currentUser) {
+          if (comment.user === this.currentUser.email) {
+            this.usersComments.set(comment.user, "user-logged");
+          } else {
             this.usersComments.set(comment.user, "user-notLogged");
           }
+        } else {
+          this.usersComments.set(comment.user, "user-notLogged");
+        }
 
-        });
       });
+    });
 
   }
 
@@ -73,15 +73,13 @@ export class RecetteComponent implements OnInit{
     this.favorisService.getFavorisRecette(this.currentReciepie.nom).subscribe(data =>
       (this.nbrFav = data.length)
     )
-    if(this.currentUser) {
+    if (this.currentUser) {
       this.favorisService.getFavorisUserRecette(this.currentUser.email, this.currentReciepie.nom).subscribe(data => {
           this.recetteFav = data.length !== 0;
         }
       )
     }
   }
-
-
 
 
   public getUser() {
@@ -91,7 +89,6 @@ export class RecetteComponent implements OnInit{
       this.currentUser = JSON.parse(storedUser) as User;
     }
   }
-
 
 
   public addToFav() {
@@ -115,7 +112,7 @@ export class RecetteComponent implements OnInit{
   deleteCommentaireSend(commentId: number): void {
     this.commentaireService.deleteComment(commentId).subscribe(() => {
       this.commentaires = this.commentaires.filter(
-        (comment:Commentaire):boolean => comment.idCommentaire !== commentId
+        (comment: Commentaire): boolean => comment.idCommentaire !== commentId
       );
     });
   }
@@ -146,8 +143,8 @@ export class RecetteComponent implements OnInit{
   }
 
   updateCommentaire(commentToUpdate: Commentaire) {
-    this.commentaireService.updateComment(commentToUpdate.idCommentaire,commentToUpdate.commentaire)
-      .subscribe((updatedComment:Commentaire) => {
+    this.commentaireService.updateComment(commentToUpdate.idCommentaire, commentToUpdate.commentaire)
+      .subscribe((updatedComment: Commentaire) => {
         this.commentaires = this.commentaires.map((comment) => {
           if (comment.idCommentaire === commentToUpdate.idCommentaire) {
             return updatedComment;

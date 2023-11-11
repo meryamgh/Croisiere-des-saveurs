@@ -13,7 +13,6 @@ import {FavorisService} from "../../services/favoris/favoris.service";
 export class FavorisComponent implements OnInit{
   public favoris: Favoris[] = [];
   public currentUser!: User;
-  elseBlock: any;
 
   public constructor(private favorisService: FavorisService) {
   }

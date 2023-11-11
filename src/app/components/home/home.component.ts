@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit{
   public index = 0;
   public currentUser !:User;
   public link = "/inscription";
-  elseBlock : any;
 
   public showNextSlide(): void {
     this.index = (this.index + 1) % 2;
