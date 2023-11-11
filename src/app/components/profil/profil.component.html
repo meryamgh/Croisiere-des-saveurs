@@ -1,12 +1,24 @@
-<div class="profile-container">
-  <h2>Informations du Profil</h2>
-  <div class="profile-info">
-    <div><strong>Nom :</strong> {{ currentUser.nom }}</div>
-    <div><strong>Prénom :</strong> {{ currentUser.prenom }}</div>
-    <div><strong>Email :</strong> {{ currentUser.email }}</div>
-  </div>
-  <h2 *ngIf="currentUser.favoris">Recettes Favorites</h2>
-  <ul class="favorite-recipes">
-    <li *ngFor="let recette of currentUser.favoris">{{ recette.nom }}</li>
-  </ul>
+<div class="profil">
+
 </div>
+
+<div class="recette-info-container">
+  <div class="recette-photo">
+    <img src="/assets/icones/photo-profil.png" alt="profil" class="recette-info-container-image">
+  </div>
+
+  <div class="recette-details">
+    <div class="first-part">
+      <h1 class="name-country">Mon profil</h1>
+      <hr>
+      <p><span class="label">Nom :</span> <span class="valeur">{{ currentUser.nom }}</span></p>
+      <p><span class="label">Prénom :</span> <span class="valeur">{{ currentUser.prenom }}</span></p>
+      <p><span class="label">Email :</span> <span class="valeur">{{ currentUser.email }}</span></p>
+    </div>
+
+    <div class="bouton-container">
+      <a routerLink="/favoris" class="button_commentaire">Mes favoris</a>
+    </div>
+  </div>
+</div>
+
