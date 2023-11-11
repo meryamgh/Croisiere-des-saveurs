@@ -1,6 +1,6 @@
 <div class="text">
 <span class="user">{{ commentaireSend.user }} :</span><br>
- <span>{{ commentaireSend.dateTime | date: "dd/mm/yyyy hh:mm" }}</span>
+ <span>{{ commentaireSend.dateTime | date: "dd/MM/yyyy HH:mm" }}</span>
  <span class="texte">{{ commentaireSend.commentaire }}</span>
 </div>
  <div class="comment" *ngIf="currentUserSend && currentUserSend.email === commentaireSend.user">
@@ -11,5 +11,3 @@
      <button class="ajouter-commentaire" (click)="sendUpdateComment(commentaireSend)">Valider</button>
    </div>
  </div>
-
-

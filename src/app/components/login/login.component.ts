@@ -18,31 +18,33 @@ export class LoginComponent {
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
+     userNotFound!: boolean;
+     incorrectPassword!: boolean;
 
 
     public constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     }
 
 
-    public onSubmit():void {
+    public onSubmit(): void {
         if (this.loginForm.valid) {
-
             const email = this.loginForm.value.email;
             const password = this.loginForm.value.password;
+
             this.userService.getUser(email).subscribe(data => {
                 if (data == null) {
-                    alert("erreur");
+                    this.userNotFound = true;
+                    this.incorrectPassword = false;
                 } else {
                     if (data.password == password) {
                         this.userService.isLogged(data);
                         this.router.navigate(['/Accueil']);
                     } else {
-                        alert("mot de passe incorrect");
+                        this.userNotFound = false;
+                        this.incorrectPassword = true;
                     }
                 }
             });
-
-
         }
     }
 
@@ -52,7 +54,8 @@ export class LoginComponent {
 
 
 
-  particlesOptions =  {
+
+    particlesOptions =  {
     background: {
       color: {
         value: "#ffffff",
@@ -123,7 +126,7 @@ export class LoginComponent {
   };
 
 
-  async particlesInit(engine: Engine): Promise<void> {
+  public async particlesInit(engine: Engine): Promise<void> {
     await loadSlim(engine);
   }
 

@@ -4,6 +4,7 @@ import {recettes} from "./data/data-loader-recettes";
 import {users} from "./data/data-loader-user";
 import {favoris} from "./data/data-loader-favoris";
 import {countries} from "./data/data-loader-country";
+import {User} from "./models/user.model";
 
 
 export default () => {
@@ -24,6 +25,16 @@ export default () => {
                 return schema.db['users'].findBy({email: userEmail});
             });
 
+            this.get('/users/highestScore', (schema, request) => {
+                const users:User[] = schema.db['users'];
+                const sortedUsers:User[] = users.sort((a, b) => b.highScore - a.highScore);
+
+                return sortedUsers[0];
+            });
+
+
+
+
             this.post('/users/', (schema, request) => {
                 const user = JSON.parse(request.requestBody);
                 schema.db['users'].insert(user);
@@ -32,7 +43,9 @@ export default () => {
 
           this.put('/users/', (schema, request) => {
             const updateUser = JSON.parse(request.requestBody);
-            schema.db['users'].update(schema.db['users'].findBy({email: updateUser.email}),updateUser)
+            schema.db['users'].update(schema.db['users'].findBy({email: updateUser.email}),updateUser);
+            const user : User = schema.db['users'].findBy({email: updateUser.email});
+            console.log("userrr mock"+user.highScore);
             return updateUser;
           });
 

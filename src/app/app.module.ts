@@ -23,6 +23,8 @@ import {NgOptimizedImage} from "@angular/common";
 import { CommentaireComponent } from './components/commentaire/commentaire.component';
 import { PopupComponent } from './components/popup/popup.component';
 import {NgParticlesModule} from "ng-particles";
+import { SnackGameComponent } from './components/snack-game/snack-game.component';
+import { DisableScrollDirective } from './directive/disable-scroll.directive';
 
 mockServer();
 
@@ -43,7 +45,9 @@ mockServer();
         CountryRecipeComponent,
         FavorisComponent,
         CommentaireComponent,
-        PopupComponent
+        PopupComponent,
+        SnackGameComponent,
+        DisableScrollDirective
     ],
     imports: [
         BrowserModule,

@@ -28,6 +28,10 @@ export class UserService {
       return this.http.put<User>(this.usersUrl, jsonBody);
     }
 
+    public getUserWithHighestScore(){
+        return this.http.get<User>(this.usersUrl+'highestScore');
+    }
+
 
     public isLogged(userLoggedId: User): void {
         sessionStorage.setItem("userLogged", JSON.stringify(userLoggedId));

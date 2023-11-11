@@ -112,7 +112,7 @@ export class RecetteComponent implements OnInit{
 
   }
 
-  deleteCommentaireSend(commentId: number): void {
+  public deleteCommentaireSend(commentId: number): void {
     this.commentaireService.deleteComment(commentId).subscribe(() => {
       this.commentaires = this.commentaires.filter(
         (comment:Commentaire):boolean => comment.idCommentaire !== commentId
@@ -145,7 +145,7 @@ export class RecetteComponent implements OnInit{
     this.getUser();
   }
 
-  updateCommentaire(commentToUpdate: Commentaire):void {
+  public updateCommentaire(commentToUpdate: Commentaire):void {
     this.commentaireService.updateComment(commentToUpdate.idCommentaire,commentToUpdate.commentaire)
       .subscribe((updatedComment:Commentaire) => {
         this.commentaires = this.commentaires.map((comment) => {
@@ -160,11 +160,11 @@ export class RecetteComponent implements OnInit{
 
   }
 
-  openPreparationPopup() {
+  public openPreparationPopup() {
     this.etapesPreparationPopupOpen = true;
   }
 
-  fermerPreparationPopup() {
+  public fermerPreparationPopup() {
     this.etapesPreparationPopupOpen = false;
   }
 

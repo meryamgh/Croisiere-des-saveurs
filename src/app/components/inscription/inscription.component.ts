@@ -17,6 +17,7 @@ export class InscriptionComponent {
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
+    userAlreadyExists!: boolean;
 
     public constructor(private formBuilder: FormBuilder, private router: Router,
                 private userService: UserService) {
@@ -34,7 +35,9 @@ export class InscriptionComponent {
                     });
                 }
             } else {
-                alert("nonoo");
+                this.userAlreadyExists = true;
+              //  alert("nonoo");
+
             }
         });
     }

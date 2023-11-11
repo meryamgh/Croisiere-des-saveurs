@@ -88,6 +88,19 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Mettez le z-index à une valeur négative pour placer en arrière-plan */
+  z-index: -1;
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }
 
