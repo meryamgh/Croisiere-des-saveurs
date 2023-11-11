@@ -1,5 +1,6 @@
 import {Direction} from "./direction";
 import {lowerNeighbor, upperNeighbor} from "./neighbor";
+import {SnakeCell} from "./snackCell";
 
 export class Snake {
   public cells: SnakeCell[] = [{
@@ -18,41 +19,41 @@ export class Snake {
   public dir : Direction = Direction.DOWN;
 
 
-  get head() {
+  public get head() {
     return this.cells[0];
   }
 
-  get tail() {
+  public get tail() {
     const [_, ...tail] = this.cells;
     return tail
   }
 
 
 
-  grow() {
+  public grow():void {
     this.cells.push({
       pos: this.cells[this.cells.length - 1].pos
     })
   }
 
-  isSnakeCell(cell: number) {
+  public isSnakeCell(cell: number):boolean {
     return this.cells.filter(elt => elt.pos === cell).length > 0;
   }
 
-  updateTail() {
-    this.tail.forEach((elt, idx) => {
+  public updateTail(): void {
+    this.tail.forEach((elt:SnakeCell, idx:number):void => {
       elt.prevPos = elt.pos;
       elt.pos = this.cells[idx].prevPos;
     })
   }
 
-  checkDead(size:number) {
+  public checkDead(size:number):boolean {
     if (
         this.head.pos &&
-        (this.head.pos % size === 0 ||               // Touche le mur de droite
-            this.head.pos % size === size - 1 ||              // Touche le mur de gauche
-            this.head.pos < size ||                     // Touche le mur du haut
-            this.head.pos >= size * (size - 1))           // Touche le mur du bas
+        (this.head.pos % size === 0 ||
+            this.head.pos % size === size - 1 ||
+            this.head.pos < size ||
+            this.head.pos >= size * (size - 1))
     ) {
       return true;
     }
@@ -61,15 +62,15 @@ export class Snake {
 
 
 
-  setNextPos(newPos: number) {
+  public setNextPos(newPos: number):void {
     this.head.prevPos = this.head.pos;
     this.head.pos = newPos;
     this.updateTail();
   }
 
-  goStep(size: number) {
-    const cell = this.head.pos;
-    const latticeSize = size;
+  public goStep(size: number):void {
+    const cell:number|undefined = this.head.pos;
+    const latticeSize:number = size;
     if (this.dir === Direction.LEFT) {
       this.setNextPos(lowerNeighbor(cell, 1, latticeSize));
     } else if (this.dir === Direction.RIGHT) {
@@ -85,7 +86,4 @@ export class Snake {
 
 }
 
-interface SnakeCell {
-  prevPos?: number;
-  pos?: number;
-}
+

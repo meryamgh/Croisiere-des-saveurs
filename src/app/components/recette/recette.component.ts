@@ -21,7 +21,7 @@ export class RecetteComponent implements OnInit{
   public commentaires!:Commentaire[];
   public nbrFav !: number;
   public recetteFav: boolean = false;
-  etapesPreparationPopupOpen: boolean = false;
+  public etapesPreparationPopupOpen: boolean = false;
 
   public usersComments: Map<string,string> = new Map<string, string>;
   public commentaireForm:FormGroup = this.fb.group({

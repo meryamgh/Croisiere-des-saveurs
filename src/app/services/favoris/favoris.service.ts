@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class FavorisService {
 
-  public favorisUrl:string = '/api/favoris';
+  private favorisUrl:string = '/api/favoris';
 
   public constructor(private http: HttpClient) {}
 
@@ -29,15 +29,15 @@ export class FavorisService {
     return this.http.get<Favoris[]>(`${this.favorisUrl}/user-recette/${currentUser}/${recette}`);
   }
 
-  public addFavoris(newFavoris: Favoris) {
+  public addFavoris(newFavoris: Favoris):Observable<Favoris> {
       const jsonBody:string = JSON.stringify(newFavoris);
-      return this.http.post(this.favorisUrl, jsonBody);
+      return this.http.post<Favoris>(this.favorisUrl, jsonBody);
     }
 
 
 
-    public delFavoris(newFavoris: Favoris) {
-        return this.http.delete(`${this.favorisUrl}/${newFavoris.user}/${newFavoris.favoris}`);
+    public delFavoris(newFavoris: Favoris):Observable<Favoris> {
+        return this.http.delete<Favoris>(`${this.favorisUrl}/${newFavoris.user}/${newFavoris.favoris}`);
     }
 }
 

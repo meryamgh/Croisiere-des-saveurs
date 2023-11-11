@@ -20,7 +20,7 @@ export class RecettesComponent implements OnInit{
   public recipeNbrLikes: Map<string, number> = new Map<string, number>();
   public recipes !: Recette[];
   public term!: string;
-  public currentUser!: User;
+  private currentUser!: User;
 
   public paysFiltre: string="";
   public categorieFiltre: string="";

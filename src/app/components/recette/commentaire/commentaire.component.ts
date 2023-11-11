@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Commentaire} from "../../models/commentaire.model";
-import {User} from "../../models/user.model";
-import {Recette} from "../../models/recette.model";
+import {Commentaire} from "../../../models/commentaire.model";
+import {User} from "../../../models/user.model";
+import {Recette} from "../../../models/recette.model";
 
 @Component({
   selector: 'app-commentaire',

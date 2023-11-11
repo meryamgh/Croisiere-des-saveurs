@@ -25,7 +25,7 @@ export default () => {
                 return schema.db['users'].findBy({email: userEmail});
             });
 
-            this.get('/users/highestScore', (schema, request) => {
+            this.get('/users/highestScore', (schema) => {
                 const users:User[] = schema.db['users'];
                 const sortedUsers:User[] = users.sort((a, b) => b.highScore - a.highScore);
 
@@ -44,8 +44,6 @@ export default () => {
           this.put('/users/', (schema, request) => {
             const updateUser = JSON.parse(request.requestBody);
             schema.db['users'].update(schema.db['users'].findBy({email: updateUser.email}),updateUser);
-            const user : User = schema.db['users'].findBy({email: updateUser.email});
-            console.log("userrr mock"+user.highScore);
             return updateUser;
           });
 
@@ -63,7 +61,7 @@ export default () => {
                 return recetteFind;
             });
             this.get('/recettes/country/:countryName', (schema ,request) => {
-              const country = request.params['countryName'];
+              const country:string = request.params['countryName'];
               return schema.db['recettes'].where({pays: country});
             });
 
@@ -86,7 +84,7 @@ export default () => {
             });
 
             this.put('/commentaires/:idCommentaire', (schema, request) => {
-                const commentaireId = request.params['idCommentaire'];
+                const commentaireId:string = request.params['idCommentaire'];
                 const newCommentaire = JSON.parse(request.requestBody);
                 const comment = schema.db['commentaires'].findBy({idCommentaire: commentaireId});
                 comment.commentaire = newCommentaire;

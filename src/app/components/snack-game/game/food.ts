@@ -1,16 +1,16 @@
 import {Snake} from './snake';
 
 export class Food {
-  pos: number;
+  public pos: number;
   constructor(gridSize: number, snake?: Snake) {
-    const freeCells = this.findFreeCell(gridSize, snake);
-    const randomIntInRange = getIntBetweenZeroAndN(freeCells.length);
+    const freeCells:number[]  = this.findFreeCell(gridSize, snake);
+    const randomIntInRange:number = getIntBetweenZeroAndN(freeCells.length);
     this.pos = freeCells[randomIntInRange];
   }
 
   private findFreeCell (gridSize: number, snake?: Snake): number[] {
     const allCells : number[]  = Array.from(Array(gridSize).keys());
-    const freeCells = allCells; // init with all cells, then remove unused.
+    const freeCells :number[] = allCells;
     if (snake != null) {
       snake.tail.forEach(elt => {
         if(elt.pos){
@@ -24,6 +24,6 @@ export class Food {
 }
 
 const getIntBetweenZeroAndN = (n: number) => {
-  const rand = Math.random() * n;
+  const rand:number = Math.random() * n;
   return Math.floor(rand);
 }

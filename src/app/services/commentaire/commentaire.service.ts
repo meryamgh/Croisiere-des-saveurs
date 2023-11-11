@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
     providedIn: 'root'
 })
 export class CommentaireService {
-    public commentaireUrl:string = '/api/commentaires';
+    private commentaireUrl:string = '/api/commentaires';
 
     public constructor(private http: HttpClient) {
     }
@@ -18,9 +18,9 @@ export class CommentaireService {
         return this.http.get<Commentaire[]>(`${this.commentaireUrl}/${currentReciepie}`);
     }
 
-    public addComment(newComment: Commentaire) {
+    public addComment(newComment: Commentaire):Observable<Commentaire> {
         const jsonBody:string = JSON.stringify(newComment);
-        return this.http.post(this.commentaireUrl, jsonBody);
+        return this.http.post<Commentaire>(this.commentaireUrl, jsonBody);
     }
 
     public updateComment(idComment : number,newComment:string):Observable<Commentaire>{
@@ -29,8 +29,8 @@ export class CommentaireService {
         return this.http.put<Commentaire>(`${this.commentaireUrl}/${idComment}`, jsonBody);
     }
 
-    public deleteComment(idCommentaire:number){
-      return this.http.delete(`${this.commentaireUrl}/${idCommentaire}`);
+    public deleteComment(idCommentaire:number):Observable<Commentaire>{
+      return this.http.delete<Commentaire>(`${this.commentaireUrl}/${idCommentaire}`);
     }
 
 }

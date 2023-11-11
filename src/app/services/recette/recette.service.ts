@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
     providedIn: 'root'
 })
 export class RecetteService {
-    public recettesUrl:string = '/api/recettes';
+    private recettesUrl:string = '/api/recettes';
 
     constructor(private http: HttpClient) {
     }

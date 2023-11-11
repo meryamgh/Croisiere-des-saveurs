@@ -7,8 +7,8 @@ import { Observable, Subject } from "rxjs";
     providedIn: 'root'
 })
 export class UserService {
-    public usersUrl:string = '/api/users/';
-    public userSubject: Subject<User | null> = new Subject<User | null>();
+    private usersUrl:string = '/api/users/';
+    private userSubject: Subject<User | null> = new Subject<User | null>();
 
     public constructor(private http: HttpClient) {
     }
@@ -28,7 +28,7 @@ export class UserService {
       return this.http.put<User>(this.usersUrl, jsonBody);
     }
 
-    public getUserWithHighestScore(){
+    public getUserWithHighestScore():Observable<User>{
         return this.http.get<User>(this.usersUrl+'highestScore');
     }
 

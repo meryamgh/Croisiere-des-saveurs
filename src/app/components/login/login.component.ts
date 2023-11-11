@@ -2,9 +2,9 @@ import {Component} from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {MoveDirection, ClickMode, HoverMode, OutMode, Engine} from "tsparticles-engine";
+import { Engine} from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
-
+import { particlesOptionsAnimation } from './particles.config';
 
 @Component({
     selector: 'app-login',
@@ -12,18 +12,18 @@ import { loadSlim } from "tsparticles-slim";
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
-  public id:string = "tsparticles";
     public loginForm: FormGroup = this.formBuilder.group({
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
-     userNotFound!: boolean;
-     incorrectPassword!: boolean;
-
+    public userNotFound!: boolean;
+    public incorrectPassword!: boolean;
+    public particlesOptions = particlesOptionsAnimation;
 
     public constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     }
+
+
 
 
     public onSubmit(): void {
@@ -49,84 +49,8 @@ export class LoginComponent {
     }
 
 
-
-
-
-
-
-
-    particlesOptions =  {
-    background: {
-      color: {
-        value: "#ffffff",
-      },
-    },
-    fpsLimit: 120,
-    interactivity: {
-      events: {
-        onClick: {
-          enable: true,
-          mode: ClickMode.push,
-        },
-        onHover: {
-          enable: true,
-          mode: HoverMode.repulse,
-        },
-        resize: true,
-      },
-      modes: {
-        push: {
-          quantity: 4,
-        },
-        repulse: {
-          distance: 200,
-          duration: 0.4,
-        },
-      },
-    },
-    particles: {
-      color: {
-        value: "#044d6e",
-      },
-      links: {
-        color: "#1b6288",
-        distance: 150,
-        enable: true,
-        opacity: 0.5,
-        width: 1,
-      },
-      move: {
-        direction: MoveDirection.none,
-        enable: true,
-        outModes: {
-          default: OutMode.bounce,
-        },
-        random: false,
-        speed: 2,
-        straight: false,
-      },
-      number: {
-        density: {
-          enable: true,
-          area: 800,
-        },
-        value: 80,
-      },
-      opacity: {
-        value: 0.5,
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        value: { min: 1, max: 5 },
-      },
-    },
-    detectRetina: true,
-  };
-
-
   public async particlesInit(engine: Engine): Promise<void> {
+
     await loadSlim(engine);
   }
 
