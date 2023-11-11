@@ -17,12 +17,13 @@ export class InscriptionComponent {
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
+    public userAlreadyExists!: boolean;
 
     public constructor(private formBuilder: FormBuilder, private router: Router,
                 private userService: UserService) {
     }
 
-    public onSubmit() {
+    public onSubmit():void {
 
         this.userService.getUser(this.inscriptionForm.get('email')?.value).subscribe(user => {
 
@@ -34,7 +35,9 @@ export class InscriptionComponent {
                     });
                 }
             } else {
-                alert("nonoo");
+                this.userAlreadyExists = true;
+
+
             }
         });
     }

@@ -15,26 +15,26 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   templateUrl: './recette.component.html',
   styleUrls: ['./recette.component.scss']
 })
-export class RecetteComponent implements OnInit {
+export class RecetteComponent implements OnInit{
   public currentReciepie !: Recette;
   public currentUser!: User;
-  public commentaires!: Commentaire[];
+  public commentaires!:Commentaire[];
   public nbrFav !: number;
   public recetteFav: boolean = false;
-  etapesPreparationPopupOpen: boolean = false;
+  public etapesPreparationPopupOpen: boolean = false;
 
-  public usersComments: Map<string, string> = new Map<string, string>;
-  public commentaireForm: FormGroup = this.fb.group({
+  public usersComments: Map<string,string> = new Map<string, string>;
+  public commentaireForm:FormGroup = this.fb.group({
     commentaire: ['', Validators.required]
   });
 
-  public constructor(private recetteService: RecetteService, private commentaireService: CommentaireService,
+  public constructor(private recetteService: RecetteService, private commentaireService : CommentaireService,
                      private route: ActivatedRoute, private router: Router,
                      private favorisService: FavorisService,
                      private fb: FormBuilder) {
   }
 
-  public getReciepie() {
+  public getReciepie():void {
 
     this.route.params.subscribe(params => {
       const recetteId = params['nom'];
@@ -46,34 +46,34 @@ export class RecetteComponent implements OnInit {
     });
   }
 
-  public getComments() {
+  public getComments():void {
 
-    this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
-      this.commentaires = data;
+      this.commentaireService.getCommentsRecipie(this.currentReciepie.nom).subscribe(data => {
+        this.commentaires = data;
 
-      data.forEach((comment: Commentaire) => {
+        data.forEach((comment: Commentaire) => {
 
-        if (this.currentUser) {
-          if (comment.user === this.currentUser.email) {
-            this.usersComments.set(comment.user, "user-logged");
-          } else {
+          if(this.currentUser) {
+            if (comment.user === this.currentUser.email) {
+              this.usersComments.set(comment.user, "user-logged");
+            } else {
+              this.usersComments.set(comment.user, "user-notLogged");
+            }
+          }else{
             this.usersComments.set(comment.user, "user-notLogged");
           }
-        } else {
-          this.usersComments.set(comment.user, "user-notLogged");
-        }
 
+        });
       });
-    });
 
   }
 
 
-  public getNbrFavRecette() {
+  public getNbrFavRecette():void {
     this.favorisService.getFavorisRecette(this.currentReciepie.nom).subscribe(data =>
       (this.nbrFav = data.length)
     )
-    if (this.currentUser) {
+    if(this.currentUser) {
       this.favorisService.getFavorisUserRecette(this.currentUser.email, this.currentReciepie.nom).subscribe(data => {
           this.recetteFav = data.length !== 0;
         }
@@ -82,7 +82,9 @@ export class RecetteComponent implements OnInit {
   }
 
 
-  public getUser() {
+
+
+  public getUser():void {
     const storedUser = sessionStorage.getItem("userLogged");
 
     if (storedUser) {
@@ -91,7 +93,8 @@ export class RecetteComponent implements OnInit {
   }
 
 
-  public addToFav() {
+
+  public addToFav():void {
     if (this.currentUser) {
 
       const newFavoris = new Favoris(this.currentReciepie.nom, this.currentUser.email, this.currentReciepie.picture);
@@ -109,15 +112,15 @@ export class RecetteComponent implements OnInit {
 
   }
 
-  deleteCommentaireSend(commentId: number): void {
+  public deleteCommentaireSend(commentId: number): void {
     this.commentaireService.deleteComment(commentId).subscribe(() => {
       this.commentaires = this.commentaires.filter(
-        (comment: Commentaire): boolean => comment.idCommentaire !== commentId
+        (comment:Commentaire):boolean => comment.idCommentaire !== commentId
       );
     });
   }
 
-  public ajoutCommentaire() {
+  public ajoutCommentaire():void {
 
     if (this.commentaireForm.valid) {
       if (this.currentUser) {
@@ -142,9 +145,9 @@ export class RecetteComponent implements OnInit {
     this.getUser();
   }
 
-  updateCommentaire(commentToUpdate: Commentaire) {
-    this.commentaireService.updateComment(commentToUpdate.idCommentaire, commentToUpdate.commentaire)
-      .subscribe((updatedComment: Commentaire) => {
+  public updateCommentaire(commentToUpdate: Commentaire):void {
+    this.commentaireService.updateComment(commentToUpdate.idCommentaire,commentToUpdate.commentaire)
+      .subscribe((updatedComment:Commentaire) => {
         this.commentaires = this.commentaires.map((comment) => {
           if (comment.idCommentaire === commentToUpdate.idCommentaire) {
             return updatedComment;
@@ -157,11 +160,11 @@ export class RecetteComponent implements OnInit {
 
   }
 
-  openPreparationPopup() {
+  public openPreparationPopup() {
     this.etapesPreparationPopupOpen = true;
   }
 
-  fermerPreparationPopup() {
+  public fermerPreparationPopup() {
     this.etapesPreparationPopupOpen = false;
   }
 

@@ -6,6 +6,8 @@ export class User {
     email: string;
     favoris!: Recette[];
     password: string;
+    highScore :number = 3;
+
 
     constructor(name: string, firstName: string, mail: string, favorite: Recette[], passwordUser: string) {
         this.nom = name;

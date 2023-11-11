@@ -7,8 +7,8 @@ import { Observable, Subject } from "rxjs";
     providedIn: 'root'
 })
 export class UserService {
-    public usersUrl = '/api/users/';
-    public userSubject: Subject<User | null> = new Subject<User | null>();
+    private usersUrl:string = '/api/users/';
+    private userSubject: Subject<User | null> = new Subject<User | null>();
 
     public constructor(private http: HttpClient) {
     }
@@ -22,6 +22,16 @@ export class UserService {
         const jsonBody = JSON.stringify(user);
         return this.http.post(this.usersUrl, jsonBody);
     }
+
+    public updateUser(newUser : User) : Observable<User> {
+      const jsonBody = JSON.stringify(newUser);
+      return this.http.put<User>(this.usersUrl, jsonBody);
+    }
+
+    public getUserWithHighestScore():Observable<User>{
+        return this.http.get<User>(this.usersUrl+'highestScore');
+    }
+
 
     public isLogged(userLoggedId: User): void {
         sessionStorage.setItem("userLogged", JSON.stringify(userLoggedId));

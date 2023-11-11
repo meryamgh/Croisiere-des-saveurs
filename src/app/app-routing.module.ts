@@ -10,6 +10,7 @@ import {CountryRecipeComponent} from "./components/country-recipe/country-recipe
 import {HomeComponent} from "./components/home/home.component";
 import {FavorisComponent} from "./components/favoris/favoris.component";
 import {authGuard} from "./guards/auth.guard";
+import {SnackGameComponent} from "./components/snack-game/snack-game.component";
 
 const routes: Routes = [
     {path: "Accueil", component: HomeComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
     {path: "recette-detail/:nom", component: RecetteComponent},
     {path: "country-recipe/:nom", component:CountryRecipeComponent},
     {path: "favoris", component:FavorisComponent, canActivate: [authGuard]},
+    {path: "game", component:SnackGameComponent, canActivate: [authGuard]},
     {path: "**", redirectTo: '/Accueil', pathMatch: 'full'},
 ];
 

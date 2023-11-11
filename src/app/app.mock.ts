@@ -4,6 +4,7 @@ import {recettes} from "./data/data-loader-recettes";
 import {users} from "./data/data-loader-user";
 import {favoris} from "./data/data-loader-favoris";
 import {countries} from "./data/data-loader-country";
+import {User} from "./models/user.model";
 
 
 export default () => {
@@ -24,14 +25,31 @@ export default () => {
                 return schema.db['users'].findBy({email: userEmail});
             });
 
+            this.get('/users/highestScore', (schema) => {
+                const users:User[] = schema.db['users'];
+                const sortedUsers:User[] = users.sort((a, b) => b.highScore - a.highScore);
+
+                return sortedUsers[0];
+            });
+
+
+
+
             this.post('/users/', (schema, request) => {
                 const user = JSON.parse(request.requestBody);
                 schema.db['users'].insert(user);
                 return user;
             });
 
+          this.put('/users/', (schema, request) => {
+            const updateUser = JSON.parse(request.requestBody);
+            schema.db['users'].update(schema.db['users'].findBy({email: updateUser.email}),updateUser);
+            return updateUser;
+          });
 
-            this.get('/recettes', schema => schema.db['recettes']);
+
+
+          this.get('/recettes', schema => schema.db['recettes']);
             this.get('/recettes/:nom', (schema, request) => {
                 const recetteNom: string = request.params['nom'];
                 return schema.db['recettes'].findBy({nom: recetteNom});
@@ -43,7 +61,7 @@ export default () => {
                 return recetteFind;
             });
             this.get('/recettes/country/:countryName', (schema ,request) => {
-              const country = request.params['countryName'];
+              const country:string = request.params['countryName'];
               return schema.db['recettes'].where({pays: country});
             });
 
@@ -66,7 +84,7 @@ export default () => {
             });
 
             this.put('/commentaires/:idCommentaire', (schema, request) => {
-                const commentaireId = request.params['idCommentaire'];
+                const commentaireId:string = request.params['idCommentaire'];
                 const newCommentaire = JSON.parse(request.requestBody);
                 const comment = schema.db['commentaires'].findBy({idCommentaire: commentaireId});
                 comment.commentaire = newCommentaire;

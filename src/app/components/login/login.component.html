@@ -1,24 +1,48 @@
 <div class="particles-container">
   <ng-particles
-    [id]="id"
     [options]="particlesOptions"
     [particlesInit]="particlesInit"
-    (particlesLoaded)="particlesLoaded($event)"
   ></ng-particles>
 </div>
 
 <div class="container login-container">
-
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <h2>CONNEXION</h2>
+    <div *ngIf="userNotFound" class="error-container">
+      <div class="error-message">
+        Utilisateur inexistant.
+      </div>
+    </div>
+    <div *ngIf="incorrectPassword" class="error-container">
+      <div class="error-message">
+        Mot de passe incorrect.
+      </div>
+    </div>
+
+
     <div class="form-group">
       <label for="email">Email :</label>
       <input type="email" class="form-control" id="email" formControlName="email" placeholder="Entrez votre email">
+      <div *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched" class="error-message">
+        Email est requis.
+      </div>
+      <div *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched" class="error-message">
+        Email invalide.
+      </div>
+
     </div>
     <div class="form-group">
       <label for="password">Mot de passe :</label>
       <input type="password" class="form-control" id="password" formControlName="password" placeholder="Entrez votre mot de passe">
+      <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched" class="error-message">
+        Mot de passe est requis.
+      </div>
+      <div *ngIf="loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched" class="error-message">
+        Mot de passe doit avoir au moins 6 caractères.
+      </div>
+
     </div>
+
     <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Se connecter</button>
     <div class="login-link">
       <p><a routerLink="/inscription">Pas de compte ? <i><u>Inscrivez-vous</u></i></a></p>

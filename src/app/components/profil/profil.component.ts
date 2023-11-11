@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/user.model";
+import {UserService} from "../../services/user/user.service";
 
 
 @Component({
@@ -9,18 +10,28 @@ import {User} from "../../models/user.model";
 })
 export class ProfilComponent implements OnInit {
     public currentUser!: User;
+    public editProfil:boolean = false;
 
-    public constructor() {
+
+    public constructor(private userService : UserService) {
 
     }
 
     public ngOnInit(): void {
-        const storedUser = sessionStorage.getItem("userLogged");
+        const storedUser:string|null = sessionStorage.getItem("userLogged");
 
         if (storedUser) {
             this.currentUser = JSON.parse(storedUser) as User;
         }
     }
 
+    public updateProfil():void{
+      this.editProfil = true;
 
+    }
+
+  validateProfil():void {
+    this.editProfil = false;
+    this.userService.updateUser(this.currentUser).subscribe();
+  }
 }

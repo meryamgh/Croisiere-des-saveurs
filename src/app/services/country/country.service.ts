@@ -12,7 +12,6 @@ export class CountryService {
   }
 
   public getCountries():Observable<Country[]>{
-
     return this.http.get<Country[]>('/api/countries');
   }
 }

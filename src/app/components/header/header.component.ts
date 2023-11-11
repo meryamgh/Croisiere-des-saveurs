@@ -11,7 +11,7 @@ import { UserService } from "../../services/user/user.service";
 export class HeaderComponent{
 
   @Input() currentUser: User | undefined;
-  @Input() isLoggedIn = false;
+  @Input() isLoggedIn:boolean = false;
 
   constructor(private userService: UserService) {
   }
