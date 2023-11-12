@@ -37,6 +37,7 @@ export default () => {
 
             this.post('/users/', (schema, request) => {
                 const user : User = JSON.parse(request.requestBody);
+                user.highScore=3;
                 schema.db['users'].insert(user);
                 return user;
             });

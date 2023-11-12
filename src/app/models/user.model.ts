@@ -6,7 +6,7 @@ export class User {
     email: string;
     favoris!: Recette[];
     password: string;
-    highScore :number = 3;
+    highScore :number ;
 
 
     constructor(name: string, firstName: string, mail: string, favorite: Recette[], passwordUser: string) {
@@ -15,5 +15,6 @@ export class User {
         this.email = mail;
         this.favoris = favorite;
         this.password = passwordUser;
+        this.highScore=3;
     }
 }
