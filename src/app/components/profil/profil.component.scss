@@ -1,24 +1,83 @@
+.embarquement-2 {
+  align-items: center;
+  background-color: #7E8DB4;
+  height: 50px;
+  margin-top: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.embarquement-2 p {
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 30px;
+}
+
+.embarquement {
+  background-color: #7E8DB4;
+  height: 50px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.embarquement p {
+  color: white;
+  font-size: 25px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.embarquement p img {
+  margin-left: 10px;
+}
+
+.embarquement p:last-child {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+
 .profil-info-container {
   display: flex;
+}
+
+.profil {
   margin: 0 auto;
-  padding: 60px;
+  padding: 20px;
   border-radius: 10px;
+  width: 700px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  border : #7E8DB4 solid 1px;
+  background-color: #E9ECF4;
 }
 
-.profil-photo {
+.profil-image {
   flex: 1;
-  margin-right: 20px;
+  margin-right: 50px;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border : #7E8DB4 solid 1px;
 }
 
-.profil-info-container-image {
-  width: 420px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.first-part p {
+  font-family: serif;
+  margin-top : 7px;
 }
 
 .profil-details {
   flex: 2;
+  text-align: center;
 }
 
 .first-part {
@@ -28,14 +87,10 @@
 
 .title {
   font-family: serif;
-  margin-bottom: 10px;
   font-size: 20px;
   text-transform: uppercase;
   color: #6F6D63;
-}
-
-.profil-details hr {
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .profil-info-container .label {
@@ -54,6 +109,7 @@
 
 .bouton-container {
   text-align: center;
+  margin-top: 50px;
 }
 
 .button {
@@ -64,15 +120,23 @@
   border-radius: 3px;
   transition: background-color 0.3s ease-in-out;
   text-decoration: none;
-  width: 200px;
   background-color: white;
   color: black;
+  margin-bottom: 15px;
+  width: calc(50% - 10px);
+  margin-right: 10px;
+  cursor: pointer;
+  font-family: serif;
 }
 
 .button:hover {
   background-color: black;
   color: white;
 }
+
+.second-button {
+  margin-right: 0;
+  margin-left: 10px;}
 
 .edit-mode {
   display: flex;
