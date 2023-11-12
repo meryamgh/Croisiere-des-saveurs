@@ -13,7 +13,6 @@ import { particlesOptionsAnimation } from './particles.config';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-    id = "tsparticles";
 
 
     public loginForm: FormGroup = this.formBuilder.group({
@@ -53,19 +52,16 @@ export class LoginComponent {
         }
     }
 
-    particlesLoaded(container: Container): void {
-        console.log(container);
+
+
+
+    async particlesInit(engine: Engine): Promise<void> {
+        const domArray:Container[] = engine.dom();
+        if (domArray.length > 0) {
+            domArray.splice(0, 1);
+        }
+        await loadSlim(engine);
     }
-
-
-     async particlesInit(engine: Engine): Promise<void> {
-         engine.plugins.movers.clear();
-         console.log(engine);
-
-
-         await loadSlim(engine);
-
-     }
 
 
 }
