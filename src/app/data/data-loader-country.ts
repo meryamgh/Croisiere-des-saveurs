@@ -25,6 +25,11 @@ export const countryData = [
     "name": "Côte d'Ivoire",
     "coordinates": [7.5400, -5.5471],
     "flagUrl": "cote-d-ivoire"
+  },
+  {
+    "name": "Italie",
+    "coordinates": [41.8719, 12.5674],
+    "flagUrl": "italie"
   }
 ];
 
