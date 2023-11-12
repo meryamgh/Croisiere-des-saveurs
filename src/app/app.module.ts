@@ -22,7 +22,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { CommentaireComponent } from './components/recette/commentaire/commentaire.component';
 import { PopupComponent } from './components/recette/popup/popup.component';
 import {NgParticlesModule} from "ng-particles";
-import { SnackGameComponent } from './components/snack-game/snack-game.component';
+import { SnackGameComponent } from './components/grid-game/snack-game/snack-game.component';
 import { GridGameComponent } from './components/grid-game/grid-game.component';
 
 

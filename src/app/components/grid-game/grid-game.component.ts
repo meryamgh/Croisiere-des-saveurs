@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./grid-game.component.scss']
 })
 export class GridGameComponent {
+  popupOuverte = false;
 
+  ouvrirPopup() {
+    this.popupOuverte = true;
+  }
+
+  fermerPopup() {
+    this.popupOuverte = false;
+  }
 }

@@ -1,21 +1,21 @@
-import {Component, HostListener} from '@angular/core';
-import {Direction} from "./game/direction";
-import {Food} from "./game/food";
-import {Snake} from "./game/snake";
-import {User} from "../../models/user.model";
-import {UserService} from "../../services/user/user.service";
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Direction} from "../game/direction";
+import {Food} from "../game/food";
+import {Snake} from "../game/snake";
+import {User} from "../../../models/user.model";
+import {UserService} from "../../../services/user/user.service";
+
 
 @Component({
   selector: 'app-snack-game',
   templateUrl: './snack-game.component.html',
   styleUrls: ['./snack-game.component.scss']
 })
-export class SnackGameComponent {
+export class SnackGameComponent implements OnInit{
   private size:number = 20;
   public cells:number[] = new Array(this.size * this.size);
   public  timestep:number = 100;
   public snake: Snake = new Snake();
-  public gameStarted: boolean = false;
   public bestUserScore !: User;
   public dead:boolean = false;
   public time:number = 0;
@@ -23,13 +23,19 @@ export class SnackGameComponent {
   private gridSize  : number= this.size * this.size;
   private food : Food = new Food(this.gridSize);
    public currentUser!: User;
+  @Output() popupFerme: EventEmitter<void> = new EventEmitter<void>();
+
+
 
 
   constructor(private userService:UserService) {
   }
 
+  public fermerPopup() {
+    this.popupFerme.emit();
+  }
+
   public startGame():void {
-    this.gameStarted = true;
     this.playGame();
     const storedUser:string|null = sessionStorage.getItem("userLogged");
     if(storedUser) {
@@ -149,5 +155,9 @@ export class SnackGameComponent {
 
   public doSpawnFood():void {
     this.food = new Food(this.gridSize);
+  }
+
+  ngOnInit(): void {
+    this.startGame();
   }
 }
