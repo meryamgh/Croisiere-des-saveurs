@@ -1,15 +1,15 @@
 <div class="popup-overlay">
-  <div class="popup-content">
-    <h2>Étapes de préparation</h2>
-    <div class="container-image">
-      <img src="assets/home/ingredients.png" class="image-hr" alt="img-food">
-      <hr>
+    <div class="popup-content">
+        <h2>Étapes de préparation</h2>
+        <div class="container-image">
+            <img src="assets/home/ingredients.png" class="image-hr" alt="img-food">
+            <hr>
+        </div>
+        <ul>
+            <li *ngFor="let etape of etapesPreparation">{{ etape }}</li>
+        </ul>
+        <button (click)="fermerPopup()">Fermer</button>
+        <img src="assets/home/ingredients2.png" class="image" alt="img-food">
     </div>
-    <ul>
-      <li *ngFor="let etape of etapesPreparation">{{ etape }}</li>
-    </ul>
-    <button (click)="fermerPopup()">Fermer</button>
-    <img src="assets/home/ingredients2.png" class="image" alt="img-food">
-  </div>
 </div>
 

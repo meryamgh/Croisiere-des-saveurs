@@ -4,7 +4,7 @@
   text-decoration: none;
   font-size: 25px;
   font-weight: bold;
-  margin-left: 40px;
+  margin-left : 40px;
 }
 
 .une {
@@ -14,33 +14,55 @@
   margin-bottom: 90px;
 }
 
-.une-item {
-  margin-right: 22px;
-  filter: grayscale(20%);
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-  height: 400px;
-  text-decoration: none;
-  transition: transform 0.3s ease;
+.une1 img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
-.une-item:hover {
+.une2 img:hover {
   transform: scale(1.05);
+  cursor: pointer;
+}
+
+.une3 img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.une4 img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .une1 img {
+  height : 400px;
   width: 247px;
+  margin-right: 22px;
+  filter : grayscale(20%);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.une2 img {
+.une2 img{
+  height: 400px;
   width: 267px;
+  margin-right: 22px;
+  filter : grayscale(20%);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.une3 img {
+.une3 img{
+  height: 400px;
   width: 300px;
+  margin-right: 22px;
+  filter : grayscale(20%);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.une4 img {
+.une4 img{
+  height: 400px;
   width: 267px;
+  filter : grayscale(20%);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .texte_une {
@@ -50,3 +72,8 @@
   text-align: center;
 }
 
+.texte_une:hover {
+  text-decoration: underline;
+  color: black;
+  cursor: pointer;
+}

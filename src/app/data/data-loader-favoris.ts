@@ -1,6 +1,6 @@
 import {Favoris} from "../models/favoris.model";
 import {recettes} from "./data-loader-recettes";
-import{users} from "./data-loader-user"
+import {users} from "./data-loader-user"
 
 export const favorisData = [
     {favoris: recettes[1].nom, user: users[1].email, picture: recettes[1].picture},

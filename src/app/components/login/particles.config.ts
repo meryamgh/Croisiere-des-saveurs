@@ -1,4 +1,4 @@
-import { MoveDirection, ClickMode, HoverMode, OutMode } from 'tsparticles-engine';
+import {MoveDirection, ClickMode, HoverMode, OutMode} from 'tsparticles-engine';
 
 export const particlesOptionsAnimation = {
     background: {
@@ -64,7 +64,7 @@ export const particlesOptionsAnimation = {
             type: "circle",
         },
         size: {
-            value: { min: 1, max: 5 },
+            value: {min: 1, max: 5},
         },
     },
     detectRetina: true,

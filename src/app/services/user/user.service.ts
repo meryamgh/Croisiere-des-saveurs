@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
-import { User } from "../../models/user.model";
-import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from "rxjs";
+import {Injectable} from '@angular/core';
+import {User} from "../../models/user.model";
+import {HttpClient} from '@angular/common/http';
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
-    private usersUrl:string = '/api/users/';
+    private usersUrl: string = '/api/users/';
     private userSubject: Subject<User | null> = new Subject<User | null>();
-    public userLogged !:User;
+    public userLogged !: User;
 
     public constructor(private http: HttpClient) {
     }
@@ -20,17 +20,17 @@ export class UserService {
     }
 
     public createUser(user: User): Observable<Object> {
-        const jsonBody:string = JSON.stringify(user);
+        const jsonBody: string = JSON.stringify(user);
         return this.http.post(this.usersUrl, jsonBody);
     }
 
-    public updateUser(newUser : User) : Observable<User> {
-      const jsonBody:string = JSON.stringify(newUser);
-      return this.http.put<User>(this.usersUrl, jsonBody);
+    public updateUser(newUser: User): Observable<User> {
+        const jsonBody: string = JSON.stringify(newUser);
+        return this.http.put<User>(this.usersUrl, jsonBody);
     }
 
-    public getUserWithHighestScore():Observable<User>{
-        return this.http.get<User>(this.usersUrl+'highestScore');
+    public getUserWithHighestScore(): Observable<User> {
+        return this.http.get<User>(this.usersUrl + 'highestScore');
     }
 
 
@@ -49,7 +49,7 @@ export class UserService {
         return this.userSubject;
     }
 
-  public setUserSubject(newUser:User): void {
-     this.userSubject.next(newUser);
-  }
+    public setUserSubject(newUser: User): void {
+        this.userSubject.next(newUser);
+    }
 }

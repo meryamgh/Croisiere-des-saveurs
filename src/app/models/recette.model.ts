@@ -1,19 +1,19 @@
 export class Recette {
-    nom: string;
-    pays: string;
-    contenu: string;
-    categorie: string;   //entrée plat dessert
-    temp_preparation: number;
-    ingredients: string;
-    difficulte: string;
-    calorie: number;
-    preparation: string[];
-    picture: string;
+    public nom: string;
+    public pays: string;
+    public contenu: string;
+    public categorie: string;
+    public temp_preparation: number;
+    public ingredients: string;
+    public difficulte: string;
+    public calorie: number;
+    public preparation: string[];
+    public picture: string;
 
 
     constructor(name: string, country: string, content: string, category: string,
                 time: number, elements: string, dificulty: string,
-                clr: number,stepsPreparation : string[], image : string ) {
+                clr: number, stepsPreparation: string[], image: string) {
         this.nom = name;
         this.pays = country;
         this.contenu = content;

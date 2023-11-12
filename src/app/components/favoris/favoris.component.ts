@@ -4,41 +4,40 @@ import {Favoris} from "../../models/favoris.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
 
 
-
 @Component({
-  selector: 'app-favoris',
-  templateUrl: './favoris.component.html',
-  styleUrls: ['./favoris.component.scss']
+    selector: 'app-favoris',
+    templateUrl: './favoris.component.html',
+    styleUrls: ['./favoris.component.scss']
 })
-export class FavorisComponent implements OnInit{
-  public favoris: Favoris[] = [];
-  private currentUser!: User;
+export class FavorisComponent implements OnInit {
+    public favoris: Favoris[] = [];
+    private currentUser!: User;
 
 
-  public constructor(private favorisService: FavorisService) {
-  }
+    public constructor(private favorisService: FavorisService) {
+    }
 
 
-  public getFavoris():void {
+    public getFavoris(): void {
 
-    const storedUser:string|null = sessionStorage.getItem("userLogged");
-      if(storedUser) {
-        this.currentUser = JSON.parse(storedUser) as User;
-        this.favorisService.getFavorisUser(this.currentUser.email).subscribe(data =>
-            (this.favoris = data)
-        )
-      }
+        const storedUser: string | null = sessionStorage.getItem("userLogged");
+        if (storedUser) {
+            this.currentUser = JSON.parse(storedUser) as User;
+            this.favorisService.getFavorisUser(this.currentUser.email).subscribe(data =>
+                (this.favoris = data)
+            )
+        }
 
 
     }
 
-    public deleteFavoris(favItem:Favoris):void{
-      this.favorisService.delFavoris(favItem).subscribe();
-      this.favoris = this.favoris.filter(item => item !== favItem);
+    public deleteFavoris(favItem: Favoris): void {
+        this.favorisService.delFavoris(favItem).subscribe();
+        this.favoris = this.favoris.filter(item => item !== favItem);
     }
 
-  ngOnInit(): void {
-    this.getFavoris();
-  }
+    ngOnInit(): void {
+        this.getFavoris();
+    }
 
 }

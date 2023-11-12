@@ -2,9 +2,10 @@ import {Component} from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import { Engine} from "tsparticles-engine";
-import { loadSlim } from "tsparticles-slim";
-import { particlesOptionsAnimation } from './particles.config';
+import {Container, Engine} from "tsparticles-engine";
+import {loadSlim} from "tsparticles-slim";
+import {particlesOptionsAnimation} from './particles.config';
+
 
 @Component({
     selector: 'app-login',
@@ -12,6 +13,8 @@ import { particlesOptionsAnimation } from './particles.config';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+
+
     public loginForm: FormGroup = this.formBuilder.group({
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(6)])
@@ -20,10 +23,9 @@ export class LoginComponent {
     public incorrectPassword!: boolean;
     public particlesOptions = particlesOptionsAnimation;
 
-    public constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+    public constructor(private formBuilder: FormBuilder,
+                       private userService: UserService, private router: Router) {
     }
-
-
 
 
     public onSubmit(): void {
@@ -49,10 +51,14 @@ export class LoginComponent {
     }
 
 
-  public async particlesInit(engine: Engine): Promise<void> {
+    public async particlesInit(engine: Engine): Promise<void> {
+        const domArray: Container[] = engine.dom();
+        if (domArray.length > 0) {
+            domArray.splice(0, 1);
+        }
+        await loadSlim(engine);
+    }
 
-    await loadSlim(engine);
-  }
 
 }
 
