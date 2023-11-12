@@ -1,22 +1,20 @@
-<div class="profil-info-container">
-
-
-
-
-  <div class="profil-photo">
-    <img src="/assets/icones/photo-profil.png" alt="profil" class="profil-info-container-image">
+<div class="profil">
+  <div class="embarquement">
+    <p>BOARDING PASS <img src="assets/icones/bateau-a-voile.png" class="image"></p>
+    <p>18A</p>
   </div>
+<div class="profil-info-container">
+  <img src="/assets/icones/photo-profil.png" alt="profil" class="profil-image">
 
-  <div   class="profil-details">
+  <div class="profil-details">
     <div *ngIf="!editProfil; else elseBlock" class="first-part">
       <h1 class="title">Mon profil</h1>
-      <hr>
-      <p><span class="label">Nom :</span> <span class="valeur">{{ currentUser.nom }}</span></p>
-      <p><span class="label">Prénom :</span> <span class="valeur">{{ currentUser.prenom }}</span></p>
-      <p><span class="label">Email :</span> <span class="valeur">{{ currentUser.email }}</span></p>
+      <p><i>Nom :</i>{{ currentUser.nom }}</p>
+      <p><i>Prénom :</i>{{ currentUser.prenom }}</p>
+      <p><i>Email :</i>{{ currentUser.email }}</p>
       <div class="bouton-container">
         <a routerLink="/favoris" class="button">Mes favoris</a>
-        <button (click)="updateProfil()" class="button">Modifier profil</button>
+        <button (click)="updateProfil()" class="button second-button">Modifier profil</button>
       </div>
     </div>
 
@@ -25,11 +23,11 @@
       <div class="profile-form">
         <div class="form-group">
           <label for="nom"><strong>Nom :</strong></label>
-          <input [(ngModel)]="currentUser.nom" name="nom" id="nom" />
+          <input [(ngModel)]="currentUser.nom" name="nom" id="nom"/>
         </div>
         <div class="form-group">
           <label for="prenom"><strong>Prénom :</strong></label>
-          <input [(ngModel)]="currentUser.prenom" name="prenom" id="prenom" />
+          <input [(ngModel)]="currentUser.prenom" name="prenom" id="prenom"/>
         </div>
         <button class="button" (click)="validateProfil()">Modifier profil</button>
       </div>
@@ -37,5 +35,9 @@
     </ng-template>
   </div>
 
+</div>
+  <div class="embarquement-2">
+    <p>LA CROISIÈRE DES SAVEURS</p>
+  </div>
 </div>
 
