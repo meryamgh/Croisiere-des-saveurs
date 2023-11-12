@@ -26,6 +26,7 @@ import {SnackGameComponent} from './components/grid-game/snack-game/snack-game.c
 import {GridGameComponent} from './components/grid-game/grid-game.component';
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -45,7 +46,8 @@ import {GridGameComponent} from './components/grid-game/grid-game.component';
         CommentaireComponent,
         PopupComponent,
         SnackGameComponent,
-        GridGameComponent
+        GridGameComponent,
+
     ],
     imports: [
         BrowserModule,

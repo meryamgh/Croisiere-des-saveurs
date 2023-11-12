@@ -7,7 +7,7 @@
         <p><i>Votre meilleur score:</i> {{currentUser.highScore}}</p>
         <p><i>Temps de jeu:</i> {{ time * timestep / 1000 | number:'1.0-0' }} secondes</p>
       </div>
-      <p><i>Meilleur score du jeu fait par le joueur {{bestUserScore.nom}} {{bestUserScore.prenom}}</i>: {{bestUserScore.highScore}}</p>
+      <p *ngIf="bestUserScore"><i>Meilleur score du jeu fait par le joueur {{bestUserScore.nom}} {{bestUserScore.prenom}}</i>: {{bestUserScore.highScore}}</p>
       <div class="dead" *ngIf="dead">
         <p>Oh non ! Tu as perdu !</p>
         <div class="button-container">
