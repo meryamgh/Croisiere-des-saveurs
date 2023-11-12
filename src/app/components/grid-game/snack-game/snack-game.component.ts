@@ -1,35 +1,41 @@
-import {Component, HostListener} from '@angular/core';
-import {Direction} from "./game/direction";
-import {Food} from "./game/food";
-import {Snake} from "./game/snake";
-import {User} from "../../models/user.model";
-import {UserService} from "../../services/user/user.service";
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Direction} from "../game/direction";
+import {Food} from "../game/food";
+import {Snake} from "../game/snake";
+import {User} from "../../../models/user.model";
+import {UserService} from "../../../services/user/user.service";
+
 
 @Component({
   selector: 'app-snack-game',
   templateUrl: './snack-game.component.html',
   styleUrls: ['./snack-game.component.scss']
 })
-export class SnackGameComponent {
+export class SnackGameComponent implements OnInit{
   private size:number = 20;
   public cells:number[] = new Array(this.size * this.size);
   public  timestep:number = 100;
   public snake: Snake = new Snake();
-  public gameStarted: boolean = false;
   public bestUserScore !: User;
   public dead:boolean = false;
   public time:number = 0;
 
   private gridSize  : number= this.size * this.size;
-  private food : Food = new Food(this.gridSize, this.snake);
-   currentUser!: User;
-  scrollIng: string= "allow";
+  private food : Food = new Food(this.gridSize);
+   public currentUser!: User;
+  @Output() popupFerme: EventEmitter<void> = new EventEmitter<void>();
+
+
+
 
   constructor(private userService:UserService) {
   }
 
-  startGame():void {
-    this.gameStarted = true;
+  public fermerPopup() {
+    this.popupFerme.emit();
+  }
+
+  public startGame():void {
     this.playGame();
     const storedUser:string|null = sessionStorage.getItem("userLogged");
     if(storedUser) {
@@ -38,24 +44,24 @@ export class SnackGameComponent {
    this.userService.getUserWithHighestScore().subscribe((data =>{
      this.bestUserScore = data;
    }));
-  this.scrollIng = "no-scroll";
+
   }
 
-  restartGame():void {
+  public restartGame():void {
 
     this.snake = new Snake();
     this.dead = false;
     this.time = 0;
-    this.food = new Food(this.gridSize, this.snake);
+    this.food = new Food(this.gridSize);
     this.playGame();
   }
 
-  isFood(idx: number):boolean {
+  public isFood(idx: number):boolean {
     return idx === this.food.pos;
 
   }
 
-  playGame():void {
+  public playGame():void {
     const runTime = ():void => {
       setTimeout(():void => {
         this.goStep();
@@ -84,6 +90,11 @@ export class SnackGameComponent {
     }
 
   }
+
+  public isBorderCell(index: number): boolean {
+    return index < this.size  || index % this.size === 0 || (index + 1) % this.size  === 0 || index >= this.size  * (this.size  - 1);
+  }
+
 
   @HostListener('window:keydown', ['$event'])
   onKeypress(e: KeyboardEvent):void {
@@ -143,6 +154,10 @@ export class SnackGameComponent {
   }
 
   public doSpawnFood():void {
-    this.food = new Food(this.gridSize, this.snake);
+    this.food = new Food(this.gridSize);
+  }
+
+  ngOnInit(): void {
+    this.startGame();
   }
 }

@@ -10,10 +10,10 @@
   <div class="profil-class">
   <img src="/assets/icones/connecter.svg" alt="logo" class="profil">
   <div *ngIf="currentUser; else elseBlock">
-    <a (click)="logOut()" routerLink="/" class="nav-link"> DECONNEXION </a>
     <a routerLink="/profil" class="nav-link"> PROFIL </a>
     <a routerLink="/favoris">MES FAVORIS</a>
     <a routerLink="/game">GAME</a>
+    <a (click)="logOut()" routerLink="/" class="nav-link"> DECONNEXION </a>
   </div>
   </div>
 </nav>

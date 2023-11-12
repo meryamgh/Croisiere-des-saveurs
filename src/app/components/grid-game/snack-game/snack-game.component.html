@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="game-container">
+        <div class="cells" >
+            <div class="cell" [ngClass]="{'snake': snake.isSnakeCell(idx), 'border': isBorderCell(idx)}" *ngFor="let cell of cells; let idx = index;">
+                <img *ngIf="isFood(idx)" src="../../../../assets/icones/cross.svg" alt="Egg Image">
+
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div *ngIf="bestUserScore" class="user-info">
+                Length: {{ snake.tail.length + 1 }}
+                <h1>Votre meilleur score {{currentUser.highScore}}</h1>
+                <h1>Meilleur score du jeu fait par le joueur {{bestUserScore.nom}} {{bestUserScore.prenom}} {{bestUserScore.highScore}}</h1>
+            </div>
+            <div>
+                Time Played: {{ time * timestep / 1000 | number:'1.0-0' }} s
+            </div>
+            <div class="dead" *ngIf="dead">
+                You died.
+                <div class="button-container">
+                    <button (click)="restartGame()">Rejouer</button>
+                  <button (click)="fermerPopup()">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,6 +9,7 @@ import { Observable, Subject } from "rxjs";
 export class UserService {
     private usersUrl:string = '/api/users/';
     private userSubject: Subject<User | null> = new Subject<User | null>();
+    public userLogged !:User;
 
     public constructor(private http: HttpClient) {
     }
@@ -19,12 +20,12 @@ export class UserService {
     }
 
     public createUser(user: User): Observable<Object> {
-        const jsonBody = JSON.stringify(user);
+        const jsonBody:string = JSON.stringify(user);
         return this.http.post(this.usersUrl, jsonBody);
     }
 
     public updateUser(newUser : User) : Observable<User> {
-      const jsonBody = JSON.stringify(newUser);
+      const jsonBody:string = JSON.stringify(newUser);
       return this.http.put<User>(this.usersUrl, jsonBody);
     }
 
@@ -36,6 +37,7 @@ export class UserService {
     public isLogged(userLoggedId: User): void {
         sessionStorage.setItem("userLogged", JSON.stringify(userLoggedId));
         this.userSubject.next(userLoggedId);
+        this.userLogged = userLoggedId;
     }
 
     public getDeconnected(): void {
@@ -46,4 +48,8 @@ export class UserService {
     public getUserSubject(): Subject<User | null> {
         return this.userSubject;
     }
+
+  public setUserSubject(newUser:User): void {
+     this.userSubject.next(newUser);
+  }
 }

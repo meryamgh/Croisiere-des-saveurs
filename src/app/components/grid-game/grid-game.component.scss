@@ -1,0 +1,31 @@
+.additional-text {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.start-game-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+button {
+  padding: 7px 17px;
+  margin-right : 10px;
+  margin-top : 5px;
+  margin-bottom: 5px;
+  background-color: white;
+  color: black;
+  border: 1px solid #000;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}
+

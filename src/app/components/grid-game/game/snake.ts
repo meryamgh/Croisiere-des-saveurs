@@ -48,6 +48,7 @@ export class Snake {
   }
 
   public checkDead(size:number):boolean {
+
     if (
         this.head.pos &&
         (this.head.pos % size === 0 ||
