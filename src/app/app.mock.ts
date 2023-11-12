@@ -26,31 +26,28 @@ export default () => {
             });
 
             this.get('/users/highestScore', (schema) => {
-                const users:User[] = schema.db['users'];
-                const sortedUsers:User[] = users.sort((a, b) => b.highScore - a.highScore);
+                const users: User[] = schema.db['users'];
+                const sortedUsers: User[] = users.sort((a, b) => b.highScore - a.highScore);
 
                 return sortedUsers[0];
             });
 
 
-
-
             this.post('/users/', (schema, request) => {
-                const user : User = JSON.parse(request.requestBody);
-                user.highScore=3;
+                const user: User = JSON.parse(request.requestBody);
+                user.highScore = 3;
                 schema.db['users'].insert(user);
                 return user;
             });
 
-          this.put('/users/', (schema, request) => {
-            const updateUser = JSON.parse(request.requestBody);
-            schema.db['users'].update(schema.db['users'].findBy({email: updateUser.email}),updateUser);
-            return updateUser;
-          });
+            this.put('/users/', (schema, request) => {
+                const updateUser = JSON.parse(request.requestBody);
+                schema.db['users'].update(schema.db['users'].findBy({email: updateUser.email}), updateUser);
+                return updateUser;
+            });
 
 
-
-          this.get('/recettes', schema => schema.db['recettes']);
+            this.get('/recettes', schema => schema.db['recettes']);
             this.get('/recettes/:nom', (schema, request) => {
                 const recetteNom: string = request.params['nom'];
                 return schema.db['recettes'].findBy({nom: recetteNom});
@@ -61,9 +58,9 @@ export default () => {
                 recetteFind.commentaire.push(request.requestBody);
                 return recetteFind;
             });
-            this.get('/recettes/country/:countryName', (schema ,request) => {
-              const country:string = request.params['countryName'];
-              return schema.db['recettes'].where({pays: country});
+            this.get('/recettes/country/:countryName', (schema, request) => {
+                const country: string = request.params['countryName'];
+                return schema.db['recettes'].where({pays: country});
             });
 
 
@@ -85,14 +82,13 @@ export default () => {
             });
 
             this.put('/commentaires/:idCommentaire', (schema, request) => {
-                const commentaireId:string = request.params['idCommentaire'];
+                const commentaireId: string = request.params['idCommentaire'];
                 const newCommentaire = JSON.parse(request.requestBody);
                 const comment = schema.db['commentaires'].findBy({idCommentaire: commentaireId});
                 comment.commentaire = newCommentaire;
-                schema.db['commentaires'].update(schema.db['commentaires'].findBy({idCommentaire: commentaireId}),comment)
+                schema.db['commentaires'].update(schema.db['commentaires'].findBy({idCommentaire: commentaireId}), comment)
                 return comment;
             });
-
 
 
             this.delete('/commentaires/:idCommentaire', (schema, request) => {

@@ -3,8 +3,8 @@ import {UserService} from "../../services/user/user.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Container, Engine} from "tsparticles-engine";
-import { loadSlim } from "tsparticles-slim";
-import { particlesOptionsAnimation } from './particles.config';
+import {loadSlim} from "tsparticles-slim";
+import {particlesOptionsAnimation} from './particles.config';
 
 
 @Component({
@@ -26,8 +26,6 @@ export class LoginComponent {
     public constructor(private formBuilder: FormBuilder,
                        private userService: UserService, private router: Router) {
     }
-
-
 
 
     public onSubmit(): void {
@@ -53,10 +51,8 @@ export class LoginComponent {
     }
 
 
-
-
     async particlesInit(engine: Engine): Promise<void> {
-        const domArray:Container[] = engine.dom();
+        const domArray: Container[] = engine.dom();
         if (domArray.length > 0) {
             domArray.splice(0, 1);
         }

@@ -1,47 +1,50 @@
 <div class="text">
-  <p class="decouverte"><i>"À chaque plat, une nouvelle aventure gustative."</i></p>
-  <p class="font">Embarquez avec nous pour un voyage à travers les cuisines du monde, où chaque plat raconte une histoire.</p>
-  <p class="font">Que vous soyez novice en cuisine ou chef expérimenté, notre mission est de vous inspirer et de vous accompagner dans votre quête de découvertes culinaires.</p>
-  <p class="font">Nous vous souhaitons un bon voyage !</p>
-</div><hr>
+    <p class="decouverte"><i>"À chaque plat, une nouvelle aventure gustative."</i></p>
+    <p class="font">Embarquez avec nous pour un voyage à travers les cuisines du monde, où chaque plat raconte une
+        histoire.</p>
+    <p class="font">Que vous soyez novice en cuisine ou chef expérimenté, notre mission est de vous inspirer et de vous
+        accompagner dans votre quête de découvertes culinaires.</p>
+    <p class="font">Nous vous souhaitons un bon voyage !</p>
+</div>
+<hr>
 
 <div class="filter-bar">
-  <section class="first-filter">
-  <select [(ngModel)]="paysFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
-    <option value="">Tous les pays</option>
-    <option *ngFor="let pays of paysOptions" [value]="pays">{{ pays }}</option>
-  </select>
+    <section class="first-filter">
+        <select [(ngModel)]="paysFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
+            <option value="">Tous les pays</option>
+            <option *ngFor="let pays of paysOptions" [value]="pays">{{ pays }}</option>
+        </select>
 
-  <select [(ngModel)]="categorieFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
-    <option value="">Toutes les catégories</option>
-    <option *ngFor="let categorie of categorieOptions" [value]="categorie">{{ categorie }}</option>
-  </select>
+        <select [(ngModel)]="categorieFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
+            <option value="">Toutes les catégories</option>
+            <option *ngFor="let categorie of categorieOptions" [value]="categorie">{{ categorie }}</option>
+        </select>
 
-  <select [(ngModel)]="difficulteFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
-    <option value="">Toutes les difficultés</option>
-    <option *ngFor="let difficulte of difficulteOptions" [value]="difficulte">{{ difficulte }}</option>
-  </select>
+        <select [(ngModel)]="difficulteFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
+            <option value="">Toutes les difficultés</option>
+            <option *ngFor="let difficulte of difficulteOptions" [value]="difficulte">{{ difficulte }}</option>
+        </select>
 
-  <input [(ngModel)]="tempsPreparationFiltre" (ngModelChange)="appliquerFiltres()" type="number"
-         placeholder="Temps de préparation (minutes)" class="section-filter">
-  </section>
+        <input [(ngModel)]="tempsPreparationFiltre" (ngModelChange)="appliquerFiltres()" type="number"
+               placeholder="Temps de préparation (minutes)" class="section-filter">
+    </section>
 
-  <div class="filter-search">
-  <input [(ngModel)]="term" placeholder="Rechercher une recette...">
-  <img class="search" src="/assets/icones/search.svg" alt="img-icone">
-  </div>
+    <div class="filter-search">
+        <input [(ngModel)]="term" placeholder="Rechercher une recette...">
+        <img class="search" src="/assets/icones/search.svg" alt="img-icone">
+    </div>
 </div>
 
 <div *ngIf="recettes" class="recipe-container">
-  <div *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
-    <h1 class="title_recette">{{ recette.nom }}</h1>
-    <img src="{{recette.picture}}" alt="picture-recette" class="recipe-img"/>
-    <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
-    <span class="like">
+    <div *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
+        <h1 class="title_recette">{{ recette.nom }}</h1>
+        <img src="{{recette.picture}}" alt="picture-recette" class="recipe-img"/>
+        <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
+        <span class="like">
       <img [src]="recettes.get(recette.nom) === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
            alt="Coeur" class="like-img" (click)="addFavoris(recette)"/>
-      {{ recipeNbrLikes.get(recette.nom) }}
+            {{ recipeNbrLikes.get(recette.nom) }}
     </span>
-  </div>
+    </div>
 </div>
 

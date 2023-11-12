@@ -12,20 +12,18 @@ import {InscriptionComponent} from './components/inscription/inscription.compone
 import {ProfilComponent} from './components/profil/profil.component';
 import {RecetteComponent} from './components/recette/recette.component';
 import {CustomFilterPipe} from './pipe/custom-filter.pipe';
-import { CountryRecipeComponent } from './components/country-recipe/country-recipe.component';
+import {CountryRecipeComponent} from './components/country-recipe/country-recipe.component';
 import {HeaderComponent} from "./components/header/header.component";
 import {HomeComponent} from "./components/home/home.component";
 import {SlideComponent} from "./components/home/slide/slide.component";
 import {FooterComponent} from "./components/footer/footer.component";
-import { FavorisComponent } from './components/favoris/favoris.component';
+import {FavorisComponent} from './components/favoris/favoris.component';
 import {NgOptimizedImage} from "@angular/common";
-import { CommentaireComponent } from './components/recette/commentaire/commentaire.component';
-import { PopupComponent } from './components/recette/popup/popup.component';
+import {CommentaireComponent} from './components/recette/commentaire/commentaire.component';
+import {PopupComponent} from './components/recette/popup/popup.component';
 import {NgParticlesModule} from "ng-particles";
-import { SnackGameComponent } from './components/grid-game/snack-game/snack-game.component';
-import { GridGameComponent } from './components/grid-game/grid-game.component';
-
-
+import {SnackGameComponent} from './components/grid-game/snack-game/snack-game.component';
+import {GridGameComponent} from './components/grid-game/grid-game.component';
 
 
 @NgModule({

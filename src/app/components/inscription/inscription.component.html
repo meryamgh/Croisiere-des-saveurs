@@ -1,21 +1,21 @@
 <div class="container">
     <form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()">
         <h2>INSCRIPTION</h2>
-        <div>
+        <section>
             <label for="nom">Nom</label>
             <input type="text" id="nom" formControlName="nom">
             <div *ngIf="inscriptionForm.get('nom')?.hasError('required') && inscriptionForm.get('nom')?.touched" class="error-message">
                 Le nom est requis.
             </div>
-        </div>
-        <div>
+        </section>
+        <section>
             <label for="prenom">Prénom</label>
             <input type="text" id="prenom" formControlName="prenom">
             <div *ngIf="inscriptionForm.get('prenom')?.hasError('required') && inscriptionForm.get('prenom')?.touched" class="error-message">
                 Le prénom est requis.
             </div>
-        </div>
-        <div>
+        </section>
+        <section>
             <label for="email">Email</label>
             <input type="email" id="email" formControlName="email">
             <div *ngIf="inscriptionForm.get('email')?.hasError('required') && inscriptionForm.get('email')?.touched" class="error-message">
@@ -24,8 +24,8 @@
             <div *ngIf="inscriptionForm.get('email')?.hasError('email') && inscriptionForm.get('email')?.touched" class="error-message">
                 L'email est invalide.
             </div>
-        </div>
-        <div>
+        </section>
+        <section>
             <label for="password">Mot de passe</label>
             <input type="password" id="password" formControlName="password">
             <div *ngIf="inscriptionForm.get('password')?.hasError('required') && inscriptionForm.get('password')?.touched" class="error-message">
@@ -34,15 +34,15 @@
             <div *ngIf="inscriptionForm.get('password')?.hasError('minlength') && inscriptionForm.get('password')?.touched" class="error-message">
                 Le mot de passe doit avoir au moins 6 caractères.
             </div>
-        </div>
+        </section>
         <button type="submit" [disabled]="!inscriptionForm.valid">Inscription</button>
 
-        <div *ngIf="userAlreadyExists" class="error-message">
+        <section *ngIf="userAlreadyExists" class="error-message">
             Cet utilisateur existe déjà. Veuillez utiliser un autre email.
-        </div>
+        </section>
 
-        <div class="login-link">
+        <section class="login-link">
             <p><a routerLink="/login">Déjà un compte ? <i><u>Connectez-vous</u></i></a></p>
-        </div>
+        </section>
     </form>
 </div>

@@ -20,9 +20,9 @@ const routes: Routes = [
     {path: "inscription", component: InscriptionComponent},
     {path: "profil", component: ProfilComponent, canActivate: [authGuard]},
     {path: "recette-detail/:nom", component: RecetteComponent},
-    {path: "country-recipe/:nom", component:CountryRecipeComponent},
-    {path: "favoris", component:FavorisComponent, canActivate: [authGuard]},
-    {path: "game", component:GridGameComponent, canActivate: [authGuard]},
+    {path: "country-recipe/:nom", component: CountryRecipeComponent},
+    {path: "favoris", component: FavorisComponent, canActivate: [authGuard]},
+    {path: "game", component: GridGameComponent, canActivate: [authGuard]},
     {path: "**", redirectTo: '/Accueil', pathMatch: 'full'},
 ];
 

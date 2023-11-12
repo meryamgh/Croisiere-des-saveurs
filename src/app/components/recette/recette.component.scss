@@ -3,7 +3,7 @@
 }
 
 .like-img {
-  width:30px;
+  width: 30px;
   cursor: pointer;
   vertical-align: middle;
 }
@@ -24,14 +24,14 @@
   margin-bottom: 15px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-right : 40px;
+  margin-right: 40px;
 }
 
 .recette-details h1 {
-  margin-top : 0;
+  margin-top: 0;
   font-family: serif;
   margin-bottom: 10px;
-  font-size : 20px;
+  font-size: 20px;
   text-transform: uppercase;
   color: #6F6D63;
 }
@@ -66,8 +66,8 @@
 }
 
 .preparation {
-  margin-top : 25px;
-  width : 100%;
+  margin-top: 25px;
+  width: 100%;
   margin-bottom: 30px;
   background-color: white;
   color: black;
@@ -123,6 +123,7 @@
   background-color: black;
   color: white;
 }
+
 .commentaires-container h2 {
   font-family: serif;
   font-size: 18px;
@@ -157,13 +158,17 @@
   margin: 0 auto;
   padding: 60px;
   border-radius: 10px;
+
   .commentaires-container {
     margin-top: 20px;
+
     h2 {
       font-size: 18px;
     }
+
     .commentaire {
       margin-top: 10px;
+
       .user {
         font-weight: bold;
       }
@@ -184,8 +189,8 @@
     display: flex;
     align-items: center;
 
-    }
   }
+}
 
 .ajouter-commentaire {
   background-color: white;

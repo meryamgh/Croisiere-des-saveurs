@@ -13,7 +13,7 @@ export class Recette {
 
     constructor(name: string, country: string, content: string, category: string,
                 time: number, elements: string, dificulty: string,
-                clr: number,stepsPreparation : string[], image : string ) {
+                clr: number, stepsPreparation: string[], image: string) {
         this.nom = name;
         this.pays = country;
         this.contenu = content;
