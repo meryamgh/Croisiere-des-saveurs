@@ -1,38 +1,38 @@
 import {User} from "../models/user.model";
-import {recettes} from "./data-loader-recettes";
+import {faker} from "@faker-js/faker";
 
-export const usersData = [
-    {
-        nom: 'Dupont', prenom: 'John', email: 'john@example.com',
-        favoris: recettes.slice(6, 9),
-        password: "test123"
-    },
 
-    {
-        nom: 'Smith', prenom: 'Alice', email: 'alice@example.com',
-        favoris: recettes.slice(1, 5),
-        password: "test123"
-    },
+export const users: User[] = [];
 
-    {
-        nom: 'Johnson', prenom: 'Michael', email: 'michael@example.com',
-        favoris: recettes.slice(3, 5),
-        password: "test123"
-    },
+const generateRandomUser = () => {
+    const user:User = {
+        nom: faker.person.lastName(),
+        prenom: faker.person.firstName(),
+        email: faker.internet.email(),
+        password: "test123",
+        highScore: Math.floor(Math.random() * 14) + 1,
+    };
 
-    {
-        nom: 'Lee', prenom: 'Emma', email: 'emma@example.com',
-        favoris: recettes.slice(3, 5),
-        password: "test123"
-    },
+    return user;
+};
 
-    {
-        nom: 'Kim', prenom: 'David', email: 'david@example.com',
-        favoris: recettes.slice(1, 5),
-        password: "test123"
+const generateRandomUsers = (count:number) => {
+    const randomUsers:User[] = [];
+    for (let i:number = 0; i < count; i++) {
+        const user:User = generateRandomUser();
+        randomUsers.push(user);
     }
-];
+    return randomUsers;
+};
 
-export const users: User[] = usersData.map(userData => {
-    return new User(userData.nom, userData.prenom, userData.email, userData.favoris, userData.password);
-});
+
+users.push(...generateRandomUsers(20).map(userData => new User(userData.nom, userData.prenom, userData.email, userData.password,userData.highScore)));
+
+users.push(
+    new User('Dupont', 'John', 'john@example.com', 'test123',9),
+    new User('Smith', 'Alice', 'alice@example.com', 'test123',3),
+    new User('Johnson', 'Michael', 'michael@example.com', 'test123',0),
+    new User('Lee', 'Emma', 'emma@example.com', 'test123',2),
+    new User('Kim', 'David', 'david@example.com', 'test123',8),
+    new User('Silva', 'Elyora', 'elyora@example.com', 'test123',28)
+);

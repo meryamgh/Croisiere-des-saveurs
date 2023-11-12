@@ -1,7 +1,7 @@
 export class Country {
-    name: string;
-    coordinates: number[];
-    accronyme: string;
+    public name: string;
+    public coordinates: number[];
+    public accronyme: string;
 
     constructor(countryName: string, countryCoordinates: number[], countryAccronyme: string) {
         this.name = countryName;
