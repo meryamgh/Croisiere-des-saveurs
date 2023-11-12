@@ -23,6 +23,7 @@ import { CommentaireComponent } from './components/recette/commentaire/commentai
 import { PopupComponent } from './components/recette/popup/popup.component';
 import {NgParticlesModule} from "ng-particles";
 import { SnackGameComponent } from './components/snack-game/snack-game.component';
+import { GridGameComponent } from './components/grid-game/grid-game.component';
 
 
 
@@ -45,7 +46,8 @@ import { SnackGameComponent } from './components/snack-game/snack-game.component
         FavorisComponent,
         CommentaireComponent,
         PopupComponent,
-        SnackGameComponent
+        SnackGameComponent,
+        GridGameComponent
     ],
     imports: [
         BrowserModule,

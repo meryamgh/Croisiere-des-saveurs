@@ -22,11 +22,18 @@
 
 
     <ng-template #elseBlock>
-      <strong>Nom :</strong>
-      <input [(ngModel)]="currentUser.nom" name="nom" />
-      <strong>Prénom :</strong>
-      <input [(ngModel)]="currentUser.prenom" name="prenom" />
-      <button (click)="validateProfil()">Modifier profil</button>
+      <div class="profile-form">
+        <div class="form-group">
+          <label for="nom"><strong>Nom :</strong></label>
+          <input [(ngModel)]="currentUser.nom" name="nom" id="nom" />
+        </div>
+        <div class="form-group">
+          <label for="prenom"><strong>Prénom :</strong></label>
+          <input [(ngModel)]="currentUser.prenom" name="prenom" id="prenom" />
+        </div>
+        <button class="button" (click)="validateProfil()">Modifier profil</button>
+      </div>
+
     </ng-template>
   </div>
 

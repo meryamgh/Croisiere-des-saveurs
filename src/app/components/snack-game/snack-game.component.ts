@@ -21,14 +21,14 @@ export class SnackGameComponent {
   public time:number = 0;
 
   private gridSize  : number= this.size * this.size;
-  private food : Food = new Food(this.gridSize, this.snake);
-   currentUser!: User;
-  scrollIng: string= "allow";
+  private food : Food = new Food(this.gridSize);
+   public currentUser!: User;
+
 
   constructor(private userService:UserService) {
   }
 
-  startGame():void {
+  public startGame():void {
     this.gameStarted = true;
     this.playGame();
     const storedUser:string|null = sessionStorage.getItem("userLogged");
@@ -38,24 +38,24 @@ export class SnackGameComponent {
    this.userService.getUserWithHighestScore().subscribe((data =>{
      this.bestUserScore = data;
    }));
-  this.scrollIng = "no-scroll";
+
   }
 
-  restartGame():void {
+  public restartGame():void {
 
     this.snake = new Snake();
     this.dead = false;
     this.time = 0;
-    this.food = new Food(this.gridSize, this.snake);
+    this.food = new Food(this.gridSize);
     this.playGame();
   }
 
-  isFood(idx: number):boolean {
+  public isFood(idx: number):boolean {
     return idx === this.food.pos;
 
   }
 
-  playGame():void {
+  public playGame():void {
     const runTime = ():void => {
       setTimeout(():void => {
         this.goStep();
@@ -84,6 +84,11 @@ export class SnackGameComponent {
     }
 
   }
+
+  public isBorderCell(index: number): boolean {
+    return index < this.size  || index % this.size === 0 || (index + 1) % this.size  === 0 || index >= this.size  * (this.size  - 1);
+  }
+
 
   @HostListener('window:keydown', ['$event'])
   onKeypress(e: KeyboardEvent):void {
@@ -143,6 +148,6 @@ export class SnackGameComponent {
   }
 
   public doSpawnFood():void {
-    this.food = new Food(this.gridSize, this.snake);
+    this.food = new Food(this.gridSize);
   }
 }

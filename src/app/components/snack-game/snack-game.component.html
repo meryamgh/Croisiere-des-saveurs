@@ -1,8 +1,9 @@
 <div class="container">
     <div class="game-container">
         <div class="cells" *ngIf="gameStarted">
-            <div class="cell" [ngClass]="{'egg': isFood(idx), 'snake': snake.isSnakeCell(idx)}" *ngFor="let cell of cells; let idx = index;">
+            <div class="cell" [ngClass]="{'snake': snake.isSnakeCell(idx), 'border': isBorderCell(idx)}" *ngFor="let cell of cells; let idx = index;">
                 <img *ngIf="isFood(idx)" src="assets/icones/cross.svg" alt="Egg Image">
+
             </div>
         </div>
 

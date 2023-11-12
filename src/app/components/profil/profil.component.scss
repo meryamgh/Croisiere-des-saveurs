@@ -57,20 +57,19 @@
 }
 
 .button {
-  width: 200px;
-  background-color: white;
-  color: black;
   border: 1px solid #000;
   padding: 10px 20px;
   font-size: 16px;
-  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   transition: background-color 0.3s ease-in-out;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   text-decoration: none;
+  width: 200px;
+  background-color: white;
+  color: black;
 }
 
-.button_commentaire:hover {
+.button:hover {
   background-color: black;
   color: white;
 }
@@ -89,6 +88,25 @@
   margin-bottom: 10px;
 }
 
-.edit-mode button {
-  margin-top: 10px;
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
