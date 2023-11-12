@@ -30,8 +30,12 @@ export class ProfilComponent implements OnInit {
 
     }
 
-  validateProfil():void {
+  validateProfil(): void {
     this.editProfil = false;
+
     this.userService.updateUser(this.currentUser).subscribe();
+    this.userService.setUserSubject(this.currentUser);
+    sessionStorage.setItem("userLogged", JSON.stringify(this.currentUser));
   }
+
 }
