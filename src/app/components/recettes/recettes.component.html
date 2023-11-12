@@ -29,14 +29,14 @@
                placeholder="Temps de préparation (minutes)" class="section-filter">
     </section>
 
-    <div class="filter-search">
+    <section class="filter-search">
         <input [(ngModel)]="term" placeholder="Rechercher une recette...">
         <img class="search" src="/assets/icones/search.svg" alt="img-icone">
-    </div>
+    </section>
 </div>
 
 <div *ngIf="recettes" class="recipe-container">
-    <div *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
+    <section *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
         <h1 class="title_recette">{{ recette.nom }}</h1>
         <img src="{{recette.picture}}" alt="picture-recette" class="recipe-img"/>
         <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
@@ -45,6 +45,6 @@
            alt="Coeur" class="like-img" (click)="addFavoris(recette)"/>
             {{ recipeNbrLikes.get(recette.nom) }}
     </span>
-    </div>
+    </section>
 </div>
 

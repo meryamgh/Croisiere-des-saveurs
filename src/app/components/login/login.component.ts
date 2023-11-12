@@ -51,7 +51,7 @@ export class LoginComponent {
     }
 
 
-    async particlesInit(engine: Engine): Promise<void> {
+    public async particlesInit(engine: Engine): Promise<void> {
         const domArray: Container[] = engine.dom();
         if (domArray.length > 0) {
             domArray.splice(0, 1);

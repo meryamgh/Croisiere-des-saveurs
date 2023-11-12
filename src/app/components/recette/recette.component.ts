@@ -83,7 +83,7 @@ export class RecetteComponent implements OnInit {
 
 
     public getUser(): void {
-        const storedUser = sessionStorage.getItem("userLogged");
+        const storedUser:string|null = sessionStorage.getItem("userLogged");
 
         if (storedUser) {
             this.currentUser = JSON.parse(storedUser) as User;
@@ -94,7 +94,7 @@ export class RecetteComponent implements OnInit {
     public addToFav(): void {
         if (this.currentUser) {
 
-            const newFavoris = new Favoris(this.currentReciepie.nom, this.currentUser.email, this.currentReciepie.picture);
+            const newFavoris:Favoris = new Favoris(this.currentReciepie.nom, this.currentUser.email, this.currentReciepie.picture);
             if (this.recetteFav) {
                 this.nbrFav--;
                 this.favorisService.delFavoris(newFavoris).subscribe();
@@ -157,11 +157,11 @@ export class RecetteComponent implements OnInit {
 
     }
 
-    public openPreparationPopup() {
+    public openPreparationPopup():void {
         this.etapesPreparationPopupOpen = true;
     }
 
-    public fermerPreparationPopup() {
+    public fermerPreparationPopup():void {
         this.etapesPreparationPopupOpen = false;
     }
 

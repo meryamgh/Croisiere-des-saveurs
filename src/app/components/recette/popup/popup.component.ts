@@ -10,7 +10,7 @@ export class PopupComponent {
     @Input() etapesPreparation: string[] = [];
     @Output() popupFerme: EventEmitter<void> = new EventEmitter<void>();
 
-    public fermerPopup() {
+    public fermerPopup(): void {
         this.popupFerme.emit();
     }
 }

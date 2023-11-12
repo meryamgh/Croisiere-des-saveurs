@@ -1,13 +1,13 @@
-<div class="text">
+<section class="text">
     <span class="user">{{ commentaireSend.user }} :</span><br>
     <span>{{ commentaireSend.dateTime | date: "dd/MM/yyyy HH:mm" }}</span>
     <span class="texte">{{ commentaireSend.commentaire }}</span>
-</div>
-<div class="comment" *ngIf="currentUserSend && currentUserSend.email === commentaireSend.user">
+</section>
+<section class="comment" *ngIf="currentUserSend && currentUserSend.email === commentaireSend.user">
     <button (click)="isEditing = true">Modifier</button>
     <button (click)="sendDeleteComment(commentaireSend.idCommentaire)">Supprimer</button>
     <div *ngIf="isEditing">
         <input type="text" [(ngModel)]="commentaireSend.commentaire" class="comment-input">
         <button class="ajouter-commentaire" (click)="sendUpdateComment(commentaireSend)">Valider</button>
     </div>
-</div>
+</section>

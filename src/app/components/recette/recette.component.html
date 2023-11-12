@@ -1,5 +1,5 @@
 <div class="recette-info-container" *ngIf="currentReciepie">
-    <div class="recette-photo">
+    <section class="recette-photo">
         <img src="{{currentReciepie.picture}}" alt="picture-recette" class="recette-info-container-image"/>
 
         <br><br>
@@ -23,7 +23,7 @@
         </div>
 
 
-    </div>
+    </section>
 
     <section class="recette-details">
         <div class="first-part">
@@ -64,12 +64,12 @@
     </section>
 
 
-    <div class="popup-overlay">
+    <section class="popup-overlay">
         <app-popup
                 *ngIf="etapesPreparationPopupOpen"
                 [etapesPreparation]="currentReciepie.preparation"
                 (popupFerme)="fermerPreparationPopup()">
         </app-popup>
-    </div>
+    </section>
 </div>
 

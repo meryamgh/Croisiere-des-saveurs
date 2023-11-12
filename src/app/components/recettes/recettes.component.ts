@@ -52,16 +52,16 @@ export class RecettesComponent implements OnInit {
     public appliquerFiltres(): void {
         this.recipes = this.allRecipes;
         this.recipes = this.recipes.filter((recette: Recette) => {
-            const passeFiltrePays = !this.paysFiltre || recette.pays === this.paysFiltre;
-            const passeFiltreCategorie = !this.categorieFiltre || recette.categorie === this.categorieFiltre;
-            const passeFiltreDifficulte = !this.difficulteFiltre || recette.difficulte === this.difficulteFiltre;
-            const passeFiltreTempsPreparation = !this.tempsPreparationFiltre || recette.temp_preparation <= this.tempsPreparationFiltre;
+            const passeFiltrePays: boolean = !this.paysFiltre || recette.pays === this.paysFiltre;
+            const passeFiltreCategorie: boolean = !this.categorieFiltre || recette.categorie === this.categorieFiltre;
+            const passeFiltreDifficulte: boolean = !this.difficulteFiltre || recette.difficulte === this.difficulteFiltre;
+            const passeFiltreTempsPreparation: boolean = !this.tempsPreparationFiltre || recette.temp_preparation <= this.tempsPreparationFiltre;
             return passeFiltrePays && passeFiltreCategorie && passeFiltreDifficulte && passeFiltreTempsPreparation;
         });
     }
 
     public getLikedRecipesByUser(): void {
-        const storedUser = sessionStorage.getItem("userLogged");
+        const storedUser: string | null = sessionStorage.getItem("userLogged");
         if (storedUser) {
             this.currentUser = JSON.parse(storedUser) as User;
 
