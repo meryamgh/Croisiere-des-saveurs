@@ -1,14 +1,21 @@
+import {Snake} from "./snake";
+import {SnakeCell} from "./snackCell";
+
 export class Food {
   public pos: number;
 
-  constructor(gridSize: number) {
-    const forbiddenValues: Set<number> = this.getForbiddenValues(gridSize);
+  constructor(gridSize: number, snack: Snake) {
+    const forbiddenValues: Set<number> = this.getForbiddenValues(gridSize,snack);
     this.pos = getIntBetweenZeroAndN(gridSize, forbiddenValues);
   }
 
-  private getForbiddenValues(gridSize: number): Set<number> {
+  private getForbiddenValues(gridSize: number,snack : Snake): Set<number> {
     const forbiddenValues: Set<number> = new Set();
-
+    for(let cell of snack.cells){
+      if(cell.pos){
+          forbiddenValues.add(cell.pos);
+      }
+    }
 
     for (let row = 0; row < 20; row++) {
 
