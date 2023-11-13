@@ -118,7 +118,7 @@ export const recetteData = [
     categorie: "Plat principal",
     temp_preparation: 30,
     ingredients: "Feuilles de lasagne, 500g de viande hachée (porc et bœuf mélangés), 1 oignon, 2 gousses d'ail, 800g de tomates concassées, 2 cuillères à soupe de concentré de tomate, 250ml de vin rouge, 500ml de béchamel, 100g de parmesan râpé, huile d'olive, sel, poivre, épices italiennes",
-    difficulte: "Moyenne",
+    difficulte: "Moyen",
     calorie: 400,
     preparation: [
       "Préchauffez votre four à 180°C.",
@@ -479,7 +479,7 @@ export const recetteData = [
     categorie: "Plat principal",
     temp_preparation: 30,
     ingredients: "Tortillas de maïs, sauce tomate, piments, oignons, fromage, avocat, crème fraîche, coriandre",
-    difficulte: "Moyenne",
+    difficulte: "Moyen",
     calorie: 400,
     preparation: [
       "Coupez les tortillas de maïs en triangles.",
@@ -516,7 +516,7 @@ export const recetteData = [
     categorie: "Plat principal",
     temp_preparation: 30,
     ingredients: "Tortillas, viande (poulet, bœuf, porc), haricots noirs, fromage, oignons, sauce chili, crème fraîche, coriandre",
-    difficulte: "Moyenne",
+    difficulte: "Moyen",
     calorie: 400,
     preparation: [
       "Préparez les garnitures : faites cuire la viande avec les oignons jusqu'à ce qu'elle soit bien cuite, préparez les haricots noirs, le fromage râpé, et hachez la coriandre.",
@@ -535,7 +535,7 @@ export const recetteData = [
     categorie: "Plat principal",
     temp_preparation: 40,
     ingredients: "Piments poblano, viande de bœuf hachée, oignons, ail, tomates, poires, pommes, pêches, raisins secs, amandes, noix, lait, fromage de chèvre, huile d'olive, sel, sucre",
-    difficulte: "Moyenne",
+    difficulte: "Moyen",
     calorie: 400,
     preparation: [
       "Faites griller les piments poblano jusqu'à ce que la peau noircisse. Placez-les dans un sac en plastique pour les peler plus facilement.",
@@ -545,6 +545,64 @@ export const recetteData = [
       "Nappez les piments farcis de cette sauce.",
       "Garnissez le plat de graines de grenade avant de servir pour une touche de fraîcheur.",
       "Les Chiles en Nogada sont traditionnellement servis froids. Profitez de ce plat festif et délicieux !"
+    ]
+  },
+  {
+    nom: "Feijoada",
+    pays: "Brésil",
+    contenu: "Un ragoût savoureux à base de haricots noirs, de viande de porc, de saucisses et de diverses viandes fumées, servi avec du riz.",
+    categorie: "Plat principal",
+    temp_preparation: 120,
+    ingredients: "Haricots noirs, viande de porc (côtes, pieds, oreilles), saucisses fumées, bacon, oignons, ail, tomates, poivrons, laurier, thym, sel, poivre, huile d'olive, riz",
+    difficulte: "Moyen",
+    calorie: 500,
+    preparation: [
+      "Faites tremper les haricots noirs dans de l'eau pendant la nuit. Égouttez-les avant la cuisson.",
+      "Dans une grande casserole, faites revenir l'ail et les oignons dans de l'huile d'olive jusqu'à ce qu'ils soient dorés.",
+      "Ajoutez la viande de porc, les saucisses fumées et le bacon coupés en morceaux. Faites-les dorer.",
+      "Incorporez les haricots noirs égouttés, les tomates, les poivrons, le laurier et le thym. Ajoutez suffisamment d'eau pour couvrir les ingrédients.",
+      "Laissez mijoter à feu doux pendant environ 2 heures, en remuant de temps en temps, jusqu'à ce que les haricots soient tendres et que la viande soit bien cuite.",
+      "Assaisonnez avec du sel et du poivre selon votre goût.",
+      "Servez la feijoada chaude sur du riz cuit. Bon appétit !"
+    ]
+  },
+  {
+    nom: "Moqueca de Peixe",
+    pays: "Brésil",
+    contenu: "Un délicieux ragoût de poisson cuit dans une sauce à base de lait de coco, de tomates, de poivrons et d'épices.",
+    categorie: "Plat principal",
+    temp_preparation: 45,
+    ingredients: "Filets de poisson (cabillaud, dorade, ou autre poisson blanc), lait de coco, tomates, poivrons (rouges et verts), oignons, ail, coriandre, jus de citron, huile d'olive, sel, poivre, piment (facultatif), riz pour servir.",
+    difficulte: "Facile",
+    calorie: 350,
+    preparation: [
+      "Marinez les filets de poisson dans du jus de citron, de l'ail émincé, du sel et du poivre pendant environ 15 minutes.",
+      "Dans une grande poêle, faites revenir les oignons et l'ail dans de l'huile d'olive jusqu'à ce qu'ils soient dorés.",
+      "Ajoutez les tomates et les poivrons coupés en morceaux. Laissez-les cuire pendant quelques minutes jusqu'à ce qu'ils ramollissent.",
+      "Incorporez le lait de coco et laissez mijoter à feu doux pendant 10 minutes pour laisser les saveurs se mélanger.",
+      "Ajoutez les filets de poisson marinés à la poêle. Cuisez-les pendant environ 10-15 minutes jusqu'à ce qu'ils soient bien cuits.",
+      "Assaisonnez avec du sel, du poivre et du piment (si vous aimez épicé). Ajoutez la coriandre fraîche hachée juste avant de servir.",
+      "Servez la Moqueca de Peixe sur du riz cuit. Un vrai régal !"
+    ]
+  },
+  {
+    nom: "Pão de Queijo",
+    pays: "Brésil",
+    contenu: "De petits pains au fromage délicieusement moelleux, parfaits en guise de collation ou d'accompagnement.",
+    categorie: "Apéritif",
+    temp_preparation: 30,
+    ingredients: "Farine de tapioca, lait, beurre, sel, œufs, fromage râpé (utilisez un fromage brésilien comme le fromage de Minas si possible)",
+    difficulte: "Facile",
+    calorie: 150,
+    preparation: [
+      "Préchauffez votre four à 180°C.",
+      "Dans une casserole, chauffez le lait, le beurre et le sel jusqu'à ébullition.",
+      "Ajoutez la farine de tapioca dans un grand bol. Versez le mélange lait-beurre chaud sur la farine et mélangez bien pour former une pâte.",
+      "Laissez la pâte refroidir pendant quelques minutes. Ensuite, incorporez les œufs un par un, en mélangeant bien entre chaque ajout.",
+      "Ajoutez le fromage râpé à la pâte et mélangez jusqu'à obtenir une pâte homogène.",
+      "Sur une plaque de cuisson recouverte de papier sulfurisé, déposez des petites portions de pâte en forme de boules, en les espaçant légèrement.",
+      "Enfournez pendant environ 15-20 minutes ou jusqu'à ce que les Pão de Queijo soient dorés et gonflés.",
+      "Servez les petits pains au fromage encore chauds. Ils sont délicieux à déguster à tout moment de la journée !"
     ]
   }
 ];

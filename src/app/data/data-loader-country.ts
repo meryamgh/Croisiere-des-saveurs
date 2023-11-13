@@ -35,6 +35,11 @@ export const countryData = [
     "name": "Mexique",
     "coordinates": [23.6345, -102.5528],
     "flagUrl": "mexique"
+  },
+  {
+    "name": "Brésil",
+    "coordinates": [-14.235, -51.9253],
+    "flagUrl": "bresil"
   }
 
 ];
