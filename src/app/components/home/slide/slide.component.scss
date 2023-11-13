@@ -8,9 +8,10 @@
 }
 
 .une {
-  margin-top: 80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 80px;
   margin-bottom: 90px;
 }
 
@@ -70,10 +71,20 @@
   text-decoration: none;
   font: message-box;
   text-align: center;
+  margin-top: 20px;
 }
 
 .texte_une:hover {
   text-decoration: underline;
   color: black;
   cursor: pointer;
+}
+
+.une a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: serif;
 }

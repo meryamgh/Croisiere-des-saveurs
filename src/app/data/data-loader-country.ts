@@ -30,7 +30,13 @@ export const countryData = [
     "name": "Italie",
     "coordinates": [41.8719, 12.5674],
     "flagUrl": "italie"
+  },
+  {
+    "name": "Mexique",
+    "coordinates": [23.6345, -102.5528],
+    "flagUrl": "mexique"
   }
+
 ];
 
 export const countries: Country[] = countryData.map(countryData => {
