@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class GridGameComponent {
   public popupOuverte:boolean = false;
 
+
   public ouvrirPopup():void {
     this.popupOuverte = true;
     this.lockScroll();
@@ -29,9 +30,8 @@ export class GridGameComponent {
 
   unlockScroll(): void {
     const body = document.body;
-    const scrollY = body.style.top;
     body.style.position = '';
     body.style.top = '';
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+
   }
 }

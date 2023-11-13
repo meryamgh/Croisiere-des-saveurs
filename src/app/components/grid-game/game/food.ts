@@ -1,13 +1,9 @@
-import {Snake} from './snake';
-
 export class Food {
   public pos: number;
 
   constructor(gridSize: number) {
-    console.log("grid" + gridSize);
     const forbiddenValues: Set<number> = this.getForbiddenValues(gridSize);
     this.pos = getIntBetweenZeroAndN(gridSize, forbiddenValues);
-    console.log(this.pos);
   }
 
   private getForbiddenValues(gridSize: number): Set<number> {
