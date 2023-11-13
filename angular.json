@@ -18,7 +18,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "lodash"
+              "lodash",
+              "leaflet"
             ],
             "outputPath": "dist/croisiere-des-saveurs",
             "index": "src/index.html",
@@ -110,3 +111,4 @@
     "analytics": "453044e3-3aa5-45ad-b3ed-a51036dd30ba"
   }
 }
+

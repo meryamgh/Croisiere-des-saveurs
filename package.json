@@ -19,7 +19,7 @@
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
     "choropleth": "^0.0.0",
-    "faker": "^6.6.6",
+    "faker": "^5.5.3",
     "font-awesome": "^4.7.0",
     "leaflet": "^1.9.4",
     "ng-particles": "^3.12.0",
