@@ -48,6 +48,7 @@ export class MapService {
             ],
             minZoom: 2,
             maxZoom: 18,
+            dragging: false,
         });
 
         const tiles = L.tileLayer(this.TILE_LAYER_URL, {

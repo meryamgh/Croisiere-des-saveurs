@@ -30,7 +30,7 @@ const generateRandomUsers = (count: number) => {
 };
 
 
-users.push(...generateRandomUsers(20).map(userData => new User(userData.nom, userData.prenom, userData.email, userData.password, userData.highScore, userData.embarquementTicketNumber)));
+users.push(...generateRandomUsers(90).map(userData => new User(userData.nom, userData.prenom, userData.email, userData.password, userData.highScore, userData.embarquementTicketNumber)));
 
 users.push(
   new User('Dupont', 'John', 'john@example.com', 'test123', 9, '18B'),
