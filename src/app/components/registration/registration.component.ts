@@ -7,15 +7,15 @@ import {loadSlim} from "tsparticles-slim";
 import {particlesOptionsAnimation} from '../../config/particles.config';
 
 @Component({
-  selector: 'app-inscription',
-  templateUrl: './inscription.component.html',
-  styleUrls: ['./inscription.component.scss']
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss']
 })
-export class InscriptionComponent {
+export class RegistrationComponent {
 
-  public inscriptionForm: FormGroup = this.formBuilder.group({
-    nom: new FormControl('', [Validators.required]),
-    prenom: new FormControl('', [Validators.required]),
+  public registrationForm: FormGroup = this.formBuilder.group({
+    lastName: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
@@ -28,11 +28,11 @@ export class InscriptionComponent {
 
   public onSubmit(): void {
 
-    this.userService.getUser(this.inscriptionForm.get('email')?.value).subscribe(user => {
+    this.userService.getUser(this.registrationForm.get('email')?.value).subscribe(user => {
 
       if (user === null) {
-        if (this.inscriptionForm.valid) {
-          this.userService.createUser(this.inscriptionForm.value).subscribe(() => {
+        if (this.registrationForm.valid) {
+          this.userService.createUser(this.registrationForm.value).subscribe(() => {
 
             this.router.navigate(['/login']);
           });

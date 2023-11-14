@@ -23,7 +23,7 @@ export class SnackGameComponent implements OnInit {
   private gridSize: number = this.size * this.size;
   private food: Food = new Food(this.gridSize, this.snake);
   public currentUser!: User;
-  @Output() popupFerme: EventEmitter<void> = new EventEmitter<void>();
+  @Output() popupClosed: EventEmitter<void> = new EventEmitter<void>();
 
 
   constructor(private userService: UserService) {
@@ -34,7 +34,7 @@ export class SnackGameComponent implements OnInit {
   }
 
   public fermerPopup(): void {
-    this.popupFerme.emit();
+    this.popupClosed.emit();
   }
 
   public startGame(): void {

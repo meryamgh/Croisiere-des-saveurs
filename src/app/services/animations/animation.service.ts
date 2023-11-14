@@ -24,7 +24,6 @@ export class AnimationService {
             scalar,
         });
 
-
     }
 
 }

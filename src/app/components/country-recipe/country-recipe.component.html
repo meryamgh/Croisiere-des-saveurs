@@ -5,10 +5,10 @@
 </section>
 
 <section class="recipe-container">
-  <div *ngFor="let recette of recettes" class="recipe-items">
-    <h1 class="title_recette">{{ recette.nom }}</h1>
-    <img [src]="recette.picture" alt="recipe-picture" class="recipe-img">
-    <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
+  <div *ngFor="let recipe of recipes" class="recipe-items">
+    <h1 class="title_recette">{{ recipe.nom }}</h1>
+    <img [src]="recipe.picture" alt="recipe-picture" class="recipe-img">
+    <a [routerLink]="['/recipe-detail', recipe.nom]">Consulter la recette</a>
   </div>
 </section>
 

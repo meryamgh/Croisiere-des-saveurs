@@ -34,5 +34,5 @@ users.push(
   new User('Johnson', 'Michael', 'michael@example.com', 'test123', 0, '541X'),
   new User('Lee', 'Emma', 'emma@example.com', 'test123', 2, '93A'),
   new User('Kim', 'David', 'david@example.com', 'test123', 8, '238I'),
-  new User('Trabelsi', 'Elyora', 'elyora@example.com', 'test123', 52, '192H')
+  new User('Trabelsi', 'Elyora', 'elyora@example.com', 'test123', 28, '192H')
 );

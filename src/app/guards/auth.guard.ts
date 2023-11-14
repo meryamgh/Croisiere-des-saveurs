@@ -6,6 +6,6 @@ export const authGuard: CanActivateFn = (): boolean => {
     if (sessionStorage.getItem("userLogged")) {
         return true;
     }
-    router.navigate(['/Accueil']);
+    router.navigate(['/Home']);
     return false;
 };

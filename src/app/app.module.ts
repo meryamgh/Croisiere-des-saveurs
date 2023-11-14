@@ -6,11 +6,11 @@ import {AppComponent} from './app.component';
 import {MapComponent} from "./components/map/map.component";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RecettesComponent} from './components/recettes/recettes.component';
+import {RecipesComponent} from './components/recipes/recipes.component';
 import {LoginComponent} from './components/login/login.component';
-import {InscriptionComponent} from './components/inscription/inscription.component';
+import {RegistrationComponent} from './components/registration/registration.component';
 import {ProfilComponent} from './components/profil/profil.component';
-import {RecetteComponent} from './components/recette/recette.component';
+import {RecipeComponent} from './components/recette/recipe.component';
 import {CustomFilterPipe} from './pipe/custom-filter.pipe';
 import {CountryRecipeComponent} from './components/country-recipe/country-recipe.component';
 import {HeaderComponent} from "./components/header/header.component";
@@ -19,7 +19,7 @@ import {SlideComponent} from "./components/home/slide/slide.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {FavorisComponent} from './components/favoris/favoris.component';
 import {NgOptimizedImage} from "@angular/common";
-import {CommentaireComponent} from './components/recette/commentaire/commentaire.component';
+import {CommentComponent} from './components/recette/comment/comment.component';
 import {PopupComponent} from './components/recette/popup/popup.component';
 import {NgParticlesModule} from "ng-particles";
 import {SnackGameComponent} from './components/grid-game/snack-game/snack-game.component';
@@ -31,11 +31,11 @@ import {GridGameComponent} from './components/grid-game/grid-game.component';
     declarations: [
         AppComponent,
         MapComponent,
-        RecettesComponent,
+        RecipesComponent,
         LoginComponent,
-        InscriptionComponent,
+        RegistrationComponent,
         ProfilComponent,
-        RecetteComponent,
+        RecipeComponent,
         CustomFilterPipe,
         HeaderComponent,
         HomeComponent,
@@ -43,7 +43,7 @@ import {GridGameComponent} from './components/grid-game/grid-game.component';
         FooterComponent,
         CountryRecipeComponent,
         FavorisComponent,
-        CommentaireComponent,
+        CommentComponent,
         PopupComponent,
         SnackGameComponent,
         GridGameComponent,

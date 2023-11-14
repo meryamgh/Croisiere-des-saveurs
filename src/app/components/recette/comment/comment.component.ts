@@ -1,18 +1,18 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Commentaire} from "../../../models/commentaire.model";
+import {Commentaire} from "../../../models/comment.model";
 import {User} from "../../../models/user.model";
-import {Recette} from "../../../models/recette.model";
+import {Recette} from "../../../models/recipe.model";
 
 @Component({
-  selector: 'app-commentaire',
-  templateUrl: './commentaire.component.html',
-  styleUrls: ['./commentaire.component.scss']
+  selector: 'app-comment',
+  templateUrl: './comment.component.html',
+  styleUrls: ['./comment.component.scss']
 })
-export class CommentaireComponent {
+export class CommentComponent {
 
   @Input() currentUserSend!: User;
-  @Input() commentaireSend !: Commentaire;
-  @Input() currentReciepieSend!: Recette;
+  @Input() commentSend !: Commentaire;
+  @Input() currentRecipeSend!: Recette;
   @Output() deleteComment: EventEmitter<number> = new EventEmitter<number>();
   @Output() updateComment: EventEmitter<Commentaire> = new EventEmitter();
   public isEditing: boolean = false;

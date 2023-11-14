@@ -15,10 +15,10 @@ export class HomeComponent implements OnInit {
   ]
   public index: number = 0;
   public currentUser !: User;
-  public link: string = "/inscription";
+  public link: string = "/registration";
 
   public ngOnInit(): void {
-    const storedUser = sessionStorage.getItem("userLogged");
+    const storedUser:string | null = sessionStorage.getItem("userLogged");
     if (storedUser) {
       this.currentUser = JSON.parse(storedUser) as User;
       this.link = "/favoris";

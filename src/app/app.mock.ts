@@ -1,6 +1,6 @@
 import {Server} from 'miragejs';
-import {commentaires} from "./data/data-loader-commentaire";
-import {recettes} from "./data/data-loader-recettes";
+import {comments} from "./data/data-loader-comments";
+import {recipes} from "./data/data-loader-recipes";
 import {users} from "./data/data-loader-user";
 import {favoris} from "./data/data-loader-favoris";
 import {countries} from "./data/data-loader-country";
@@ -11,7 +11,7 @@ export default () => {
     new Server({
         seeds(server) {
             server.db.loadData({
-                users, recettes, commentaires, favoris, countries
+                users, recipes, comments, favoris, countries
             });
         },
         routes() {
@@ -46,71 +46,71 @@ export default () => {
             });
 
 
-            this.get('/recettes', schema => schema.db['recettes']);
-            this.get('/recettes/:nom', (schema, request) => {
-                const recetteNom: string = request.params['nom'];
-                return schema.db['recettes'].findBy({nom: recetteNom});
+            this.get('/recipes', schema => schema.db['recipes']);
+            this.get('/recipes/:name', (schema, request) => {
+                const recipeName: string = request.params['name'];
+                return schema.db['recipes'].findBy({nom: recipeName});
             });
-            this.put('recettes/:nom', (schema, request) => {
-                const nomRecette: string = request.params['nom'];
-                const recetteFind = schema.db['recettes'].findBy({nom: nomRecette});
+            this.put('recipes/:name', (schema, request) => {
+                const recipeName: string = request.params['name'];
+                const recetteFind = schema.db['recipes'].findBy({nom: recipeName});
                 recetteFind.commentaire.push(request.requestBody);
                 return recetteFind;
             });
-            this.get('/recettes/country/:countryName', (schema, request) => {
+            this.get('/recipes/country/:countryName', (schema, request) => {
                 const country: string = request.params['countryName'];
-                return schema.db['recettes'].where({pays: country});
+                return schema.db['recipes'].where({pays: country});
             });
 
 
-            this.get('/commentaires', schema => schema.db['commentaires']);
-            this.get('/commentaires/:nomRecette', (schema, request) => {
-                const recette: string = request.params['nomRecette'];
-                const recetteFind = schema.db['recettes'].findBy({nom: recette});
-                return schema.db['commentaires'].where({recette: recetteFind.nom});
+            this.get('/comments', schema => schema.db['comments']);
+            this.get('/comments/:recipeName', (schema, request) => {
+                const recipe: string = request.params['recipeName'];
+                const recipeFind = schema.db['recipes'].findBy({nom: recipe});
+                return schema.db['comments'].where({recette: recipeFind.nom});
             });
 
-            this.get('/commentaires/user/:nomUser', (schema, request) => {
+            this.get('/comments/user/:nomUser', (schema, request) => {
                 const userFind: string = request.params['nomUser'];
-                return schema.db['commentaires'].where({user: userFind});
+                return schema.db['comments'].where({user: userFind});
             });
 
-            this.post('/commentaires', (schema, request) => {
-                const commentaire = JSON.parse(request.requestBody);
-                return schema.db['commentaires'].insert(commentaire);
+            this.post('/comments', (schema, request) => {
+                const comment = JSON.parse(request.requestBody);
+                return schema.db['comments'].insert(comment);
             });
 
-            this.put('/commentaires/:idCommentaire', (schema, request) => {
-                const commentaireId: string = request.params['idCommentaire'];
-                const newCommentaire = JSON.parse(request.requestBody);
-                const comment = schema.db['commentaires'].findBy({idCommentaire: commentaireId});
-                comment.commentaire = newCommentaire;
-                schema.db['commentaires'].update(schema.db['commentaires'].findBy({idCommentaire: commentaireId}), comment)
+            this.put('/comments/:idComment', (schema, request) => {
+                const commentId: string = request.params['idComment'];
+                const newComment = JSON.parse(request.requestBody);
+                const comment = schema.db['comments'].findBy({idCommentaire: commentId});
+                comment.commentaire = newComment;
+                schema.db['comments'].update(schema.db['comments'].findBy({idCommentaire: commentId}), comment)
                 return comment;
             });
 
 
-            this.delete('/commentaires/:idCommentaire', (schema, request) => {
-                const commentaire = schema.db['commentaires'].findBy({idCommentaire: request.params['idCommentaire']});
-                schema.db['commentaires'].remove(commentaire);
-                return commentaire;
+            this.delete('/comments/:idComment', (schema, request) => {
+                const comment = schema.db['comments'].findBy({idCommentaire: request.params['idComment']});
+                schema.db['comments'].remove(comment);
+                return comment;
             });
 
 
-            this.get('/favoris/user-recette/:nomUser/:recette', (schema, request) => {
-                const userFind: string = request.params['nomUser'];
-                const recetteName: string = request.params['recette'];
-                return schema.db['favoris'].where({user: userFind, favoris: recetteName});
+            this.get('/favoris/user-recipe/:userName/:recipe', (schema, request) => {
+                const userFind: string = request.params['userName'];
+                const recipeName: string = request.params['recipe'];
+                return schema.db['favoris'].where({user: userFind, favoris: recipeName});
             });
 
-            this.get('/favoris/recette/:recette', (schema, request) => {
-                const recetteName: string = request.params['recette'];
-                return schema.db['favoris'].where({favoris: recetteName});
+            this.get('/favoris/recipe/:recipe', (schema, request) => {
+                const recipeName: string = request.params['recipe'];
+                return schema.db['favoris'].where({favoris: recipeName});
             });
 
             this.get('/favoris', schema => schema.db['favoris']);
-            this.get('/favoris/user/:nomUser', (schema, request) => {
-                const user: string = request.params['nomUser'];
+            this.get('/favoris/user/:userName', (schema, request) => {
+                const user: string = request.params['userName'];
 
                 return schema.db['favoris'].where({user: user});
             });
@@ -121,10 +121,10 @@ export default () => {
             });
 
 
-            this.delete('/favoris/:user/:recette', (schema, request) => {
-                const recetteName: string = request.params['recette'];
+            this.delete('/favoris/:user/:recipe', (schema, request) => {
+                const recipeName: string = request.params['recipe'];
                 const user: string = request.params['user'];
-                const favoris = schema.db['favoris'].findBy({user: user, favoris: recetteName});
+                const favoris = schema.db['favoris'].findBy({user: user, favoris: recipeName});
                 schema.db['favoris'].remove(favoris);
                 return favoris;
 

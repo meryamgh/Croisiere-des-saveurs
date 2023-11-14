@@ -6,17 +6,17 @@ import { Component, Renderer2 } from '@angular/core';
   styleUrls: ['./grid-game.component.scss']
 })
 export class GridGameComponent {
-  public popupOuverte: boolean = false;
+  public popupOpen: boolean = false;
 
   public constructor(private renderer: Renderer2) {}
 
-  public ouvrirPopup(): void {
-    this.popupOuverte = true;
+  public openPopup(): void {
+    this.popupOpen = true;
     this.lockScroll();
   }
 
-  public fermerPopup(): void {
-    this.popupOuverte = false;
+  public closePopup(): void {
+    this.popupOpen = false;
     this.unlockScroll();
   }
 

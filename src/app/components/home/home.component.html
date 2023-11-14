@@ -1,7 +1,7 @@
 <section class="debut_accueil">
   <p class="decouverte"><i>"La cuisine, un langage universel."</i></p>
   <br>
-  <a routerLink="/recettes" class="bouton_decouvrir">Découvrir</a>
+  <a routerLink="/recipes" class="bouton_decouvrir">Découvrir</a>
 </section>
 
 <section *ngFor="let slide of slides; let i = index" [ngClass]="{'slide': true, 'active': i === index}">
@@ -26,7 +26,7 @@
   </a>
 
   <div class="images2">
-    <a routerLink="/recettes" class="voyage3">
+    <a routerLink="/recipes" class="voyage3">
       <img src="/assets/home/voyage2.png" alt="Image 3">
       <div class="contenu">
         <div class="texte">TOUTES LES SAVEURS</div>
@@ -51,7 +51,7 @@
 </section>
 
 <section *ngIf="!currentUser" class="debut_accueil">
-  <a routerLink="/inscription" class="bouton_decouvrir">Je m'inscris</a>
+  <a routerLink="/registration" class="bouton_decouvrir">Je m'inscris</a>
 </section>
 
 <app-slide></app-slide>

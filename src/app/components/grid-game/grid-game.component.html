@@ -3,7 +3,7 @@
   <img src="assets/icones/snake.jpg" class="image2" alt="snake-img">
   <section class="play-button">
     <p>CROQUE-SERPENT</p>
-    <button (click)="ouvrirPopup()">Jouer</button>
+    <button (click)="openPopup()">Jouer</button>
   </section>
 </div>
-<app-snack-game *ngIf="popupOuverte" (popupFerme)="fermerPopup()"></app-snack-game>
+<app-snack-game *ngIf="popupOpen" (popupClosed)="closePopup()"></app-snack-game>

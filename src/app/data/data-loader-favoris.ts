@@ -1,7 +1,7 @@
 import { Favoris } from "../models/favoris.model";
-import { recettes } from "./data-loader-recettes";
+import { recipes } from "./data-loader-recipes";
 import { users } from "./data-loader-user";
-import {Recette} from "../models/recette.model";
+import {Recette} from "../models/recipe.model";
 
 
 function shuffleArray(array:Recette[]): void {
@@ -16,7 +16,7 @@ export function generateRandomFavoris(): Favoris[] {
 
   for (let i = 0; i < users.length; i++) {
     const randomUserIndex:number = i;
-    const userRecipes:Recette[] = [...recettes];
+    const userRecipes:Recette[] = [...recipes];
     shuffleArray(userRecipes);
     const selectedRecipes:Recette[] = userRecipes.slice(0, 5);
 

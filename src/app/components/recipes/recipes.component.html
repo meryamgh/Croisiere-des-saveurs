@@ -10,39 +10,39 @@
 
 <section class="filter-bar">
   <div class="first-filter">
-    <select [(ngModel)]="paysFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
+    <select [(ngModel)]="countryFilter" (ngModelChange)="applyFilter()" class="filter">
       <option value="">Tous les pays</option>
-      <option *ngFor="let pays of paysOptions" [value]="pays">{{ pays }}</option>
+      <option *ngFor="let pays of countryOptions" [value]="pays">{{ pays }}</option>
     </select>
 
-    <select [(ngModel)]="categorieFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
+    <select [(ngModel)]="categoryFilter" (ngModelChange)="applyFilter()" class="filter">
       <option value="">Toutes les catégories</option>
-      <option *ngFor="let categorie of categorieOptions" [value]="categorie">{{ categorie }}</option>
+      <option *ngFor="let categorie of categoryOptions" [value]="categorie">{{ categorie }}</option>
     </select>
 
-    <select [(ngModel)]="difficulteFiltre" (ngModelChange)="appliquerFiltres()" class="filter">
+    <select [(ngModel)]="difficultyFilter" (ngModelChange)="applyFilter()" class="filter">
       <option value="">Toutes les difficultés</option>
-      <option *ngFor="let difficulte of difficulteOptions" [value]="difficulte">{{ difficulte }}</option>
+      <option *ngFor="let difficulte of difficultyOptions" [value]="difficulte">{{ difficulte }}</option>
     </select>
 
-    <input [(ngModel)]="tempsPreparationFiltre" (ngModelChange)="appliquerFiltres()" type="number"
+    <input [(ngModel)]="preparationTimeFilter" (ngModelChange)="applyFilter()" type="number"
            placeholder="Temps de préparation (minutes)" class="section-filter">
   </div>
 
   <div class="filter-search">
-    <input [(ngModel)]="term" placeholder="Rechercher une recette...">
+    <input [(ngModel)]="searchTerm" placeholder="Rechercher une recette...">
     <img class="search" src="/assets/icones/search.svg" alt="img-icone">
   </div>
 </section>
 
-<section *ngIf="recettes" class="recipe-container">
-  <div *ngFor="let recette of recipes | customFilter:term" class="recipe-item">
+<section *ngIf="allRecipesList" class="recipe-container">
+  <div *ngFor="let recette of recipes | customFilter:searchTerm" class="recipe-item">
     <h1 class="title_recette">{{ recette.nom }}</h1>
     <img src="{{recette.picture}}" alt="picture-recette" class="recipe-img"/>
-    <a [routerLink]="['/recette-detail', recette.nom]">Consulter la recette</a>
+    <a [routerLink]="['/recipe-detail', recette.nom]">Consulter la recette</a>
 
     <span class="like">
-      <img [src]="recettes.get(recette.nom) === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
+      <img [src]="allRecipesList.get(recette.nom) === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
            alt="Coeur" class="like-img" (click)="addFavoris(recette)"/>
       {{ recipeNbrLikes.get(recette.nom) }}
     </span>

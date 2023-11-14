@@ -40,7 +40,7 @@ export class LoginComponent {
         } else {
           if (data.password == password) {
             this.userService.isLogged(data);
-            this.router.navigate(['/Accueil']);
+            this.router.navigate(['/Home']);
           } else {
             this.userNotFound = false;
             this.incorrectPassword = true;

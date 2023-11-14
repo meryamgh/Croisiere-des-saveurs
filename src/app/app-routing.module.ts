@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MapComponent} from "./components/map/map.component";
-import {RecettesComponent} from "./components/recettes/recettes.component";
+import {RecipesComponent} from "./components/recipes/recipes.component";
 import {LoginComponent} from "./components/login/login.component";
-import {InscriptionComponent} from "./components/inscription/inscription.component";
+import {RegistrationComponent} from "./components/registration/registration.component";
 import {ProfilComponent} from "./components/profil/profil.component";
-import {RecetteComponent} from "./components/recette/recette.component";
+import {RecipeComponent} from "./components/recette/recipe.component";
 import {CountryRecipeComponent} from "./components/country-recipe/country-recipe.component";
 import {HomeComponent} from "./components/home/home.component";
 import {FavorisComponent} from "./components/favoris/favoris.component";
@@ -13,17 +13,17 @@ import {authGuard} from "./guards/auth.guard";
 import {GridGameComponent} from "./components/grid-game/grid-game.component";
 
 const routes: Routes = [
-    {path: "Accueil", component: HomeComponent},
+    {path: "Home", component: HomeComponent},
     {path: "map", component: MapComponent},
-    {path: "recettes", component: RecettesComponent},
+    {path: "recipes", component: RecipesComponent},
     {path: "login", component: LoginComponent},
-    {path: "inscription", component: InscriptionComponent},
+    {path: "registration", component: RegistrationComponent},
     {path: "profil", component: ProfilComponent, canActivate: [authGuard]},
-    {path: "recette-detail/:nom", component: RecetteComponent},
+    {path: "recipe-detail/:nom", component: RecipeComponent},
     {path: "country-recipe/:nom", component: CountryRecipeComponent},
     {path: "favoris", component: FavorisComponent, canActivate: [authGuard]},
     {path: "game", component: GridGameComponent, canActivate: [authGuard]},
-    {path: "**", redirectTo: '/Accueil', pathMatch: 'full'},
+    {path: "**", redirectTo: '/Home', pathMatch: 'full'},
 ];
 
 @NgModule({

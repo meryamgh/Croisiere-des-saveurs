@@ -7,10 +7,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class PopupComponent {
 
-    @Input() etapesPreparation: string[] = [];
-    @Output() popupFerme: EventEmitter<void> = new EventEmitter<void>();
+    @Input() stepPreparation: string[] = [];
+    @Output() closePopupEvent: EventEmitter<void> = new EventEmitter<void>();
 
-    public fermerPopup(): void {
-        this.popupFerme.emit();
+    public closePopup(): void {
+        this.closePopupEvent.emit();
     }
 }

@@ -21,13 +21,13 @@ export class FavorisService {
         return this.http.get<Favoris[]>(`${this.favorisUrl}/user/${currentUser}`);
     }
 
-    public getFavorisRecette(recette: string): Observable<Favoris[]> {
+    public getFavoriteRecipes(recipe: string): Observable<Favoris[]> {
 
-        return this.http.get<Favoris[]>(`${this.favorisUrl}/recette/${recette}`);
+        return this.http.get<Favoris[]>(`${this.favorisUrl}/recipe/${recipe}`);
     }
 
-    public getFavorisUserRecette(currentUser: string, recette: string): Observable<Favoris[]> {
-        return this.http.get<Favoris[]>(`${this.favorisUrl}/user-recette/${currentUser}/${recette}`);
+    public getFavoriteUserRecipe(currentUser: string, recipe: string): Observable<Favoris[]> {
+        return this.http.get<Favoris[]>(`${this.favorisUrl}/user-recipe/${currentUser}/${recipe}`);
     }
 
     public addFavoris(newFavoris: Favoris): Observable<Favoris> {
