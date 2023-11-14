@@ -137,7 +137,7 @@ export class RecetteComponent implements OnInit {
 
     }
 
-    ngOnInit(): void {
+  public ngOnInit(): void {
         this.getReciepie();
         this.getUser();
     }

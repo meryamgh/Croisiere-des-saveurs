@@ -28,7 +28,7 @@ export class SnackGameComponent implements OnInit{
 
 
 
-  constructor(private userService:UserService) {
+  public constructor(private userService:UserService) {
   }
 
   public fermerPopup():void {
@@ -157,7 +157,7 @@ export class SnackGameComponent implements OnInit{
     this.food = new Food(this.gridSize, this.snake);
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.startGame();
   }
 }

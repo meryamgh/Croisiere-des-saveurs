@@ -137,7 +137,7 @@ export class RecettesComponent implements OnInit {
         this.animationService.playConfettiAnimation(10, 4);
     }
 
-    ngOnInit(): void {
+  public ngOnInit(): void {
         this.loadData();
     }
 }
