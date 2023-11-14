@@ -77,11 +77,11 @@ export class SnackGameComponent implements OnInit {
 
   public checkHighScore(): void {
 
-    if (this.snake.tail.length + 1 > this.currentUser.highScore) {
+    if (this.snake.tail.length - 2 > this.currentUser.highScore) {
 
-      this.currentUser.highScore = this.snake.tail.length + 1;
+      this.currentUser.highScore = this.snake.tail.length - 2;
       this.userService.updateUser(this.currentUser).subscribe();
-      if (this.snake.tail.length + 1 > this.bestUserScore.highScore) {
+      if (this.snake.tail.length - 2 > this.bestUserScore.highScore) {
         this.bestUserScore = this.currentUser;
 
       }
