@@ -1,54 +1,63 @@
-<div class="particles-container">
-    <ng-particles
-            [options]="particlesOptions"
-            [particlesInit]="particlesInit"
-    ></ng-particles>
-</div>
-<div class="container">
-    <form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()">
-        <h2>INSCRIPTION</h2>
-        <section>
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" formControlName="nom">
-            <div *ngIf="inscriptionForm.get('nom')?.hasError('required') && inscriptionForm.get('nom')?.touched" class="error-message">
-                Le nom est requis.
-            </div>
-        </section>
-        <section>
-            <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" formControlName="prenom">
-            <div *ngIf="inscriptionForm.get('prenom')?.hasError('required') && inscriptionForm.get('prenom')?.touched" class="error-message">
-                Le prénom est requis.
-            </div>
-        </section>
-        <section>
-            <label for="email">Email :</label>
-            <input type="email" id="email" formControlName="email">
-            <div *ngIf="inscriptionForm.get('email')?.hasError('required') && inscriptionForm.get('email')?.touched" class="error-message">
-                L'email est requis.
-            </div>
-            <div *ngIf="inscriptionForm.get('email')?.hasError('email') && inscriptionForm.get('email')?.touched" class="error-message">
-                L'email est invalide.
-            </div>
-        </section>
-        <section>
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" formControlName="password">
-            <div *ngIf="inscriptionForm.get('password')?.hasError('required') && inscriptionForm.get('password')?.touched" class="error-message">
-                Le mot de passe est requis.
-            </div>
-            <div *ngIf="inscriptionForm.get('password')?.hasError('minlength') && inscriptionForm.get('password')?.touched" class="error-message">
-                Le mot de passe doit avoir au moins 6 caractères.
-            </div>
-        </section>
-        <button type="submit" [disabled]="!inscriptionForm.valid">Inscription</button>
+<section class="particles-container">
+  <ng-particles
+    [options]="particlesOptions"
+    [particlesInit]="particlesInit"
+  ></ng-particles>
+</section>
 
-        <section *ngIf="userAlreadyExists" class="error-message">
-            Cet utilisateur existe déjà. Veuillez utiliser un autre email.
-        </section>
+<section class="container">
+  <form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()">
+    <h2>INSCRIPTION</h2>
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" formControlName="nom">
 
-        <section class="login-link">
-            <p><a routerLink="/login">Déjà un compte ? <i><u>Connectez-vous</u></i></a></p>
-        </section>
-    </form>
-</div>
+    <div *ngIf="inscriptionForm.get('nom')?.hasError('required') && inscriptionForm.get('nom')?.touched"
+         class="error-message">
+      Le nom est requis.
+    </div>
+
+    <label for="prenom">Prénom :</label>
+    <input type="text" id="prenom" formControlName="prenom">
+
+    <div *ngIf="inscriptionForm.get('prenom')?.hasError('required') && inscriptionForm.get('prenom')?.touched"
+         class="error-message">
+      Le prénom est requis.
+    </div>
+
+    <label for="email">Email :</label>
+    <input type="email" id="email" formControlName="email">
+
+    <div *ngIf="inscriptionForm.get('email')?.hasError('required') && inscriptionForm.get('email')?.touched"
+         class="error-message">
+      L'email est requis.
+    </div>
+
+    <div *ngIf="inscriptionForm.get('email')?.hasError('email') && inscriptionForm.get('email')?.touched"
+         class="error-message">
+      L'email est invalide.
+    </div>
+
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" formControlName="password">
+
+    <div *ngIf="inscriptionForm.get('password')?.hasError('required') && inscriptionForm.get('password')?.touched"
+         class="error-message">
+      Le mot de passe est requis.
+    </div>
+
+    <div *ngIf="inscriptionForm.get('password')?.hasError('minlength') && inscriptionForm.get('password')?.touched"
+         class="error-message">
+      Le mot de passe doit avoir au moins 6 caractères.
+    </div>
+
+    <button type="submit" [disabled]="!inscriptionForm.valid">Inscription</button>
+
+    <div *ngIf="userAlreadyExists" class="error-message">
+      Cet utilisateur existe déjà. Veuillez utiliser un autre email.
+    </div>
+
+    <div class="login-link">
+      <p><a routerLink="/login">Déjà un compte ? <i><u>Connectez-vous</u></i></a></p>
+    </div>
+  </form>
+</section>

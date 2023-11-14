@@ -1,23 +1,25 @@
-<div *ngIf="currentUser" class="banniere">
-    <p>Bienvenue {{ currentUser.prenom }} !</p>
-</div>
-<nav class="menu_nav">
-    <img src="/assets/icones/logoSAVEURS.svg" alt="logo" class="logo">
-    <a routerLink="/Accueil">ACCUEIL</a>
-    <a routerLink="/map">CUISINE DU MONDE</a>
-    <a routerLink="/recettes">TOUTES LES SAVEURS</a>
+<section *ngIf="currentUser" class="banniere">
+  <p>Bienvenue {{ currentUser.prenom }} !</p>
+</section>
 
-    <div class="profil-class">
-        <img src="/assets/icones/connecter.svg" alt="logo" class="profil">
-        <div *ngIf="currentUser; else elseBlock">
-            <a routerLink="/profil" class="nav-link"> PROFIL </a>
-            <a routerLink="/favoris">MES FAVORIS</a>
-            <a routerLink="/game">GAME</a>
-            <a (click)="logOut()" routerLink="/" class="nav-link"> DECONNEXION </a>
-        </div>
+<nav class="menu_nav">
+  <img src="/assets/icones/logoSAVEURS.svg" alt="logo" class="logo">
+  <a routerLink="/Accueil">ACCUEIL</a>
+  <a routerLink="/map">CUISINE DU MONDE</a>
+  <a routerLink="/recettes">TOUTES LES SAVEURS</a>
+
+  <section class="profil-class">
+    <img src="/assets/icones/connecter.svg" alt="logo" class="profil">
+    <div *ngIf="currentUser; else elseBlock">
+      <a routerLink="/profil" class="nav-link"> PROFIL </a>
+      <a routerLink="/favoris">MES FAVORIS</a>
+      <a routerLink="/game">GAME</a>
+      <a (click)="logOut()" routerLink="/" class="nav-link"> DECONNEXION </a>
     </div>
+  </section>
 </nav>
+
 <ng-template #elseBlock>
-    <a routerLink="/inscription" class="nav-link">INSCRIPTION</a>
-    <a routerLink="/login" class="nav-link">CONNEXION</a>
+  <a routerLink="/inscription" class="nav-link">INSCRIPTION</a>
+  <a routerLink="/login" class="nav-link">CONNEXION</a>
 </ng-template>

@@ -4,23 +4,23 @@ import {UserService} from "../../services/user/user.service";
 
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
 
-    @Input() currentUser: User | undefined;
-    @Input() isLoggedIn: boolean = false;
+  @Input() currentUser: User | undefined;
+  @Input() isLoggedIn: boolean = false;
 
-    constructor(private userService: UserService) {
-    }
+  constructor(private userService: UserService) {
+  }
 
-    public logOut(): void {
-        this.userService.getDeconnected();
-        this.isLoggedIn = false;
-        this.currentUser = undefined;
-    }
+  public logOut(): void {
+    this.userService.getDeconnected();
+    this.isLoggedIn = false;
+    this.currentUser = undefined;
+  }
 
 }
 

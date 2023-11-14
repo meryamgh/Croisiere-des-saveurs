@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-grid-game',
@@ -6,19 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./grid-game.component.scss']
 })
 export class GridGameComponent {
-  public popupOuverte:boolean = false;
+  public popupOuverte: boolean = false;
 
 
-  public ouvrirPopup():void {
+  public ouvrirPopup(): void {
     this.popupOuverte = true;
     this.lockScroll();
   }
 
-  public fermerPopup():void {
+  public fermerPopup(): void {
     this.popupOuverte = false;
     this.unlockScroll();
   }
-  lockScroll(): void {
+
+  public lockScroll(): void {
     const body = document.body;
 
     body.style.position = 'fixed';
@@ -28,7 +29,7 @@ export class GridGameComponent {
 
   }
 
-  unlockScroll(): void {
+  public unlockScroll(): void {
     const body = document.body;
     body.style.position = '';
     body.style.top = '';
