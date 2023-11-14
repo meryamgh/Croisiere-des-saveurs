@@ -4,7 +4,7 @@
   text-decoration: none;
   font-size: 25px;
   font-weight: bold;
-  margin-left : 40px;
+  margin-left: 40px;
 }
 
 .une {
@@ -15,55 +15,34 @@
   margin-bottom: 90px;
 }
 
-.une1 img:hover {
+.une-item img:hover {
   transform: scale(1.05);
   cursor: pointer;
 }
 
-.une2 img:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-}
-
-.une3 img:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-}
-
-.une4 img:hover {
-  transform: scale(1.05);
-  cursor: pointer;
+.une-item img {
+  height: 400px;
+  filter: grayscale(20%);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .une1 img {
-  height : 400px;
   width: 247px;
   margin-right: 22px;
-  filter : grayscale(20%);
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.une2 img{
-  height: 400px;
+.une2 img {
   width: 267px;
   margin-right: 22px;
-  filter : grayscale(20%);
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.une3 img{
-  height: 400px;
+.une3 img {
   width: 300px;
   margin-right: 22px;
-  filter : grayscale(20%);
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.une4 img{
-  height: 400px;
+.une4 img {
   width: 267px;
-  filter : grayscale(20%);
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .texte_une {

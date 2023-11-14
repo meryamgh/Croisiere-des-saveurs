@@ -1,75 +1,76 @@
 <div class="recette-info-container" *ngIf="currentReciepie">
-    <section class="recette-photo">
-        <img src="{{currentReciepie.picture}}" alt="picture-recette" class="recette-info-container-image"/>
 
-        <br><br>
+  <section class="recette-photo">
 
+    <img src="{{currentReciepie.picture}}" alt="picture-recette" class="recette-info-container-image"/>
 
-        <div class="commentaires-container" *ngIf="commentaires">
-            <h2>Commentaires ({{ commentaires.length }})</h2>
-            <div *ngFor="let comment of commentaires" class="commentaire">
-                <div [ngClass]="usersComments.get(comment.user)">
-                    <app-commentaire [currentUserSend]="currentUser" [currentReciepieSend]="currentReciepie"
-                                     [commentaireSend]="comment"
-                                     (deleteComment)="deleteCommentaireSend($event)"
-                                     (updateComment)="updateCommentaire($event)"
-                    ></app-commentaire>
-                </div>
-            </div>
-            <div class="ajout-commentaire-container" [formGroup]="commentaireForm">
-                <input formControlName="commentaire" placeholder="Ajouter un commentaire..." class="comment-input">
-                <button class="ajouter-commentaire" (click)="ajoutCommentaire()">Ajouter</button>
-            </div>
+    <div class="commentaires-container" *ngIf="commentaires">
+      <h2>Commentaires ({{ commentaires.length }})</h2>
+
+      <section *ngFor="let comment of commentaires" class="commentaire">
+        <div [ngClass]="usersComments.get(comment.user)">
+          <app-commentaire [currentUserSend]="currentUser" [currentReciepieSend]="currentReciepie"
+                           [commentaireSend]="comment"
+                           (deleteComment)="deleteCommentaireSend($event)"
+                           (updateComment)="updateCommentaire($event)"
+          ></app-commentaire>
         </div>
+      </section>
 
+      <section class="ajout-commentaire-container" [formGroup]="commentaireForm">
+        <input formControlName="commentaire" placeholder="Ajouter un commentaire..." class="comment-input">
+        <button class="ajouter-commentaire" (click)="ajoutCommentaire()">Ajouter</button>
+      </section>
+    </div>
 
+  </section>
+
+  <section class="recette-details">
+
+    <section class="first-part">
+      <article class="name-country">
+        <h1>{{ currentReciepie.nom }}</h1>
+        <span class="valeur_pays">{{ currentReciepie.pays }}</span>
+      </article>
+      <article class="like">
+        <img [src]="recetteFav.toString() === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
+             alt="Coeur" class="like-img" (click)="addToFav()"/>
+        {{ nbrFav }}
+      </article>
     </section>
-
-    <section class="recette-details">
-        <div class="first-part">
-            <div class="name-country">
-                <h1>{{ currentReciepie.nom }}</h1>
-                <span class="valeur_pays">{{ currentReciepie.pays }}</span>
-            </div>
-            <span class="like">
-      <img [src]="recetteFav.toString() === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
-           alt="Coeur" class="like-img" (click)="addToFav()"/>
-                {{ nbrFav }}
-      </span>
-        </div>
-        <hr>
+    <hr>
 
 
-        <p><span class="label">Ingrédients:</span> <span class="valeur">{{ currentReciepie.ingredients }}</span></p>
-        <p><span class="label">Difficulté:</span> <span class="valeur">{{ currentReciepie.difficulte }}</span></p>
-        <p><span class="label">Temps de préparation:</span> <span class="valeur">{{ currentReciepie.temp_preparation }}
-            min</span></p>
-        <p><span class="label">Catégorie:</span> <span class="valeur categorie">{{ currentReciepie.categorie }}</span>
-        </p>
-        <p><span class="label">Calories:</span> <span class="valeur">{{ currentReciepie.calorie }}</span></p>
-        <p><span class="label">Contenu:</span> <span class="valeur">{{ currentReciepie.contenu }}</span></p>
+    <p><span class="label">Ingrédients:</span> <span class="valeur">{{ currentReciepie.ingredients }}</span></p>
+    <p><span class="label">Difficulté:</span> <span class="valeur">{{ currentReciepie.difficulte }}</span></p>
+    <p><span class="label">Temps de préparation:</span> <span class="valeur">{{ currentReciepie.temp_preparation }}
+      min</span></p>
+    <p><span class="label">Catégorie:</span> <span class="valeur categorie">{{ currentReciepie.categorie }}</span>
+    </p>
+    <p><span class="label">Calories:</span> <span class="valeur">{{ currentReciepie.calorie }}</span></p>
+    <p><span class="label">Contenu:</span> <span class="valeur">{{ currentReciepie.contenu }}</span></p>
 
-        <button (click)="openPreparationPopup()" class="preparation">Voir la préparation</button>
+    <button (click)="openPreparationPopup()" class="preparation">Voir la préparation</button>
 
-        <div class="text">
-            <p class="font"><i>Avez-vous essayé cette recette ?</i></p>
-            <p class="font"><i>Faites-nous part de vos impressions dans les commentaires.</i></p>
-            <p class="font"><i>Nous attendons vos retours !</i></p>
-        </div>
+    <div class="text">
+      <p class="font"><i>Avez-vous essayé cette recette ?</i></p>
+      <p class="font"><i>Faites-nous part de vos impressions dans les commentaires.</i></p>
+      <p class="font"><i>Nous attendons vos retours !</i></p>
+    </div>
 
-        <div class="bouton-container">
-            <button (click)="getComments()" class="button_commentaire">Laissez votre avis</button>
-        </div>
+    <div class="bouton-container">
+      <button (click)="getComments()" class="button_commentaire">Laissez votre avis</button>
+    </div>
 
-    </section>
+  </section>
 
 
-    <section class="popup-overlay">
-        <app-popup
-                *ngIf="etapesPreparationPopupOpen"
-                [etapesPreparation]="currentReciepie.preparation"
-                (popupFerme)="fermerPreparationPopup()">
-        </app-popup>
-    </section>
+  <section class="popup-overlay">
+    <app-popup
+      *ngIf="etapesPreparationPopupOpen"
+      [etapesPreparation]="currentReciepie.preparation"
+      (popupFerme)="fermerPreparationPopup()">
+    </app-popup>
+  </section>
 </div>
 

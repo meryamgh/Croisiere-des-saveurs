@@ -11,65 +11,63 @@ import {UserService} from "../../../services/user/user.service";
   templateUrl: './snack-game.component.html',
   styleUrls: ['./snack-game.component.scss']
 })
-export class SnackGameComponent implements OnInit{
-  private size:number = 20;
-  public cells:number[] = new Array(this.size * this.size);
-  public  timestep:number = 100;
+export class SnackGameComponent implements OnInit {
+  private size: number = 20;
+  public cells: number[] = new Array(this.size * this.size);
+  public timestep: number = 100;
   public snake: Snake = new Snake();
   public bestUserScore !: User;
-  public dead:boolean = false;
-  public time:number = 0;
+  public dead: boolean = false;
+  public time: number = 0;
 
-  private gridSize  : number= this.size * this.size;
-  private food : Food = new Food(this.gridSize,this.snake);
+  private gridSize: number = this.size * this.size;
+  private food: Food = new Food(this.gridSize, this.snake);
   public currentUser!: User;
   @Output() popupFerme: EventEmitter<void> = new EventEmitter<void>();
 
 
-
-
-  public constructor(private userService:UserService) {
+  constructor(private userService: UserService) {
   }
 
-  public fermerPopup():void {
+  public fermerPopup(): void {
     this.popupFerme.emit();
   }
 
-  public startGame():void {
+  public startGame(): void {
     this.playGame();
-    const storedUser:string|null = sessionStorage.getItem("userLogged");
-    if(storedUser) {
+    const storedUser: string | null = sessionStorage.getItem("userLogged");
+    if (storedUser) {
       this.currentUser = JSON.parse(storedUser) as User;
     }
-   this.userService.getUserWithHighestScore().subscribe((data =>{
-     this.bestUserScore = data;
-   }));
+    this.userService.getUserWithHighestScore().subscribe((data => {
+      this.bestUserScore = data;
+    }));
 
   }
 
-  public restartGame():void {
+  public restartGame(): void {
 
     this.snake = new Snake();
     this.dead = false;
     this.time = 0;
-    this.food = new Food(this.gridSize,this.snake);
+    this.food = new Food(this.gridSize, this.snake);
     this.playGame();
   }
 
-  public isFood(idx: number):boolean {
+  public isFood(idx: number): boolean {
     return idx === this.food.pos;
 
   }
 
-  public playGame():void {
-    const runTime = ():void => {
-      setTimeout(():void => {
+  public playGame(): void {
+    const runTime = (): void => {
+      setTimeout((): void => {
         this.goStep();
         this.dead = this.snake.checkDead(this.size);
         this.time++;
         if (!this.dead) {
           runTime();
-        }else{
+        } else {
           this.checkHighScore();
         }
       }, this.timestep)
@@ -77,13 +75,13 @@ export class SnackGameComponent implements OnInit{
     runTime();
   }
 
-  public checkHighScore():void {
+  public checkHighScore(): void {
 
-    if(this.snake.tail.length+1>this.currentUser.highScore){
+    if (this.snake.tail.length + 1 > this.currentUser.highScore) {
 
-      this.currentUser.highScore = this.snake.tail.length+1;
+      this.currentUser.highScore = this.snake.tail.length + 1;
       this.userService.updateUser(this.currentUser).subscribe();
-      if(this.snake.tail.length+1>this.bestUserScore.highScore){
+      if (this.snake.tail.length + 1 > this.bestUserScore.highScore) {
         this.bestUserScore = this.currentUser;
 
       }
@@ -92,12 +90,12 @@ export class SnackGameComponent implements OnInit{
   }
 
   public isBorderCell(index: number): boolean {
-    return index < this.size  || index % this.size === 0 || (index + 1) % this.size  === 0 || index >= this.size  * (this.size  - 1);
+    return index < this.size || index % this.size === 0 || (index + 1) % this.size === 0 || index >= this.size * (this.size - 1);
   }
 
 
   @HostListener('window:keydown', ['$event'])
-  public onKeypress(e: KeyboardEvent):void {
+  public onKeypress(e: KeyboardEvent): void {
     if (!this.dead) {
       switch (e.key) {
         case 'ArrowRight':
@@ -117,16 +115,15 @@ export class SnackGameComponent implements OnInit{
     }
   }
 
-  public goStep():void {
+  public goStep(): void {
     this.snake.goStep(this.size);
     this.eatFood();
   }
 
 
-
-  public eatFood():void {
-    if(this.snake.head.pos){
-      const pos:number = this.snake.head.pos;
+  public eatFood(): void {
+    if (this.snake.head.pos) {
+      const pos: number = this.snake.head.pos;
       if (this.isFood(pos)) {
         this.doSpawnFood();
         this.snake.grow();
@@ -136,9 +133,9 @@ export class SnackGameComponent implements OnInit{
 
   }
 
-  public changeDirAndGoStep(dir:Direction):void {
+  public changeDirAndGoStep(dir: Direction): void {
     if (dir) {
-      const canChangeDir:boolean = this.getCanChangeDir(dir, this.snake.dir);
+      const canChangeDir: boolean = this.getCanChangeDir(dir, this.snake.dir);
       if (canChangeDir) {
         this.snake.dir = dir;
         this.goStep();
@@ -146,18 +143,18 @@ export class SnackGameComponent implements OnInit{
     }
   }
 
- public getCanChangeDir(d1: Direction, d2: Direction):boolean {
+  public getCanChangeDir(d1: Direction, d2: Direction): boolean {
     const dirs: Direction[] = [d1, d2];
-    const filteredUpDown:number = dirs.filter(dir => dir === Direction.UP || dir === Direction.DOWN).length;
-    const onlyOneDir:boolean = filteredUpDown === 2 || filteredUpDown === 0;
+    const filteredUpDown: number = dirs.filter(dir => dir === Direction.UP || dir === Direction.DOWN).length;
+    const onlyOneDir: boolean = filteredUpDown === 2 || filteredUpDown === 0;
     return !onlyOneDir;
   }
 
-  public doSpawnFood():void {
+  public doSpawnFood(): void {
     this.food = new Food(this.gridSize, this.snake);
   }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.startGame();
   }
 }

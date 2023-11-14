@@ -36,7 +36,7 @@ export class FavorisComponent implements OnInit {
     this.favoris = this.favoris.filter(item => item !== favItem);
   }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.getFavoris();
   }
 

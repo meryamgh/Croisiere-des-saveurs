@@ -1,19 +1,5 @@
-.contact-footer {
-  width: 400px;
-}
-
-.component-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-footer img {
-  height: 168px;
-  width: 280px;
-  float: left;
-  margin-left: 45px;
-  margin-top: 10px;
+.text-center {
+  text-align: center;
 }
 
 footer {
@@ -35,27 +21,41 @@ footer a:hover {
   color: #555;
 }
 
+.component-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-footer img {
+  height: 168px;
+  width: 280px;
+  float: left;
+  margin-left: 45px;
+  margin-top: 10px;
+}
+
 .title {
+  @extend .text-center;
   align-self: flex-start;
   margin: 0;
   padding: 20px 0;
-  text-align: center;
-  text-decoration: none;
   font-size: small;
   width: 325px;
 }
 
+.title img {
+  width: 30px;
+}
+
 .description {
-  text-align: center;
+  @extend .text-center;
   font-size: small;
   margin-top: 20px;
 }
 
-.title img {
-  width: 30px
-}
-
 .service-clients {
+  @extend .text-center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,4 +70,8 @@ footer a:hover {
 .contact-item img {
   width: 30px;
   margin-right: 10px;
+}
+
+.contact-footer {
+  width: 400px;
 }

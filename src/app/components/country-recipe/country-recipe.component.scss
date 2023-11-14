@@ -1,3 +1,13 @@
+.presentation, .decouverte, .title {
+  text-align: center;
+  font-family: serif;
+}
+
+.title {
+  color: #6F6D63;
+  text-transform: uppercase;
+}
+
 .recipe-container {
   display: flex;
   flex-wrap: wrap;
@@ -21,18 +31,14 @@
 }
 
 .title_recette, .title {
+  font-size: 20px;
+  margin-bottom: 20px;
   text-align: center;
   font-family: serif;
 }
 
-.recipe-items h1, .title {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-.recipe-items a, .like {
-  display: inline-flex;
-  align-items: center;
+.recipe-items a {
+  display: inline-block;
   text-decoration: none;
   font-size: 16px;
   background-color: white;
@@ -42,7 +48,7 @@
   transition: background-color 0.3s ease-in-out;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   padding: 10px 20px;
-  margin-right: 90px;
+  margin-top: 10px;
 }
 
 .recipe-items a:hover {
@@ -54,14 +60,4 @@
   max-width: 100%;
   height: auto;
   margin-bottom: 15px;
-}
-
-.presentation, .decouverte {
-  text-align: center;
-  font-family: serif;
-}
-
-.title {
-  color: #6F6D63;
-  text-transform: uppercase;
 }
