@@ -21,8 +21,8 @@ export class SnackGameComponent implements OnInit{
   public time:number = 0;
 
   private gridSize  : number= this.size * this.size;
-  private food : Food = new Food(this.gridSize);
-   public currentUser!: User;
+  private food : Food = new Food(this.gridSize,this.snake);
+  public currentUser!: User;
   @Output() popupFerme: EventEmitter<void> = new EventEmitter<void>();
 
 
@@ -31,7 +31,7 @@ export class SnackGameComponent implements OnInit{
   constructor(private userService:UserService) {
   }
 
-  public fermerPopup() {
+  public fermerPopup():void {
     this.popupFerme.emit();
   }
 
@@ -52,7 +52,7 @@ export class SnackGameComponent implements OnInit{
     this.snake = new Snake();
     this.dead = false;
     this.time = 0;
-    this.food = new Food(this.gridSize);
+    this.food = new Food(this.gridSize,this.snake);
     this.playGame();
   }
 
@@ -97,7 +97,7 @@ export class SnackGameComponent implements OnInit{
 
 
   @HostListener('window:keydown', ['$event'])
-  onKeypress(e: KeyboardEvent):void {
+  public onKeypress(e: KeyboardEvent):void {
     if (!this.dead) {
       switch (e.key) {
         case 'ArrowRight':
@@ -154,7 +154,7 @@ export class SnackGameComponent implements OnInit{
   }
 
   public doSpawnFood():void {
-    this.food = new Food(this.gridSize);
+    this.food = new Food(this.gridSize, this.snake);
   }
 
   ngOnInit(): void {

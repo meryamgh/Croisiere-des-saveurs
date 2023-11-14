@@ -19,7 +19,7 @@
 
     <div class="cells">
       <div class="cell" [ngClass]="{'snake': snake.isSnakeCell(idx), 'border': isBorderCell(idx)}"
-           *ngFor="let cell of cells; let idx = index;">
+           *ngFor="let _ of cells; let idx = index;">
         <img *ngIf="isFood(idx)" src="assets/icones/pizza_icone.png" alt="Egg Image">
       </div>
     </div>

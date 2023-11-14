@@ -30,7 +30,7 @@ export class ProfilComponent implements OnInit {
 
     }
 
-    validateProfil(): void {
+    public validateProfil(): void {
         this.editProfil = false;
 
         this.userService.updateUser(this.currentUser).subscribe();
