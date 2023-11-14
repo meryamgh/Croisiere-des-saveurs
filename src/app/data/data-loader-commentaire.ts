@@ -2,7 +2,6 @@ import {Commentaire} from "../models/commentaire.model";
 import {recettes} from "./data-loader-recettes";
 import {users} from "./data-loader-user";
 
-
 function generateRandomCommentaires(userCount: number): Commentaire[] {
   const commentaires: Commentaire[] = [];
 
@@ -21,7 +20,6 @@ function generateRandomCommentaires(userCount: number): Commentaire[] {
   }
   return commentaires;
 }
-
 
 function generateRandomComment(): string {
   const comments:string[] = [

@@ -4,7 +4,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Container, Engine} from "tsparticles-engine";
 import {loadSlim} from "tsparticles-slim";
-import {particlesOptionsAnimation} from './particles.config';
+import {particlesOptionsAnimation} from '../../config/particles.config';
 
 
 @Component({

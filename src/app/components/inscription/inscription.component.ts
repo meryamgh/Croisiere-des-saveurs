@@ -4,7 +4,7 @@ import {UserService} from "../../services/user/user.service";
 import {Router} from "@angular/router";
 import {Container, Engine} from "tsparticles-engine";
 import {loadSlim} from "tsparticles-slim";
-import {particlesOptionsAnimation} from '../login/particles.config';
+import {particlesOptionsAnimation} from '../../config/particles.config';
 
 @Component({
   selector: 'app-inscription',

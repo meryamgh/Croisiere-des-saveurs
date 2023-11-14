@@ -40,5 +40,4 @@ export function generateRandomFavoris(): Favoris[] {
   return favorisList;
 }
 
-
 export const favoris: Favoris[] = generateRandomFavoris();
