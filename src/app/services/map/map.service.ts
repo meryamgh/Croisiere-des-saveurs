@@ -11,7 +11,7 @@ export class MapService {
     private map!: any;
     private readonly TILE_LAYER_URL: string = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
     private readonly FLAGS_FOLDER: string = 'assets/flags/';
-    private animatedCircles: L.Circle[] = [];
+
 
     public constructor(private router: Router, private countryService: CountryService) {
     }
@@ -60,7 +60,5 @@ export class MapService {
 
 
     }
-
-
 
 }

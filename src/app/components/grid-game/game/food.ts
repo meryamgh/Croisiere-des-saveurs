@@ -1,5 +1,5 @@
 import {Snake} from "./snake";
-import {SnakeCell} from "./snackCell";
+
 
 export class Food {
   public pos: number;

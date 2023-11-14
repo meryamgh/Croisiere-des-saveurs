@@ -59,7 +59,6 @@ export class LoginComponent {
     await loadSlim(engine);
   }
 
-
 }
 
 

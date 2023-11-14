@@ -34,6 +34,11 @@ export class RecetteComponent implements OnInit {
                      private fb: FormBuilder) {
   }
 
+  ngOnInit(): void {
+    this.getReciepie();
+    this.getUser();
+  }
+
   public getReciepie(): void {
 
     this.route.params.subscribe(params => {
@@ -133,11 +138,6 @@ export class RecetteComponent implements OnInit {
       }
     }
 
-  }
-
-  ngOnInit(): void {
-    this.getReciepie();
-    this.getUser();
   }
 
   public updateCommentaire(commentToUpdate: Commentaire): void {

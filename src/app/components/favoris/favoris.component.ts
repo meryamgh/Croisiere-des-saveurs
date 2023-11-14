@@ -13,11 +13,12 @@ export class FavorisComponent implements OnInit {
   public favoris: Favoris[] = [];
   private currentUser!: User;
 
-  ngOnInit(): void {
-    this.getFavoris();
-  }
 
   public constructor(private favorisService: FavorisService) {
+  }
+
+  ngOnInit(): void {
+    this.getFavoris();
   }
 
 
@@ -31,11 +32,14 @@ export class FavorisComponent implements OnInit {
       )
     }
 
+
   }
 
   public deleteFavoris(favItem: Favoris): void {
     this.favorisService.delFavoris(favItem).subscribe();
     this.favoris = this.favoris.filter(item => item !== favItem);
   }
+
+
 
 }

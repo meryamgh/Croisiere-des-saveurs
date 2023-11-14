@@ -8,7 +8,7 @@ import { Component, Renderer2 } from '@angular/core';
 export class GridGameComponent {
   public popupOuverte: boolean = false;
 
-  constructor(private renderer: Renderer2) {}
+  public constructor(private renderer: Renderer2) {}
 
   public ouvrirPopup(): void {
     this.popupOuverte = true;
@@ -20,7 +20,7 @@ export class GridGameComponent {
     this.unlockScroll();
   }
 
-  lockScroll(): void {
+  public lockScroll(): void {
     const body = document.body;
     this.renderer.setStyle(body, 'position', 'fixed');
     this.renderer.setStyle(body, 'top', '0px');
@@ -28,9 +28,10 @@ export class GridGameComponent {
     this.renderer.setStyle(body, 'right', '0px');
   }
 
-  unlockScroll(): void {
+  public unlockScroll(): void {
     const body = document.body;
     this.renderer.removeStyle(body, 'position');
     this.renderer.removeStyle(body, 'top');
   }
+
 }
