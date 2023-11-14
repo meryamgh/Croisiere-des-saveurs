@@ -55,4 +55,5 @@ export class UserService {
   public setUserSubject(newUser: User): void {
     this.userSubject.next(newUser);
   }
+
 }

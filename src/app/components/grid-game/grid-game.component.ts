@@ -33,4 +33,5 @@ export class GridGameComponent {
     this.renderer.removeStyle(body, 'position');
     this.renderer.removeStyle(body, 'top');
   }
+
 }

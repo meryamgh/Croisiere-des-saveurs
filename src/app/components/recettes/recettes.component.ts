@@ -38,6 +38,10 @@ export class RecettesComponent implements OnInit {
                        private router: Router, private animationService: AnimationService) {
     }
 
+  public ngOnInit(): void {
+    this.loadData();
+  }
+
     public getAllRecipes(): void {
         this.recetteService.getRecettes().subscribe(recettesData => {
             this.recipes = recettesData;
@@ -137,7 +141,4 @@ export class RecettesComponent implements OnInit {
         this.animationService.playConfettiAnimation(10, 4);
     }
 
-  public ngOnInit(): void {
-        this.loadData();
-    }
 }

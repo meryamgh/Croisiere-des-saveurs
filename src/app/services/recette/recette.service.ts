@@ -24,5 +24,4 @@ export class RecetteService {
         return this.http.get<Recette[]>(`${this.recettesUrl}/country/${countryName}`);
     }
 
-
 }

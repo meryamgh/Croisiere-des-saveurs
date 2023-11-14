@@ -17,6 +17,10 @@ export class FavorisComponent implements OnInit {
   public constructor(private favorisService: FavorisService) {
   }
 
+  ngOnInit(): void {
+    this.getFavoris();
+  }
+
 
   public getFavoris(): void {
 
@@ -36,8 +40,6 @@ export class FavorisComponent implements OnInit {
     this.favoris = this.favoris.filter(item => item !== favItem);
   }
 
-  ngOnInit(): void {
-    this.getFavoris();
-  }
+
 
 }

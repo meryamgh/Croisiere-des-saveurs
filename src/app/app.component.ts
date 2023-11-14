@@ -16,19 +16,19 @@ export class AppComponent implements OnInit {
     constructor(private userService: UserService) {
     }
 
+  ngOnInit(): void {
+    this.userService.getUserSubject().subscribe((user) => {
+      if (user) {
+        this.currentUser = user;
+      }
+    });
+    this.logOut();
+  }
+
     public logOut(): void {
         this.userService.getDeconnected();
         this.currentUser = undefined;
     }
 
-
-    ngOnInit(): void {
-        this.userService.getUserSubject().subscribe((user) => {
-            if (user) {
-                this.currentUser = user;
-            }
-        });
-        this.logOut();
-    }
 }
 

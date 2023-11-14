@@ -17,11 +17,6 @@ export class HomeComponent implements OnInit {
   public currentUser !: User;
   public link: string = "/inscription";
 
-  public showNextSlide(): void {
-    this.index = (this.index + 1) % 2;
-    setTimeout(() => this.showNextSlide(), 2300);
-  }
-
   public ngOnInit(): void {
     const storedUser = sessionStorage.getItem("userLogged");
     if (storedUser) {
@@ -30,4 +25,10 @@ export class HomeComponent implements OnInit {
     }
     this.showNextSlide();
   }
+
+  public showNextSlide(): void {
+    this.index = (this.index + 1) % 2;
+    setTimeout(() => this.showNextSlide(), 2300);
+  }
+
 }
