@@ -11,7 +11,7 @@ export class MapService {
     private map!: any;
     private readonly TILE_LAYER_URL: string = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
     private readonly FLAGS_FOLDER: string = 'assets/flags/';
-
+    private animatedCircles: L.Circle[] = [];
 
     public constructor(private router: Router, private countryService: CountryService) {
     }
@@ -48,12 +48,10 @@ export class MapService {
             ],
             minZoom: 2,
             maxZoom: 18,
-            dragging: false,
         });
 
         const tiles = L.tileLayer(this.TILE_LAYER_URL, {
             subdomains: 'abcd',
-            noWrap: true,
             maxZoom: 20
         });
 
@@ -62,5 +60,7 @@ export class MapService {
 
 
     }
+
+
 
 }

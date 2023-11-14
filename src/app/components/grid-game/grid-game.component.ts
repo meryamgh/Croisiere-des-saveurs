@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-grid-game',
@@ -8,6 +8,7 @@ import {Component} from '@angular/core';
 export class GridGameComponent {
   public popupOuverte: boolean = false;
 
+  constructor(private renderer: Renderer2) {}
 
   public ouvrirPopup(): void {
     this.popupOuverte = true;
@@ -19,20 +20,17 @@ export class GridGameComponent {
     this.unlockScroll();
   }
 
-  public lockScroll(): void {
+  lockScroll(): void {
     const body = document.body;
-
-    body.style.position = 'fixed';
-    body.style.top = '0px';
-    body.style.left = '0px';
-    body.style.right = '0px';
-
+    this.renderer.setStyle(body, 'position', 'fixed');
+    this.renderer.setStyle(body, 'top', '0px');
+    this.renderer.setStyle(body, 'left', '0px');
+    this.renderer.setStyle(body, 'right', '0px');
   }
 
-  public unlockScroll(): void {
+  unlockScroll(): void {
     const body = document.body;
-    body.style.position = '';
-    body.style.top = '';
-
+    this.renderer.removeStyle(body, 'position');
+    this.renderer.removeStyle(body, 'top');
   }
 }
