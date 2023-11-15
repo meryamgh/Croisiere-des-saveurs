@@ -8,6 +8,7 @@ import {User} from "../../models/user.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
 import {Favoris} from "../../models/favoris.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-recipe',
@@ -18,8 +19,9 @@ export class RecipeComponent implements OnInit {
 
   public currentRecipe !: Recipe;
   public isCommentsPopupOpen: boolean = false;
-  public currentUser!: User;
+  public currentUserLogged!: User;
   public commentsWrite!: Comment[];
+  public currentUserComment:User[] = [];
   public nbrFav !: number;
   public favRecipe: boolean = false;
   public isPopupOpen: boolean = false;
@@ -32,6 +34,7 @@ export class RecipeComponent implements OnInit {
                      private commentService: CommentService,
                      private route: ActivatedRoute,
                      private router: Router,
+                     private userService: UserService,
                      private favorisService: FavorisService,
                      private fb: FormBuilder) {
   }
@@ -74,11 +77,12 @@ export class RecipeComponent implements OnInit {
     this.commentService.getCommentsRecipe(this.currentRecipe.name)
       .subscribe(data => {
         this.commentsWrite = data;
-
         data.forEach((comment: Comment) => {
-
-          if (this.currentUser) {
-            if (comment.user === this.currentUser.email) {
+          this.userService.getUser(comment.user).subscribe(dataUser =>{
+              this.currentUserComment.push(dataUser);
+          })
+          if (this.currentUserLogged) {
+            if (comment.user === this.currentUserLogged.email) {
               this.usersComments.set(comment.user, "user-logged");
             } else {
               this.usersComments.set(comment.user, "user-notLogged");
@@ -95,9 +99,9 @@ export class RecipeComponent implements OnInit {
       .subscribe(data =>
         (this.nbrFav = data.length)
       )
-    if (this.currentUser) {
+    if (this.currentUserLogged) {
       this.favorisService.getFavoriteUserRecipe(
-        this.currentUser.email, this.currentRecipe.name)
+        this.currentUserLogged.email, this.currentRecipe.name)
         .subscribe(data => {
             this.favRecipe = data.length !== 0;
           }
@@ -108,14 +112,14 @@ export class RecipeComponent implements OnInit {
   public getUser(): void {
     const storedUser: string | null = sessionStorage.getItem("userLogged");
     if (storedUser) {
-      this.currentUser = JSON.parse(storedUser) as User;
+      this.currentUserLogged = JSON.parse(storedUser) as User;
     }
   }
 
   public addToFav(): void {
-    if (this.currentUser) {
+    if (this.currentUserLogged) {
       const newFavoris: Favoris = new Favoris(
-        this.currentRecipe.name, this.currentUser.email, this.currentRecipe.picture);
+        this.currentRecipe.name, this.currentUserLogged.email, this.currentRecipe.picture);
       if (this.favRecipe) {
         this.nbrFav--;
         this.favorisService.delFavoris(newFavoris).subscribe();
@@ -141,13 +145,14 @@ export class RecipeComponent implements OnInit {
   public addNewComment(): void {
 
     if (this.commentForm.valid) {
-      if (this.currentUser) {
+      if (this.currentUserLogged) {
         const comment = this.commentForm.get('comment')?.value;
-        const commentToAdd: Comment = new Comment(comment, this.currentUser.email,
+        const commentToAdd: Comment = new Comment(comment, this.currentUserLogged.email,
           this.currentRecipe.name, new Date());
-        this.usersComments.set(this.currentUser.email, "user-logged");
+        this.usersComments.set(this.currentUserLogged.email, "user-logged");
         this.commentService.addComment(commentToAdd).subscribe();
         this.commentsWrite.push(commentToAdd);
+        this.currentUserComment.push(this.currentUserLogged);
         this.commentForm.reset();
 
       } else {

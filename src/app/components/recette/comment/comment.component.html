@@ -1,5 +1,5 @@
 <section class="text">
-  <span class="user">{{ commentSend.user }} :</span><br>
+  <span class="user" *ngIf="userCommentSend">{{ userCommentSend.lastName }} {{ userCommentSend.firstName }} :</span><br>
   <span>{{ commentSend.dateTime | date: "dd/MM/yyyy HH:mm" }}</span>
   <span class="texte">{{ commentSend.commentMessage }}</span>
 </section>

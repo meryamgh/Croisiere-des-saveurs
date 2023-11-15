@@ -46,14 +46,16 @@
       <h2>Commentaires ({{ commentsWrite.length }})</h2>
       <img class="cross" src="assets/icones/cross.svg" (click)="closeCommentsPopup()" alt="cross">
     </div>
-    <div *ngFor="let comment of commentsWrite" class="commentaire" [ngClass]="usersComments.get(comment.user)">
+    <div *ngFor="let comment of commentsWrite; let idx = index;" class="commentaire" [ngClass]="usersComments.get(comment.user)">
 
-      <app-comment [currentUserSend]="currentUser" [currentRecipeSend]="currentRecipe"
+      <app-comment [currentUserSend]="currentUserLogged" [currentRecipeSend]="currentRecipe"
                    [commentSend]="comment"
+                   [userCommentSend]="currentUserComment.at(idx)"
                    (deleteComment)="deleteCommentSend($event)"
                    (updateComment)="updateComment($event)"
       ></app-comment>
     </div>
+
 
     <section class="ajout-commentaire-container" [formGroup]="commentForm">
       <input formControlName="comment" placeholder="Ajouter un commentaire..." class="comment-input">
