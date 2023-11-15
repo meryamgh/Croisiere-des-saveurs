@@ -42,8 +42,9 @@
     <a [routerLink]="['/recipe-detail', recette.name]">Consulter la recette</a>
 
     <span class="like">
-      <img [src]="allRecipesList.get(recette.name) === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
-           alt="Coeur" class="like-img" (click)="addFavoris(recette)"/>
+      <img
+        [src]="allRecipesList.get(recette.name) === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
+        alt="Coeur" class="like-img" (click)="addFavoris(recette)"/>
       {{ recipeNbrLikes.get(recette.name) }}
     </span>
 

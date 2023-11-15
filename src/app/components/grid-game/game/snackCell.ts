@@ -1,4 +1,4 @@
 export interface SnakeCell {
-    prevPos?: number;
-    pos?: number;
+  prevPos?: number;
+  pos?: number;
 }

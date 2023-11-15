@@ -43,24 +43,23 @@
 
   <section *ngIf="isCommentsPopupOpen && commentsWrite" class="comments-popup">
     <div class="entete">
-    <h2>Commentaires ({{ commentsWrite.length }})</h2>
-    <img class="cross" src="assets/icones/cross.svg" (click)="closeCommentsPopup()" alt="cross">
+      <h2>Commentaires ({{ commentsWrite.length }})</h2>
+      <img class="cross" src="assets/icones/cross.svg" (click)="closeCommentsPopup()" alt="cross">
     </div>
-      <div *ngFor="let comment of commentsWrite" class="commentaire"  [ngClass]="usersComments.get(comment.user)">
+    <div *ngFor="let comment of commentsWrite" class="commentaire" [ngClass]="usersComments.get(comment.user)">
 
-          <app-comment [currentUserSend]="currentUser" [currentRecipeSend]="currentRecipe"
-                       [commentSend]="comment"
-                       (deleteComment)="deleteCommentSend($event)"
-                       (updateComment)="updateComment($event)"
-          ></app-comment>
-      </div>
+      <app-comment [currentUserSend]="currentUser" [currentRecipeSend]="currentRecipe"
+                   [commentSend]="comment"
+                   (deleteComment)="deleteCommentSend($event)"
+                   (updateComment)="updateComment($event)"
+      ></app-comment>
+    </div>
 
     <section class="ajout-commentaire-container" [formGroup]="commentForm">
       <input formControlName="comment" placeholder="Ajouter un commentaire..." class="comment-input">
       <button class="ajouter-commentaire" (click)="addNewComment()">Ajouter</button>
     </section>
   </section>
-
 
   <section class="popup-overlay">
     <app-popup *ngIf="isPopupOpen"

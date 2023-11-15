@@ -6,7 +6,6 @@ import {favoris} from "./data/data-loader-favoris";
 import {countries} from "./data/data-loader-country";
 import {User} from "./models/user.model";
 
-
 export default () => {
   new Server({
     seeds(server) {
@@ -18,7 +17,6 @@ export default () => {
       this.namespace = '/api';
 
       this.get('/users', schema => schema.db['users']);
-
 
       this.get('/users/:email', (schema, request) => {
         const userEmail: string = request.params['email'];
@@ -32,7 +30,6 @@ export default () => {
         return sortedUsers[0];
       });
 
-
       this.post('/users/', (schema, request) => {
         const user: User = JSON.parse(request.requestBody);
         schema.db['users'].insert(user);
@@ -45,25 +42,27 @@ export default () => {
         return updateUser;
       });
 
-
       this.get('/recipes', schema => schema.db['recipes']);
+
       this.get('/recipes/:name', (schema, request) => {
         const recipeName: string = request.params['name'];
         return schema.db['recipes'].findBy({name: recipeName});
       });
+
       this.put('recipes/:name', (schema, request) => {
         const recipeName: string = request.params['name'];
         const recipeFind = schema.db['recipes'].findBy({name: recipeName});
         recipeFind.commentMessage.push(request.requestBody);
         return recipeFind;
       });
+
       this.get('/recipes/country/:countryName', (schema, request) => {
         const country: string = request.params['countryName'];
         return schema.db['recipes'].where({country: country});
       });
 
-
       this.get('/comments', schema => schema.db['comments']);
+
       this.get('/comments/:recipeName', (schema, request) => {
         const recipe: string = request.params['recipeName'];
         const recipeFind = schema.db['recipes'].findBy({name: recipe});
@@ -89,13 +88,11 @@ export default () => {
         return comment;
       });
 
-
       this.delete('/comments/:idComment', (schema, request) => {
         const comment = schema.db['comments'].findBy({idComment: request.params['idComment']});
         schema.db['comments'].remove(comment);
         return comment;
       });
-
 
       this.get('/favoris/user-recipe/:userName/:recipe', (schema, request) => {
         const userFind: string = request.params['userName'];
@@ -120,19 +117,15 @@ export default () => {
         return schema.db['favoris'].insert(favoris);
       });
 
-
       this.delete('/favoris/:user/:recipe', (schema, request) => {
         const recipeName: string = request.params['recipe'];
         const user: string = request.params['user'];
         const favoris = schema.db['favoris'].findBy({user: user, favoris: recipeName});
         schema.db['favoris'].remove(favoris);
         return favoris;
-
       });
 
-
       this.get('/countries', schema => schema.db['countries']);
-
 
     }
   });

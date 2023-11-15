@@ -4,24 +4,23 @@ import {Recipe} from "../../models/recipe.model";
 import {Observable} from "rxjs";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class RecipeService {
-    private recipesUrl: string = '/api/recipes';
+  private recipesUrl: string = '/api/recipes';
 
-    constructor(private http: HttpClient) {
-    }
+  constructor(private http: HttpClient) {
+  }
 
-    public getAllRececipes(): Observable<Recipe[]> {
-        return this.http.get<Recipe[]>(this.recipesUrl);
-    }
+  public getAllRececipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipesUrl);
+  }
 
-    public getRecipeByName(nomRecette: string): Observable<Recipe> {
-        return this.http.get<Recipe>(`${this.recipesUrl}/${nomRecette}`);
-    }
+  public getRecipeByName(nomRecette: string): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.recipesUrl}/${nomRecette}`);
+  }
 
-    public getRecipeByCountry(countryName: string): Observable<Recipe[]> {
-        return this.http.get<Recipe[]>(`${this.recipesUrl}/country/${countryName}`);
-    }
-
+  public getRecipeByCountry(countryName: string): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${this.recipesUrl}/country/${countryName}`);
+  }
 }

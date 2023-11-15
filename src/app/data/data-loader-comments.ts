@@ -3,26 +3,26 @@ import {recipes} from "./data-loader-recipes";
 import {users} from "./data-loader-user";
 
 function generateRandomComments(userCount: number): Comment[] {
-  const commentsGenrated: Comment[] = [];
+  const commentsGenerated: Comment[] = [];
 
-  for (let i:number = 0; i < userCount; i++) {
-    const randomUserIndex:number = Math.floor(Math.random() * users.length);
-    const randomRecetteIndex:number = Math.floor(Math.random() * recipes.length);
+  for (let i: number = 0; i < userCount; i++) {
+    const randomUserIndex: number = Math.floor(Math.random() * users.length);
+    const randomRecipeIndex: number = Math.floor(Math.random() * recipes.length);
 
     const comment = {
-      commentaire: generateRandomComment(),
+      userComment: generateRandomComment(),
       user: users[randomUserIndex].email,
-      recette: recipes[randomRecetteIndex].name,
+      recipeCommented: recipes[randomRecipeIndex].name,
       dateTime: generateRandomDateTime()
     };
 
-    commentsGenrated.push(new Comment(comment.commentaire, comment.user, comment.recette, comment.dateTime));
+    commentsGenerated.push(new Comment(comment.userComment, comment.user, comment.recipeCommented, comment.dateTime));
   }
-  return commentsGenrated;
+  return commentsGenerated;
 }
 
 function generateRandomComment(): string {
-  const comments:string[] = [
+  const comments: string[] = [
     "Délicieux",
     "Super recipe !",
     "J'adore",
@@ -108,17 +108,15 @@ function generateRandomComment(): string {
     "Un véritable délice",
     "C'est divin !"
   ];
-
-  const randomIndex:number = Math.floor(Math.random() * comments.length);
+  const randomIndex: number = Math.floor(Math.random() * comments.length);
   return comments[randomIndex];
 }
 
-
 function generateRandomDateTime(): Date {
-  const startDate:Date = new Date("2023-01-01");
-  const endDate:Date = new Date("2023-12-31");
-  return new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
+  const startDate: Date = new Date("2023-01-01");
+  const endDate: Date = new Date("2023-12-31");
+  return new Date(
+    startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
 }
-
 
 export const comments: Comment[] = generateRandomComments(320);

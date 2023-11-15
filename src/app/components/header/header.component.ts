@@ -19,9 +19,8 @@ export class HeaderComponent {
   public logOut(): void {
     this.userService.getDeconnected();
     this.isLoggedIn = false;
-    this.currentUser = undefined;
+    this.currentUser = undefined
   }
-
 }
 
 

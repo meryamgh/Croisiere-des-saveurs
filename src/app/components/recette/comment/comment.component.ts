@@ -25,5 +25,4 @@ export class CommentComponent {
   public sendDeleteComment(idComent: number): void {
     this.deleteComment.emit(idComent);
   }
-
 }

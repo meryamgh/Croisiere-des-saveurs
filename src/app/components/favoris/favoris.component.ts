@@ -3,7 +3,6 @@ import {User} from "../../models/user.model";
 import {Favoris} from "../../models/favoris.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
 
-
 @Component({
   selector: 'app-favoris',
   templateUrl: './favoris.component.html',
@@ -13,14 +12,12 @@ export class FavorisComponent implements OnInit {
   public favoris: Favoris[] = [];
   private currentUser!: User;
 
-
   public constructor(private favorisService: FavorisService) {
   }
 
   public ngOnInit(): void {
     this.getFavoris();
   }
-
 
   public getFavoris(): void {
 
@@ -31,12 +28,10 @@ export class FavorisComponent implements OnInit {
         (this.favoris = data)
       )
     }
-
   }
 
   public deleteFavoris(favItem: Favoris): void {
     this.favorisService.delFavoris(favItem).subscribe();
     this.favoris = this.favoris.filter(item => item !== favItem);
   }
-
 }

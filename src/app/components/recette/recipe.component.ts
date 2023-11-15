@@ -9,14 +9,15 @@ import {FavorisService} from "../../services/favoris/favoris.service";
 import {Favoris} from "../../models/favoris.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
-
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss']
 })
 export class RecipeComponent implements OnInit {
+
   public currentRecipe !: Recipe;
+  public isCommentsPopupOpen: boolean = false;
   public currentUser!: User;
   public commentsWrite!: Comment[];
   public nbrFav !: number;
@@ -27,8 +28,10 @@ export class RecipeComponent implements OnInit {
     comment: ['', Validators.required]
   });
 
-  public constructor(private recipeService: RecipeService, private commentService: CommentService,
-                     private route: ActivatedRoute, private router: Router,
+  public constructor(private recipeService: RecipeService,
+                     private commentService: CommentService,
+                     private route: ActivatedRoute,
+                     private router: Router,
                      private favorisService: FavorisService,
                      private fb: FormBuilder) {
   }
@@ -38,56 +41,72 @@ export class RecipeComponent implements OnInit {
     this.getUser();
   }
 
-  public getRecipe(): void {
+  public openPreparationPopup(): void {
+    this.isPopupOpen = true;
+  }
 
+  public closePreparationPopup(): void {
+    this.isPopupOpen = false;
+  }
+
+  public openCommentsPopup(): void {
+    this.getComments();
+    this.isCommentsPopupOpen = true;
+  }
+
+  public closeCommentsPopup(): void {
+    this.isCommentsPopupOpen = false;
+  }
+
+  public getRecipe(): void {
     this.route.params.subscribe(params => {
       const recipeId = params['nom'];
-      this.recipeService.getRecipeByName(recipeId).subscribe(data => {
-        this.currentRecipe = data;
-        this.getNbrFavRecipe();
-
-      });
+      this.recipeService.getRecipeByName(recipeId)
+        .subscribe(data => {
+          this.currentRecipe = data;
+          this.getNbrFavRecipe();
+        });
     });
   }
 
   public getComments(): void {
 
-    this.commentService.getCommentsRecipe(this.currentRecipe.name).subscribe(data => {
-      this.commentsWrite = data;
+    this.commentService.getCommentsRecipe(this.currentRecipe.name)
+      .subscribe(data => {
+        this.commentsWrite = data;
 
-      data.forEach((comment: Comment) => {
+        data.forEach((comment: Comment) => {
 
-        if (this.currentUser) {
-          if (comment.user === this.currentUser.email) {
-            this.usersComments.set(comment.user, "user-logged");
+          if (this.currentUser) {
+            if (comment.user === this.currentUser.email) {
+              this.usersComments.set(comment.user, "user-logged");
+            } else {
+              this.usersComments.set(comment.user, "user-notLogged");
+            }
           } else {
             this.usersComments.set(comment.user, "user-notLogged");
           }
-        } else {
-          this.usersComments.set(comment.user, "user-notLogged");
-        }
-
+        });
       });
-    });
-
   }
 
   public getNbrFavRecipe(): void {
-    this.favorisService.getFavoriteRecipes(this.currentRecipe.name).subscribe(data =>
-      (this.nbrFav = data.length)
-    )
-    if (this.currentUser) {
-      this.favorisService.getFavoriteUserRecipe(this.currentUser.email, this.currentRecipe.name).subscribe(data => {
-          this.favRecipe = data.length !== 0;
-        }
+    this.favorisService.getFavoriteRecipes(this.currentRecipe.name)
+      .subscribe(data =>
+        (this.nbrFav = data.length)
       )
+    if (this.currentUser) {
+      this.favorisService.getFavoriteUserRecipe(
+        this.currentUser.email, this.currentRecipe.name)
+        .subscribe(data => {
+            this.favRecipe = data.length !== 0;
+          }
+        )
     }
   }
 
-
   public getUser(): void {
     const storedUser: string | null = sessionStorage.getItem("userLogged");
-
     if (storedUser) {
       this.currentUser = JSON.parse(storedUser) as User;
     }
@@ -95,8 +114,8 @@ export class RecipeComponent implements OnInit {
 
   public addToFav(): void {
     if (this.currentUser) {
-
-      const newFavoris: Favoris = new Favoris(this.currentRecipe.name, this.currentUser.email, this.currentRecipe.picture);
+      const newFavoris: Favoris = new Favoris(
+        this.currentRecipe.name, this.currentUser.email, this.currentRecipe.picture);
       if (this.favRecipe) {
         this.nbrFav--;
         this.favorisService.delFavoris(newFavoris).subscribe();
@@ -124,13 +143,12 @@ export class RecipeComponent implements OnInit {
     if (this.commentForm.valid) {
       if (this.currentUser) {
         const comment = this.commentForm.get('comment')?.value;
-        const commentToAdd:Comment = new Comment(comment, this.currentUser.email,
+        const commentToAdd: Comment = new Comment(comment, this.currentUser.email,
           this.currentRecipe.name, new Date());
         this.usersComments.set(this.currentUser.email, "user-logged");
         this.commentService.addComment(commentToAdd).subscribe();
         this.commentsWrite.push(commentToAdd);
         this.commentForm.reset();
-
 
       } else {
         this.router.navigate(['/login']);
@@ -140,7 +158,8 @@ export class RecipeComponent implements OnInit {
   }
 
   public updateComment(commentToUpdate: Comment): void {
-    this.commentService.updateComment(commentToUpdate.idComment, commentToUpdate.commentMessage)
+    this.commentService.updateComment(
+      commentToUpdate.idComment, commentToUpdate.commentMessage)
       .subscribe((updatedComment: Comment) => {
         this.commentsWrite = this.commentsWrite.map((comment) => {
           if (comment.idComment === commentToUpdate.idComment) {
@@ -148,38 +167,6 @@ export class RecipeComponent implements OnInit {
           }
           return comment;
         });
-
       });
-
   }
-
-  public openPreparationPopup(): void {
-    this.isPopupOpen = true;
-  }
-
-  public closePreparationPopup(): void {
-    this.isPopupOpen = false;
-  }
-
-  public showCommentsCount: number = 5; // Initialisation du nombre de commentaires à afficher
-  public isCommentsPopupOpen: boolean = false; // Initialisation de la visibilité de la popup des commentaires
-
-  // ...
-
-  // Méthode pour afficher plus de commentaires
-  public showMoreComments(): void {
-    this.showCommentsCount += 5; // Vous pouvez ajuster la quantité en fonction de vos besoins
-  }
-
-  // Méthode pour ouvrir la popup des commentaires
-  public openCommentsPopup(): void {
-    this.getComments();
-    this.isCommentsPopupOpen = true;
-  }
-
-  // Méthode pour fermer la popup des commentaires
-  public closeCommentsPopup(): void {
-    this.isCommentsPopupOpen = false;
-  }
-
 }

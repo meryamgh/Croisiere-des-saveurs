@@ -6,7 +6,6 @@ import {Container, Engine} from "tsparticles-engine";
 import {loadSlim} from "tsparticles-slim";
 import {particlesOptionsAnimation} from '../../config/particles.config';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,10 +13,11 @@ import {particlesOptionsAnimation} from '../../config/particles.config';
 })
 export class LoginComponent {
 
-
   public loginForm: FormGroup = this.formBuilder.group({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    email: new FormControl(
+      '', [Validators.required, Validators.email]),
+    password: new FormControl(
+      '', [Validators.required, Validators.minLength(6)])
   });
   public userNotFound!: boolean;
   public incorrectPassword!: boolean;
@@ -26,7 +26,6 @@ export class LoginComponent {
   public constructor(private formBuilder: FormBuilder,
                      private userService: UserService, private router: Router) {
   }
-
 
   public onSubmit(): void {
     if (this.loginForm.valid) {
@@ -50,7 +49,6 @@ export class LoginComponent {
     }
   }
 
-
   public async particlesInit(engine: Engine): Promise<void> {
     const domArray: Container[] = engine.dom();
     if (domArray.length > 0) {
@@ -58,7 +56,6 @@ export class LoginComponent {
     }
     await loadSlim(engine);
   }
-
 }
 
 

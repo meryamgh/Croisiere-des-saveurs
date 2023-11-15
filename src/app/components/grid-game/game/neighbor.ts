@@ -1,24 +1,23 @@
-export function upperNeighbor(cell: number | undefined, dimension: number, latticeSize: number): number {
-  if(cell){
-
-
-  const props = getNeighborProperties(cell, latticeSize, dimension);
-  return (cell + props.distanceToNeighbor) % props.rangelength + props.rangestart;
+export function upperNeighbor(
+  cell: number | undefined, dimension: number, latticeSize: number): number {
+  if (cell) {
+    const props = getNeighborProperties(cell, latticeSize, dimension);
+    return (cell + props.distanceToNeighbor) % props.rangelength + props.rangestart;
   }
   return 0;
 }
 
-export function lowerNeighbor(cell: number | undefined, dimension: number, latticeSize: number): number {
-  if(cell) {
-
-
+export function lowerNeighbor(
+  cell: number | undefined, dimension: number, latticeSize: number): number {
+  if (cell) {
     const props = getNeighborProperties(cell, latticeSize, dimension);
     return (cell - props.distanceToNeighbor + props.rangelength) % props.rangelength + props.rangestart
   }
   return 0;
 }
 
-function getNeighborProperties(cell: number, latticeSize: number, dimension: number) {
+function getNeighborProperties(
+  cell: number, latticeSize: number, dimension: number) {
   const rangelength = getRangeLength(latticeSize, dimension);
   return {
     distanceToNeighbor: getDistanceToNeighbor(latticeSize, dimension),
@@ -28,7 +27,7 @@ function getNeighborProperties(cell: number, latticeSize: number, dimension: num
 }
 
 function getDistanceToNeighbor(size: number, dimension: number) {
-  return pow(size, dimension-1);
+  return pow(size, dimension - 1);
 }
 
 function getRangeLength(size: number, dimension: number) {

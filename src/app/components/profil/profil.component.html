@@ -9,7 +9,6 @@
     <img src="/assets/icones/photo-profil.png" alt="profil" class="profil-image">
 
     <article class="profil-details">
-
       <main *ngIf="!editProfil; else elseBlock" class="first-part">
         <h1 class="title">Mon profil</h1>
         <p><i>Nom :</i>{{ currentUser.lastName }}</p>
@@ -39,7 +38,6 @@
         </main>
       </ng-template>
     </article>
-
   </section>
 
   <section class="embarquement-2">

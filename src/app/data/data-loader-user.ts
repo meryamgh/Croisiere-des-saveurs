@@ -10,7 +10,8 @@ const generateRandomUser = () => {
     email: faker.internet.email(),
     password: "test123",
     highScore: Math.floor(Math.random() * 14) + 1,
-    boardingTicketNumber: `${Math.floor(Math.random() * (200 - 100 + 1)) + 100}${String.fromCharCode(Math.floor(Math.random() * 26) + 65)}`,
+    boardingTicketNumber:
+      `${Math.floor(Math.random() * (200 - 100 + 1)) + 100}${String.fromCharCode(Math.floor(Math.random() * 26) + 65)}`,
 
   };
 
@@ -26,13 +27,14 @@ const generateRandomUsers = (count: number) => {
   return randomUsers;
 };
 
-users.push(...generateRandomUsers(90).map(userData => new User(userData.lastName, userData.firstName, userData.email, userData.password, userData.highScore, userData.boardingTicketNumber)));
+users.push(...generateRandomUsers(90).map(userData =>
+  new User(userData.lastName, userData.firstName, userData.email, userData.password, userData.highScore, userData.boardingTicketNumber)));
 
 users.push(
-  new User('Dupont', 'John', 'john@example.com', 'test123', 9, '18B'),
-  new User('Smith', 'Alice', 'alice@example.com', 'test123', 3, '45F'),
+  new User('Ghulam', 'Meryam', 'meryam.ghulam@gmail.com', 'test123', 9, '18B'),
+  new User('Naloufi', 'Amel', 'naloufi.amel@gmail.com', 'test123', 3, '45F'),
   new User('Johnson', 'Michael', 'michael@example.com', 'test123', 0, '541X'),
   new User('Lee', 'Emma', 'emma@example.com', 'test123', 2, '93A'),
   new User('Kim', 'David', 'david@example.com', 'test123', 8, '238I'),
-  new User('Trabelsi', 'Elyora', 'elyora@example.com', 'test123', 28, '192H')
+  new User('Trabelsi', 'Elyora', 'trabelsi.elyora@gmail.com', 'test123', 28, '192H')
 );

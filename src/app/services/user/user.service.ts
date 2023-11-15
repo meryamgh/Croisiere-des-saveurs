@@ -14,7 +14,6 @@ export class UserService {
   public constructor(private http: HttpClient) {
   }
 
-
   public getUser(email: string): Observable<User> {
     return this.http.get<User>(`${this.usersUrl}${email}`);
   }
@@ -35,7 +34,6 @@ export class UserService {
   public getUserWithHighestScore(): Observable<User> {
     return this.http.get<User>(this.usersUrl + 'highestScore');
   }
-
 
   public isLogged(userLoggedId: User): void {
     sessionStorage.setItem("userLogged", JSON.stringify(userLoggedId));

@@ -9,15 +9,12 @@ export class Snake {
   }, {
     pos: 2,
     prevPos: 1
-  },{
+  }, {
     pos: 1,
     prevPos: 0
   }];
 
-
-
-  public dir : Direction = Direction.DOWN;
-
+  public dir: Direction = Direction.DOWN;
 
   public get head() {
     return this.cells[0];
@@ -28,33 +25,30 @@ export class Snake {
     return tail
   }
 
-
-
-  public grow():void {
+  public grow(): void {
     this.cells.push({
       pos: this.cells[this.cells.length - 1].pos
     })
   }
 
-  public isSnakeCell(cell: number):boolean {
+  public isSnakeCell(cell: number): boolean {
     return this.cells.filter(elt => elt.pos === cell).length > 0;
   }
 
   public updateTail(): void {
-    this.tail.forEach((elt:SnakeCell, idx:number):void => {
+    this.tail.forEach((elt: SnakeCell, idx: number): void => {
       elt.prevPos = elt.pos;
       elt.pos = this.cells[idx].prevPos;
     })
   }
 
-  public checkDead(size:number):boolean {
-
+  public checkDead(size: number): boolean {
     if (
-        this.head.pos &&
-        (this.head.pos % size === 0 ||
-            this.head.pos % size === size - 1 ||
-            this.head.pos < size ||
-            this.head.pos >= size * (size - 1))
+      this.head.pos &&
+      (this.head.pos % size === 0 ||
+        this.head.pos % size === size - 1 ||
+        this.head.pos < size ||
+        this.head.pos >= size * (size - 1))
     ) {
       return true;
     }
@@ -62,16 +56,15 @@ export class Snake {
   }
 
 
-
-  public setNextPos(newPos: number):void {
+  public setNextPos(newPos: number): void {
     this.head.prevPos = this.head.pos;
     this.head.pos = newPos;
     this.updateTail();
   }
 
-  public goStep(size: number):void {
-    const cell:number|undefined = this.head.pos;
-    const latticeSize:number = size;
+  public goStep(size: number): void {
+    const cell: number | undefined = this.head.pos;
+    const latticeSize: number = size;
     if (this.dir === Direction.LEFT) {
       this.setNextPos(lowerNeighbor(cell, 1, latticeSize));
     } else if (this.dir === Direction.RIGHT) {
@@ -84,7 +77,6 @@ export class Snake {
       throw new Error('Unknown direction');
     }
   }
-
 }
 
 

@@ -3,7 +3,7 @@
   <article class="info-container">
 
     <section *ngIf="bestUserScore" class="user-info">
-      <p><i>Taille du serpent:</i> {{ snake.tail.length -2 }}</p>
+      <p><i>Taille du serpent:</i> {{ snake.tail.length - 2 }}</p>
       <p><i>Votre meilleur score:</i> {{currentUser.highScore}}</p>
       <p><i>Temps de jeu:</i> {{ time * timestep / 1000 | number:'1.0-0' }} secondes</p>
     </section>

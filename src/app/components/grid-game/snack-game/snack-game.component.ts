@@ -5,13 +5,15 @@ import {Snake} from "../game/snake";
 import {User} from "../../../models/user.model";
 import {UserService} from "../../../services/user/user.service";
 
-
 @Component({
   selector: 'app-snack-game',
   templateUrl: './snack-game.component.html',
   styleUrls: ['./snack-game.component.scss']
 })
 export class SnackGameComponent implements OnInit {
+
+  @Output() popupClosed: EventEmitter<void> = new EventEmitter<void>();
+
   private size: number = 20;
   public cells: number[] = new Array(this.size * this.size);
   public timestep: number = 100;
@@ -23,8 +25,6 @@ export class SnackGameComponent implements OnInit {
   private gridSize: number = this.size * this.size;
   private food: Food = new Food(this.gridSize, this.snake);
   public currentUser!: User;
-  @Output() popupClosed: EventEmitter<void> = new EventEmitter<void>();
-
 
   public constructor(private userService: UserService) {
   }
@@ -46,11 +46,9 @@ export class SnackGameComponent implements OnInit {
     this.userService.getUserWithHighestScore().subscribe((data => {
       this.bestUserScore = data;
     }));
-
   }
 
   public restartGame(): void {
-
     this.snake = new Snake();
     this.dead = false;
     this.time = 0;
@@ -60,7 +58,6 @@ export class SnackGameComponent implements OnInit {
 
   public isFood(idx: number): boolean {
     return idx === this.food.pos;
-
   }
 
   public playGame(): void {
@@ -94,7 +91,8 @@ export class SnackGameComponent implements OnInit {
   }
 
   public isBorderCell(index: number): boolean {
-    return index < this.size || index % this.size === 0 || (index + 1) % this.size === 0 || index >= this.size * (this.size - 1);
+    return index < this.size || index % this.size === 0 ||
+      (index + 1) % this.size === 0 || index >= this.size * (this.size - 1);
   }
 
 
@@ -149,7 +147,8 @@ export class SnackGameComponent implements OnInit {
 
   public getCanChangeDir(d1: Direction, d2: Direction): boolean {
     const dirs: Direction[] = [d1, d2];
-    const filteredUpDown: number = dirs.filter(dir => dir === Direction.UP || dir === Direction.DOWN).length;
+    const filteredUpDown: number = dirs.filter(
+      dir => dir === Direction.UP || dir === Direction.DOWN).length;
     const onlyOneDir: boolean = filteredUpDown === 2 || filteredUpDown === 0;
     return !onlyOneDir;
   }

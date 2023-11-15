@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MapComponent} from "./components/map/map.component";
@@ -25,41 +24,38 @@ import {NgParticlesModule} from "ng-particles";
 import {SnackGameComponent} from './components/grid-game/snack-game/snack-game.component';
 import {GridGameComponent} from './components/grid-game/grid-game.component';
 
-
-
 @NgModule({
-    declarations: [
-        AppComponent,
-        MapComponent,
-        RecipesComponent,
-        LoginComponent,
-        RegistrationComponent,
-        ProfilComponent,
-        RecipeComponent,
-        CustomFilterPipe,
-        HeaderComponent,
-        HomeComponent,
-        SlideComponent,
-        FooterComponent,
-        CountryRecipeComponent,
-        FavorisComponent,
-        CommentComponent,
-        PopupComponent,
-        SnackGameComponent,
-        GridGameComponent,
-
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgOptimizedImage,
-        NgParticlesModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    MapComponent,
+    RecipesComponent,
+    LoginComponent,
+    RegistrationComponent,
+    ProfilComponent,
+    RecipeComponent,
+    CustomFilterPipe,
+    HeaderComponent,
+    HomeComponent,
+    SlideComponent,
+    FooterComponent,
+    CountryRecipeComponent,
+    FavorisComponent,
+    CommentComponent,
+    PopupComponent,
+    SnackGameComponent,
+    GridGameComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    NgParticlesModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

@@ -13,36 +13,35 @@ import {particlesOptionsAnimation} from '../../config/particles.config';
 })
 export class RegistrationComponent {
 
+  public userAlreadyExists!: boolean;
+  public particlesOptions = particlesOptionsAnimation;
   public registrationForm: FormGroup = this.formBuilder.group({
     lastName: new FormControl('', [Validators.required]),
     firstName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
-  public userAlreadyExists!: boolean;
-  public particlesOptions = particlesOptionsAnimation;
 
-  public constructor(private formBuilder: FormBuilder, private router: Router,
-                     private userService: UserService) {
+  public constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserService) {
   }
 
   public onSubmit(): void {
-
-    this.userService.getUser(this.registrationForm.get('email')?.value).subscribe(user => {
-
-      if (user === null) {
-        if (this.registrationForm.valid) {
-          this.userService.createUser(this.registrationForm.value).subscribe(() => {
-
-            this.router.navigate(['/login']);
-          });
+    this.userService.getUser(this.registrationForm.get('email')?.value)
+      .subscribe(user => {
+        if (user === null) {
+          if (this.registrationForm.valid) {
+            this.userService.createUser(this.registrationForm.value)
+              .subscribe(() => {
+                this.router.navigate(['/login']);
+              });
+          }
+        } else {
+          this.userAlreadyExists = true;
         }
-      } else {
-        this.userAlreadyExists = true;
-
-
-      }
-    });
+      });
   }
 
   public async particlesInit(engine: Engine): Promise<void> {
@@ -52,5 +51,4 @@ export class RegistrationComponent {
     }
     await loadSlim(engine);
   }
-
 }
