@@ -549,6 +549,7 @@ export const recetteData = [
       "Les Chiles en Nogada sont traditionnellement servis froids. Profitez de ce plat festif et délicieux !"
     ]
   },
+  //BRESIL
   {
     nom: "Feijoada",
     pays: "Brésil",

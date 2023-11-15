@@ -41,7 +41,6 @@ export const countryData = [
     "coordinates": [-14.235, -51.9253],
     "flagUrl": "bresil"
   }
-
 ];
 
 export const countries: Country[] = countryData.map(countryData => {
