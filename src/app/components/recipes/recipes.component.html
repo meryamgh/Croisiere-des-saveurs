@@ -37,14 +37,14 @@
 
 <section *ngIf="allRecipesList" class="recipe-container">
   <div *ngFor="let recette of recipes | customFilter:searchTerm" class="recipe-item">
-    <h1 class="title_recette">{{ recette.nom }}</h1>
+    <h1 class="title_recette">{{ recette.name }}</h1>
     <img src="{{recette.picture}}" alt="picture-recette" class="recipe-img"/>
-    <a [routerLink]="['/recipe-detail', recette.nom]">Consulter la recette</a>
+    <a [routerLink]="['/recipe-detail', recette.name]">Consulter la recette</a>
 
     <span class="like">
-      <img [src]="allRecipesList.get(recette.nom) === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
+      <img [src]="allRecipesList.get(recette.name) === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
            alt="Coeur" class="like-img" (click)="addFavoris(recette)"/>
-      {{ recipeNbrLikes.get(recette.nom) }}
+      {{ recipeNbrLikes.get(recette.name) }}
     </span>
 
   </div>

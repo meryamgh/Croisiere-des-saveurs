@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Commentaire} from "../../../models/comment.model";
+import {Comment} from "../../../models/comment.model";
 import {User} from "../../../models/user.model";
-import {Recette} from "../../../models/recipe.model";
+import {Recipe} from "../../../models/recipe.model";
 
 @Component({
   selector: 'app-comment',
@@ -11,13 +11,13 @@ import {Recette} from "../../../models/recipe.model";
 export class CommentComponent {
 
   @Input() currentUserSend!: User;
-  @Input() commentSend !: Commentaire;
-  @Input() currentRecipeSend!: Recette;
+  @Input() commentSend !: Comment;
+  @Input() currentRecipeSend!: Recipe;
   @Output() deleteComment: EventEmitter<number> = new EventEmitter<number>();
-  @Output() updateComment: EventEmitter<Commentaire> = new EventEmitter();
+  @Output() updateComment: EventEmitter<Comment> = new EventEmitter();
   public isEditing: boolean = false;
 
-  public sendUpdateComment(comment: Commentaire): void {
+  public sendUpdateComment(comment: Comment): void {
     this.isEditing = false;
     this.updateComment.emit(comment)
   }

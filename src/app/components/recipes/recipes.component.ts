@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Recette} from "../../models/recipe.model";
-import {RecetteService} from "../../services/recipe/recette.service";
+import {Recipe} from "../../models/recipe.model";
+import {RecipeService} from "../../services/recipe/recipe.service";
 import {User} from "../../models/user.model";
 import {Favoris} from "../../models/favoris.model";
 import {FavorisService} from "../../services/favoris/favoris.service";
@@ -17,7 +17,7 @@ export class RecipesComponent implements OnInit {
 
     public allRecipesList: Map<string, string> = new Map<string, string>();
     public recipeNbrLikes: Map<string, number> = new Map<string, number>();
-    public recipes !: Recette[];
+    public recipes !: Recipe[];
     public searchTerm!: string;
     private currentUser!: User;
 
@@ -29,9 +29,9 @@ export class RecipesComponent implements OnInit {
     public countryOptions!: string[];
     public categoryOptions!: string[];
     public difficultyOptions!: string[];
-    public allRecipes !: Recette[];
+    public allRecipes !: Recipe[];
 
-    public constructor(private recetteService: RecetteService, private favorisService: FavorisService,
+    public constructor(private recetteService: RecipeService, private favorisService: FavorisService,
                        private router: Router, private animationService: AnimationService) {
     }
 
@@ -43,9 +43,9 @@ export class RecipesComponent implements OnInit {
         this.recetteService.getAllRececipes().subscribe(recettesData => {
             this.recipes = recettesData;
             this.allRecipes = recettesData;
-            recettesData.forEach((recette: Recette) => {
-                this.allRecipesList.set(recette.nom, "false");
-                this.recipeNbrLikes.set(recette.nom, 0);
+            recettesData.forEach((recette: Recipe) => {
+                this.allRecipesList.set(recette.name, "false");
+                this.recipeNbrLikes.set(recette.name, 0);
             });
           this.getFilteredReceipes();
         });
@@ -53,11 +53,11 @@ export class RecipesComponent implements OnInit {
 
     public applyFilter(): void {
         this.recipes = this.allRecipes;
-        this.recipes = this.recipes.filter((recette: Recette) => {
-            const countryFiltered: boolean = !this.countryFilter || recette.pays === this.countryFilter;
-            const categoryFiltered: boolean = !this.categoryFilter || recette.categorie === this.categoryFilter;
-            const difficultyFiltered: boolean = !this.difficultyFilter || recette.difficulte === this.difficultyFilter;
-            const preparationTimeFiltered: boolean = !this.preparationTimeFilter || recette.temp_preparation <= this.preparationTimeFilter;
+        this.recipes = this.recipes.filter((recette: Recipe) => {
+            const countryFiltered: boolean = !this.countryFilter || recette.country === this.countryFilter;
+            const categoryFiltered: boolean = !this.categoryFilter || recette.category === this.categoryFilter;
+            const difficultyFiltered: boolean = !this.difficultyFilter || recette.difficulty === this.difficultyFilter;
+            const preparationTimeFiltered: boolean = !this.preparationTimeFilter || recette.preparationTime <= this.preparationTimeFilter;
             return countryFiltered && categoryFiltered && difficultyFiltered && preparationTimeFiltered;
         });
     }
@@ -91,11 +91,11 @@ export class RecipesComponent implements OnInit {
 
     public getFilteredReceipes(): void {
         if (this.allRecipes){
-          this.countryOptions = [...new Set(this.allRecipes.map(recipe => recipe.pays))];
+          this.countryOptions = [...new Set(this.allRecipes.map(recipe => recipe.country))];
 
-          this.categoryOptions = [...new Set(this.allRecipes.map(recipe => recipe.categorie))];
+          this.categoryOptions = [...new Set(this.allRecipes.map(recipe => recipe.category))];
 
-          this.difficultyOptions = [...new Set(this.allRecipes.map(recipe => recipe.difficulte))];
+          this.difficultyOptions = [...new Set(this.allRecipes.map(recipe => recipe.difficulty))];
         }
 
 
@@ -111,21 +111,21 @@ export class RecipesComponent implements OnInit {
 
 
 
-    public addFavoris(recipeClicked: Recette): void {
+    public addFavoris(recipeClicked: Recipe): void {
 
 
         if (this.currentUser) {
-            const recetteBoolean: string | undefined = this.allRecipesList.get(recipeClicked.nom);
-            const newFavoris: Favoris = new Favoris(recipeClicked.nom, this.currentUser.email, recipeClicked.picture);
-            const nbrLikes: number | undefined = this.recipeNbrLikes.get(recipeClicked.nom);
+            const recetteBoolean: string | undefined = this.allRecipesList.get(recipeClicked.name);
+            const newFavoris: Favoris = new Favoris(recipeClicked.name, this.currentUser.email, recipeClicked.picture);
+            const nbrLikes: number | undefined = this.recipeNbrLikes.get(recipeClicked.name);
             if (nbrLikes) {
                 if (recetteBoolean === "true") {
-                    this.allRecipesList.set(recipeClicked.nom, "false");
-                    this.recipeNbrLikes.set(recipeClicked.nom, nbrLikes - 1);
+                    this.allRecipesList.set(recipeClicked.name, "false");
+                    this.recipeNbrLikes.set(recipeClicked.name, nbrLikes - 1);
                     this.favorisService.delFavoris(newFavoris).subscribe();
                 } else {
-                    this.allRecipesList.set(recipeClicked.nom, "true");
-                    this.recipeNbrLikes.set(recipeClicked.nom, nbrLikes + 1);
+                    this.allRecipesList.set(recipeClicked.name, "true");
+                    this.recipeNbrLikes.set(recipeClicked.name, nbrLikes + 1);
                     this.favorisService.addFavoris(newFavoris).subscribe();
                     this.playConfetti();
                 }

@@ -20,7 +20,7 @@ export class UserService {
   }
 
   public createUser(user: User): Observable<Object> {
-    user.embarquementTicketNumber = `${Math.floor(Math.random() * (200 - 100 + 1)) + 100}${String.fromCharCode(Math.floor(Math.random() * 26) + 65)}`;
+    user.boardingTicketNumber = `${Math.floor(Math.random() * (200 - 100 + 1)) + 100}${String.fromCharCode(Math.floor(Math.random() * 26) + 65)}`;
     user.highScore = 0;
     const jsonBody: string = JSON.stringify(user);
 

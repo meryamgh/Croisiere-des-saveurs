@@ -29,8 +29,8 @@
 
     <section class="first-part">
       <article class="name-country">
-        <h1>{{ currentRecipe.nom }}</h1>
-        <span class="valeur_pays">{{ currentRecipe.pays }}</span>
+        <h1>{{ currentRecipe.name }}</h1>
+        <span class="valeur_pays">{{ currentRecipe.country }}</span>
       </article>
       <article class="like">
         <img [src]="favRecipe.toString() === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
@@ -42,13 +42,13 @@
 
 
     <p><span class="label">Ingrédients:</span> <span class="valeur">{{ currentRecipe.ingredients }}</span></p>
-    <p><span class="label">Difficulté:</span> <span class="valeur">{{ currentRecipe.difficulte }}</span></p>
-    <p><span class="label">Temps de préparation:</span> <span class="valeur">{{ currentRecipe.temp_preparation }}
+    <p><span class="label">Difficulté:</span> <span class="valeur">{{ currentRecipe.difficulty }}</span></p>
+    <p><span class="label">Temps de préparation:</span> <span class="valeur">{{ currentRecipe.preparationTime }}
       min</span></p>
-    <p><span class="label">Catégorie:</span> <span class="valeur categorie">{{ currentRecipe.categorie }}</span>
+    <p><span class="label">Catégorie:</span> <span class="valeur categorie">{{ currentRecipe.category }}</span>
     </p>
     <p><span class="label">Calories:</span> <span class="valeur">{{ currentRecipe.calorie }}</span></p>
-    <p><span class="label">Contenu:</span> <span class="valeur">{{ currentRecipe.contenu }}</span></p>
+    <p><span class="label">Contenu:</span> <span class="valeur">{{ currentRecipe.content }}</span></p>
 
     <button (click)="openPreparationPopup()" class="preparation">Voir la préparation</button>
 

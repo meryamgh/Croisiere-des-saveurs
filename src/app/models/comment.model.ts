@@ -1,17 +1,17 @@
-export class Commentaire {
-    private static dernierId: number = 1;
-    public idCommentaire: number;
-    public commentaire: string;
+export class Comment {
+    private static lastId: number = 1;
+    public idComment: number;
+    public commentMessage: string;
     public user: string;
-    public recette: string;
+    public recipe: string;
     public dateTime: Date;
 
 
-    constructor(comment: string, userComment: string, recetteCommented: string, date: Date) {
-        this.idCommentaire = Commentaire.dernierId++;
-        this.commentaire = comment;
+    constructor(comment: string, userComment: string, recipeCommented: string, date: Date) {
+        this.idComment = Comment.lastId++;
+        this.commentMessage = comment;
         this.user = userComment;
-        this.recette = recetteCommented;
+        this.recipe = recipeCommented;
         this.dateTime = date;
     }
 }

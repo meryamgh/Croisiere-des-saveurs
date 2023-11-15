@@ -1,19 +1,19 @@
 export class User {
-    public nom: string;
-    public prenom: string;
+    public lastName: string;
+    public firstName: string;
     public email: string;
     public password: string;
     public highScore!: number;
-    public embarquementTicketNumber!: string;
+    public boardingTicketNumber!: string;
 
 
-    constructor(name: string, firstName: string, mail: string, passwordUser: string,score:number,
+    constructor(userLastname: string, userFirstName: string, userEmail: string, passwordUser: string,userScore:number,
                 ticketId: string) {
-        this.nom = name;
-        this.prenom = firstName;
-        this.email = mail;
+        this.lastName = userLastname;
+        this.firstName = userFirstName;
+        this.email = userEmail;
         this.password = passwordUser;
-        this.highScore = score;
-        this.embarquementTicketNumber = ticketId;
+        this.highScore = userScore;
+        this.boardingTicketNumber = ticketId;
     }
 }

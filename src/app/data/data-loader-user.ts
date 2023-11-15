@@ -5,12 +5,12 @@ export const users: User[] = [];
 
 const generateRandomUser = () => {
   const user: User = {
-    nom: faker.person.lastName(),
-    prenom: faker.person.firstName(),
+    lastName: faker.person.lastName(),
+    firstName: faker.person.firstName(),
     email: faker.internet.email(),
     password: "test123",
     highScore: Math.floor(Math.random() * 14) + 1,
-    embarquementTicketNumber: `${Math.floor(Math.random() * (200 - 100 + 1)) + 100}${String.fromCharCode(Math.floor(Math.random() * 26) + 65)}`,
+    boardingTicketNumber: `${Math.floor(Math.random() * (200 - 100 + 1)) + 100}${String.fromCharCode(Math.floor(Math.random() * 26) + 65)}`,
 
   };
 
@@ -26,7 +26,7 @@ const generateRandomUsers = (count: number) => {
   return randomUsers;
 };
 
-users.push(...generateRandomUsers(90).map(userData => new User(userData.nom, userData.prenom, userData.email, userData.password, userData.highScore, userData.embarquementTicketNumber)));
+users.push(...generateRandomUsers(90).map(userData => new User(userData.lastName, userData.firstName, userData.email, userData.password, userData.highScore, userData.boardingTicketNumber)));
 
 users.push(
   new User('Dupont', 'John', 'john@example.com', 'test123', 9, '18B'),

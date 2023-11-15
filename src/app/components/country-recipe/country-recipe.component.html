@@ -6,9 +6,9 @@
 
 <section class="recipe-container">
   <div *ngFor="let recipe of recipes" class="recipe-items">
-    <h1 class="title_recette">{{ recipe.nom }}</h1>
+    <h1 class="title_recette">{{ recipe.name }}</h1>
     <img [src]="recipe.picture" alt="recipe-picture" class="recipe-img">
-    <a [routerLink]="['/recipe-detail', recipe.nom]">Consulter la recette</a>
+    <a [routerLink]="['/recipe-detail', recipe.name]">Consulter la recette</a>
   </div>
 </section>
 

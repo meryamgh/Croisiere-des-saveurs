@@ -1,26 +1,26 @@
-export class Recette {
-    public nom: string;
-    public pays: string;
-    public contenu: string;
-    public categorie: string;
-    public temp_preparation: number;
+export class Recipe {
+    public name: string;
+    public country: string;
+    public content: string;
+    public category: string;
+    public preparationTime: number;
     public ingredients: string;
-    public difficulte: string;
+    public difficulty: string;
     public calorie: number;
     public preparation: string[];
     public picture: string;
 
 
-    constructor(name: string, country: string, content: string, category: string,
-                time: number, elements: string, dificulty: string,
+    constructor(recipeName: string, countryRecipe: string, recipeContent: string, recipeCategory: string,
+                time: number, elements: string, dificultyRecipe: string,
                 clr: number, stepsPreparation: string[], image: string) {
-        this.nom = name;
-        this.pays = country;
-        this.contenu = content;
-        this.categorie = category;
-        this.temp_preparation = time;
+        this.name = recipeName;
+        this.country = countryRecipe;
+        this.content = recipeContent;
+        this.category = recipeCategory;
+        this.preparationTime = time;
         this.ingredients = elements;
-        this.difficulte = dificulty;
+        this.difficulty = dificultyRecipe;
         this.calorie = clr;
         this.preparation = stepsPreparation;
         this.picture = image;

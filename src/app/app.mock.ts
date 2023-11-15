@@ -49,29 +49,29 @@ export default () => {
             this.get('/recipes', schema => schema.db['recipes']);
             this.get('/recipes/:name', (schema, request) => {
                 const recipeName: string = request.params['name'];
-                return schema.db['recipes'].findBy({nom: recipeName});
+                return schema.db['recipes'].findBy({name: recipeName});
             });
             this.put('recipes/:name', (schema, request) => {
                 const recipeName: string = request.params['name'];
-                const recetteFind = schema.db['recipes'].findBy({nom: recipeName});
-                recetteFind.commentaire.push(request.requestBody);
-                return recetteFind;
+                const recipeFind = schema.db['recipes'].findBy({name: recipeName});
+              recipeFind.commentMessage.push(request.requestBody);
+                return recipeFind;
             });
             this.get('/recipes/country/:countryName', (schema, request) => {
                 const country: string = request.params['countryName'];
-                return schema.db['recipes'].where({pays: country});
+                return schema.db['recipes'].where({country: country});
             });
 
 
             this.get('/comments', schema => schema.db['comments']);
             this.get('/comments/:recipeName', (schema, request) => {
                 const recipe: string = request.params['recipeName'];
-                const recipeFind = schema.db['recipes'].findBy({nom: recipe});
-                return schema.db['comments'].where({recette: recipeFind.nom});
+                const recipeFind = schema.db['recipes'].findBy({name: recipe});
+                return schema.db['comments'].where({recipe: recipeFind.name});
             });
 
-            this.get('/comments/user/:nomUser', (schema, request) => {
-                const userFind: string = request.params['nomUser'];
+            this.get('/comments/user/:userName', (schema, request) => {
+                const userFind: string = request.params['userName'];
                 return schema.db['comments'].where({user: userFind});
             });
 
@@ -83,15 +83,15 @@ export default () => {
             this.put('/comments/:idComment', (schema, request) => {
                 const commentId: string = request.params['idComment'];
                 const newComment = JSON.parse(request.requestBody);
-                const comment = schema.db['comments'].findBy({idCommentaire: commentId});
+                const comment = schema.db['comments'].findBy({idComment: commentId});
                 comment.commentaire = newComment;
-                schema.db['comments'].update(schema.db['comments'].findBy({idCommentaire: commentId}), comment)
+                schema.db['comments'].update(schema.db['comments'].findBy({idComment: commentId}), comment)
                 return comment;
             });
 
 
             this.delete('/comments/:idComment', (schema, request) => {
-                const comment = schema.db['comments'].findBy({idCommentaire: request.params['idComment']});
+                const comment = schema.db['comments'].findBy({idComment: request.params['idComment']});
                 schema.db['comments'].remove(comment);
                 return comment;
             });

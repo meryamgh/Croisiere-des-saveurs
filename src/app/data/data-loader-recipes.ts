@@ -1,4 +1,4 @@
-import {Recette} from "../models/recipe.model";
+import {Recipe} from "../models/recipe.model";
 
 export const recetteData = [
 
@@ -607,8 +607,8 @@ export const recetteData = [
   }
 ];
 
-export const recipes: Recette[] = recetteData.map(recetteData => {
-  return new Recette(recetteData.nom, recetteData.pays, recetteData.contenu,
+export const recipes: Recipe[] = recetteData.map(recetteData => {
+  return new Recipe(recetteData.nom, recetteData.pays, recetteData.contenu,
     recetteData.categorie, recetteData.temp_preparation, recetteData.ingredients,
     recetteData.difficulte, recetteData.calorie, recetteData.preparation, "assets/recettes/" + recetteData.pays + "/" + recetteData.nom + ".png"
   );

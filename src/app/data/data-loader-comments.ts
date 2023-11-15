@@ -1,9 +1,9 @@
-import {Commentaire} from "../models/comment.model";
+import {Comment} from "../models/comment.model";
 import {recipes} from "./data-loader-recipes";
 import {users} from "./data-loader-user";
 
-function generateRandomComments(userCount: number): Commentaire[] {
-  const commentsGenrated: Commentaire[] = [];
+function generateRandomComments(userCount: number): Comment[] {
+  const commentsGenrated: Comment[] = [];
 
   for (let i:number = 0; i < userCount; i++) {
     const randomUserIndex:number = Math.floor(Math.random() * users.length);
@@ -12,11 +12,11 @@ function generateRandomComments(userCount: number): Commentaire[] {
     const comment = {
       commentaire: generateRandomComment(),
       user: users[randomUserIndex].email,
-      recette: recipes[randomRecetteIndex].nom,
+      recette: recipes[randomRecetteIndex].name,
       dateTime: generateRandomDateTime()
     };
 
-    commentsGenrated.push(new Commentaire(comment.commentaire, comment.user, comment.recette, comment.dateTime));
+    commentsGenrated.push(new Comment(comment.commentaire, comment.user, comment.recette, comment.dateTime));
   }
   return commentsGenrated;
 }
@@ -121,4 +121,4 @@ function generateRandomDateTime(): Date {
 }
 
 
-export const comments: Commentaire[] = generateRandomComments(320);
+export const comments: Comment[] = generateRandomComments(320);

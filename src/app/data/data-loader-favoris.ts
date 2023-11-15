@@ -1,10 +1,10 @@
 import { Favoris } from "../models/favoris.model";
 import { recipes } from "./data-loader-recipes";
 import { users } from "./data-loader-user";
-import {Recette} from "../models/recipe.model";
+import {Recipe} from "../models/recipe.model";
 
 
-function shuffleArray(array:Recette[]): void {
+function shuffleArray(array:Recipe[]): void {
   for (let i:number = array.length - 1; i > 0; i--) {
     const j:number = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -16,13 +16,13 @@ export function generateRandomFavoris(): Favoris[] {
 
   for (let i = 0; i < users.length; i++) {
     const randomUserIndex:number = i;
-    const userRecipes:Recette[] = [...recipes];
+    const userRecipes:Recipe[] = [...recipes];
     shuffleArray(userRecipes);
-    const selectedRecipes:Recette[] = userRecipes.slice(0, 5);
+    const selectedRecipes:Recipe[] = userRecipes.slice(0, 5);
 
     for (const recipe of selectedRecipes) {
       const favorisData = {
-        favoris: recipe.nom,
+        favoris: recipe.name,
         user: users[randomUserIndex].email,
         picture: recipe.picture,
       };

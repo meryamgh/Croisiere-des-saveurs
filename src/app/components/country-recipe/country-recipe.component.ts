@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {RecetteService} from "../../services/recipe/recette.service";
-import {Recette} from "../../models/recipe.model";
+import {RecipeService} from "../../services/recipe/recipe.service";
+import {Recipe} from "../../models/recipe.model";
 
 @Component({
   selector: 'app-country-recipe',
@@ -10,9 +10,9 @@ import {Recette} from "../../models/recipe.model";
 })
 export class CountryRecipeComponent implements OnInit {
   public countryName!: string;
-  public recipes!: Recette[];
+  public recipes!: Recipe[];
 
-  public constructor(private route: ActivatedRoute, private recipesService: RecetteService) {
+  public constructor(private route: ActivatedRoute, private recipesService: RecipeService) {
   }
 
   public ngOnInit(): void {
