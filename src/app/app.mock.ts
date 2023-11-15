@@ -83,7 +83,7 @@ export default () => {
         const commentId: string = request.params['idComment'];
         const newComment = JSON.parse(request.requestBody);
         const comment = schema.db['comments'].findBy({idComment: commentId});
-        comment.commentaire = newComment;
+        comment.commentMessage = newComment;
         schema.db['comments'].update(schema.db['comments'].findBy({idComment: commentId}), comment)
         return comment;
       });

@@ -38,7 +38,7 @@ export class LoginComponent {
           this.incorrectPassword = false;
         } else {
           if (data.password == password) {
-            this.userService.isLogged(data);
+            this.userService.loggedUser(data);
             this.router.navigate(['/Home']);
           } else {
             this.userNotFound = false;
