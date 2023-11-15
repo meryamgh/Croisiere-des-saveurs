@@ -161,4 +161,25 @@ export class RecipeComponent implements OnInit {
     this.isPopupOpen = false;
   }
 
+  public showCommentsCount: number = 5; // Initialisation du nombre de commentaires à afficher
+  public isCommentsPopupOpen: boolean = false; // Initialisation de la visibilité de la popup des commentaires
+
+  // ...
+
+  // Méthode pour afficher plus de commentaires
+  public showMoreComments(): void {
+    this.showCommentsCount += 5; // Vous pouvez ajuster la quantité en fonction de vos besoins
+  }
+
+  // Méthode pour ouvrir la popup des commentaires
+  public openCommentsPopup(): void {
+    this.getComments();
+    this.isCommentsPopupOpen = true;
+  }
+
+  // Méthode pour fermer la popup des commentaires
+  public closeCommentsPopup(): void {
+    this.isCommentsPopupOpen = false;
+  }
+
 }
