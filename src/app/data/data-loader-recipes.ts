@@ -1,6 +1,6 @@
 import {Recipe} from "../models/recipe.model";
 
-export const recetteData = [
+export const recipeData = [
 
   //FRANCE
   {
@@ -607,7 +607,7 @@ export const recetteData = [
   }
 ];
 
-export const recipes: Recipe[] = recetteData.map(recetteData => {
+export const recipes: Recipe[] = recipeData.map(recetteData => {
   return new Recipe(recetteData.nom, recetteData.pays, recetteData.contenu,
     recetteData.categorie, recetteData.temp_preparation, recetteData.ingredients,
     recetteData.difficulte, recetteData.calorie, recetteData.preparation, "assets/recettes/" + recetteData.pays + "/" + recetteData.nom + ".png"

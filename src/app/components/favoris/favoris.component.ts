@@ -17,7 +17,7 @@ export class FavorisComponent implements OnInit {
   public constructor(private favorisService: FavorisService) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getFavoris();
   }
 
@@ -32,14 +32,11 @@ export class FavorisComponent implements OnInit {
       )
     }
 
-
   }
 
   public deleteFavoris(favItem: Favoris): void {
     this.favorisService.delFavoris(favItem).subscribe();
     this.favoris = this.favoris.filter(item => item !== favItem);
   }
-
-
 
 }

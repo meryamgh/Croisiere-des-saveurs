@@ -13,7 +13,7 @@ export class HeaderComponent {
   @Input() currentUser: User | undefined;
   @Input() isLoggedIn: boolean = false;
 
-  constructor(private userService: UserService) {
+  public constructor(private userService: UserService) {
   }
 
   public logOut(): void {

@@ -26,10 +26,10 @@ export class SnackGameComponent implements OnInit {
   @Output() popupClosed: EventEmitter<void> = new EventEmitter<void>();
 
 
-  constructor(private userService: UserService) {
+  public constructor(private userService: UserService) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.startGame();
   }
 

@@ -4,19 +4,19 @@ import {UserService} from "./services/user/user.service";
 
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    public title: string = "Croisiere-des-Saveurs"
+  public title: string = "Croisiere-des-Saveurs"
 
-    @Input() currentUser: User | undefined;
+  @Input() currentUser: User | undefined;
 
-    constructor(private userService: UserService) {
-    }
+  public constructor(private userService: UserService) {
+  }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.userService.getUserSubject().subscribe((user) => {
       if (user) {
         this.currentUser = user;
@@ -25,10 +25,10 @@ export class AppComponent implements OnInit {
     this.logOut();
   }
 
-    public logOut(): void {
-        this.userService.getDeconnected();
-        this.currentUser = undefined;
-    }
+  public logOut(): void {
+    this.userService.getDeconnected();
+    this.currentUser = undefined;
+  }
 
 }
 
