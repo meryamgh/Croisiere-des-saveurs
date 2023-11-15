@@ -355,21 +355,22 @@ export const recipeData = [
   }
   ,
   {
-    nom: "Poulet aux noix de cajou",
+    nom: "Chow Mein aux légumes",
     pays: "Chine",
-    contenu: "Poulet sauté avec des noix de cajou croquantes",
+    contenu: "Nouilles sautées avec un mélange de légumes",
     categorie: "Plat",
-    temp_preparation: 45,
-    ingredients: "Poulet, noix de cajou, légumes, sauce soja",
+    temp_preparation: 30,
+    ingredients: "Nouilles, légumes variés (carottes, poivrons, champignons, chou), pousses de bambou, sauce soja, huile végétale",
     difficulte: "Facile",
-    calorie: 500,
+    calorie: 400,
     preparation: [
-      "Coupez le poulet en morceaux et faites-le sauter dans une poêle avec un peu d'huile jusqu'à ce qu'il soit bien cuit et doré.",
-      "Ajoutez les légumes de votre choix, comme des poivrons, des oignons et des carottes, et faites-les sauter avec le poulet jusqu'à ce qu'ils soient tendres mais encore croquants.",
-      "Incorporez les noix de cajou dans la poêle et mélangez-les avec le poulet et les légumes.",
-      "Versez la sauce soja sur le mélange et remuez bien pour enrober tous les ingrédients du mélange de saveurs.",
-      "Laissez cuire pendant quelques minutes de plus, en remuant constamment, jusqu'à ce que tout soit bien chaud et que les saveurs se mélangent.",
-      "Servez le poulet aux noix de cajou chaud, garni de ciboulette fraîche ou de graines de sésame, avec du riz ou des nouilles sautées."
+      "Faites cuire les nouilles selon les instructions sur l'emballage. Égouttez-les et réservez.",
+      "Dans une grande poêle ou un wok, chauffez l'huile végétale à feu moyen-élevé.",
+      "Ajoutez les légumes coupés en julienne, tels que des carottes, des poivrons, des champignons et des pousses de bambou. Faites sauter pendant quelques minutes jusqu'à ce qu'ils soient tendres mais encore croquants.",
+      "Ajoutez les nouilles cuites dans la poêle avec les légumes et mélangez bien.",
+      "Versez la sauce soja sur le mélange et continuez à remuer pour enrober uniformément les nouilles et les légumes de la sauce.",
+      "Laissez cuire pendant quelques minutes supplémentaires pour permettre aux saveurs de se mélanger.",
+      "Servez le Chow Mein aux légumes chaud, garni de ciboulette ou de coriandre fraîche, et ajoutez éventuellement du poulet, du bœuf ou des crevettes pour plus de protéines."
     ]
   }
   ,
@@ -394,20 +395,21 @@ export const recipeData = [
   // COTE D'IVOIRE
   ,
   {
-    nom: "Poulet Kedjenou",
+    nom: "Foutou Banane",
     pays: "Côte d'Ivoire",
-    contenu: "Poulet mijoté avec des légumes et des épices",
+    contenu: "Pâte de banane plantain accompagnée de sauces",
     categorie: "Plat",
-    temp_preparation: 90,
-    ingredients: "1 poulet entier coupé en morceaux, 4 tomates moyennes hachées, 2 oignons moyens hachés, 1 piment selon le goût haché, 2 cuillères à soupe d'huile de palme, sel et poivre au goût",
+    temp_preparation: 60,
+    ingredients: "Bananes plantains vertes, igname, huile de palme, poisson fumé (ou viande), tomates, oignons, piments",
     difficulte: "Moyen",
-    calorie: 550,
+    calorie: 600,
     preparation: [
-      "Dans une grande casserole, faites chauffer l'huile de palme à feu moyen.",
-      "Ajoutez les oignons et faites-les revenir jusqu'à ce qu'ils soient translucides.",
-      "Ajoutez le poulet coupé en morceaux et faites-le dorer de tous les côtés.",
-      "Ajoutez les tomates, le piment, le sel et le poivre. Couvrez et laissez mijoter à feu doux pendant environ 1 heure jusqu'à ce que le poulet soit tendre et bien imprégné des saveurs.",
-      "Servez chaud avec du riz ou de l'attiéké."
+      "Épluchez les bananes plantains et les ignames, puis coupez-les en morceaux.",
+      "Faites cuire les morceaux de bananes et d'ignames dans de l'eau bouillante jusqu'à ce qu'ils soient bien tendres.",
+      "Égouttez l'eau et écrasez les morceaux de bananes et d'ignames ensemble pour former une pâte homogène. Cela peut être fait à l'aide d'un pilon dans un mortier traditionnel.",
+      "Dans une casserole, faites chauffer l'huile de palme. Ajoutez les oignons hachés, les tomates et les piments pour préparer une sauce. Ajoutez le poisson fumé (ou la viande) et laissez mijoter jusqu'à ce que la sauce soit bien cuite.",
+      "Servez le Foutou Banane avec la sauce préparée. Traditionnellement, on forme des boules de pâte et on les trempe dans la sauce avant de les déguster.",
+      "Vous pouvez accompagner le Foutou Banane de légumes verts ou d'autres accompagnements de votre choix."
     ]
   }
   ,
