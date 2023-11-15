@@ -1,0 +1,47 @@
+<div class="profil">
+
+  <section class="embarquement">
+    <p>BOARDING PASS <img src="assets/icones/bateau-a-voile.png" class="image" alt="img-boat"></p>
+    <p>{{ currentUser.boardingTicketNumber }}</p>
+  </section>
+
+  <section class="profil-info-container">
+    <img src="/assets/icones/photo-profil.png" alt="profil" class="profil-image">
+
+    <article class="profil-details">
+      <main *ngIf="!editProfil; else elseBlock" class="first-part">
+        <h1 class="title">Mon profil</h1>
+        <p><i>Nom :</i>{{ currentUser.lastName }}</p>
+        <p><i>Prénom :</i>{{ currentUser.firstName }}</p>
+        <p><i>Email :</i>{{ currentUser.email }}</p>
+
+        <div class="bouton-container">
+          <a routerLink="/favoris" class="button">Mes favoris</a>
+          <button (click)="updateProfil()" class="button second-button">Modifier profil</button>
+        </div>
+      </main>
+
+      <ng-template #elseBlock>
+        <main class="profile-form">
+
+          <div class="form-group">
+            <label for="nom"><strong>Nom :</strong></label>
+            <input [(ngModel)]="currentUser.lastName" name="nom" id="nom"/>
+          </div>
+
+          <div class="form-group">
+            <label for="prenom"><strong>Prénom :</strong></label>
+            <input [(ngModel)]="currentUser.firstName" name="prenom" id="prenom"/>
+          </div>
+
+          <button class="button" (click)="validateProfil()">Modifier profil</button>
+        </main>
+      </ng-template>
+    </article>
+  </section>
+
+  <section class="embarquement-2">
+    <p>LA CROISIÈRE DES SAVEURS</p>
+  </section>
+</div>
+

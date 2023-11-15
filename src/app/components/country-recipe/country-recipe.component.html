@@ -1,0 +1,13 @@
+<section class="presentation">
+  <p class="title">{{ countryName }}</p>
+  <hr>
+  <p class="decouverte"><i>"L'exploration d'un pays à travers ses saveurs."</i></p>
+</section>
+
+<section class="recipe-container">
+  <div *ngFor="let recipe of recipes" class="recipe-items">
+    <h1 class="title_recette">{{ recipe.name }}</h1>
+    <img [src]="recipe.picture" alt="recipe-picture" class="recipe-img">
+    <a [routerLink]="['/recipe-detail', recipe.name]">Consulter la recette</a>
+  </div>
+</section>

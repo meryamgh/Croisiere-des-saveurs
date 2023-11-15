@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "leaflet"
+            ],
             "outputPath": "dist/croisiere-des-saveurs",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -30,6 +34,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/leaflet/dist/leaflet.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -93,6 +98,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/font-awesome/css/font-awesome.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -100,5 +106,9 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "453044e3-3aa5-45ad-b3ed-a51036dd30ba"
   }
 }
+

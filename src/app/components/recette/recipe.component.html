@@ -1,0 +1,70 @@
+<div class="recette-info-container" *ngIf="currentRecipe">
+
+  <section class="recette-photo">
+    <img src="{{currentRecipe.picture}}" alt="picture-recette" class="recette-info-container-image"/>
+  </section>
+
+  <section class="recipe-details">
+    <section class="first-part">
+      <article class="name-country">
+        <h1>{{ currentRecipe.name }}</h1>
+        <span class="valeur_pays">{{ currentRecipe.country }}</span>
+      </article>
+      <article class="like">
+        <img [src]="favRecipe.toString() === 'true' ? 'assets/icones/coeur_true.svg' : 'assets/icones/coeur.svg'"
+             alt="Coeur" class="like-img" (click)="addToFav()"/>
+        {{ nbrFav }}
+      </article>
+    </section>
+    <hr>
+
+    <p><span class="label">Ingrédients:</span> <span class="valeur">{{ currentRecipe.ingredients }}</span></p>
+    <p><span class="label">Difficulté:</span> <span class="valeur">{{ currentRecipe.difficulty }}</span></p>
+    <p><span class="label">Temps de préparation:</span> <span class="valeur">{{ currentRecipe.preparationTime }}
+      min</span></p>
+    <p><span class="label">Catégorie:</span> <span class="valeur categorie">{{ currentRecipe.category }}</span></p>
+    <p><span class="label">Calories:</span> <span class="valeur">{{ currentRecipe.calorie }}</span></p>
+    <p><span class="label">Contenu:</span> <span class="valeur">{{ currentRecipe.content }}</span></p>
+
+    <button (click)="openPreparationPopup()" class="preparation">Voir la préparation</button>
+
+    <div class="text">
+      <p class="font"><i>Avez-vous essayé cette recette ?</i></p>
+      <p class="font"><i>Faites-nous part de vos impressions dans les commentaires.</i></p>
+      <p class="font"><i>Nous attendons vos retours !</i></p>
+    </div>
+
+    <div class="bouton-container">
+      <!-- Bouton pour ouvrir la popup des commentaires -->
+      <button (click)="openCommentsPopup()" class="button_commentaire">Laissez votre avis</button>
+    </div>
+  </section>
+
+
+  <section *ngIf="isCommentsPopupOpen && commentsWrite" class="comments-popup">
+    <div class="entete">
+      <h2>Commentaires ({{ commentsWrite.length }})</h2>
+      <img class="cross" src="assets/icones/cross.svg" (click)="closeCommentsPopup()" alt="cross">
+    </div>
+    <div *ngFor="let comment of commentsWrite" class="commentaire" [ngClass]="usersComments.get(comment.user)">
+
+      <app-comment [currentUserSend]="currentUser" [currentRecipeSend]="currentRecipe"
+                   [commentSend]="comment"
+                   (deleteComment)="deleteCommentSend($event)"
+                   (updateComment)="updateComment($event)"
+      ></app-comment>
+    </div>
+
+    <section class="ajout-commentaire-container" [formGroup]="commentForm">
+      <input formControlName="comment" placeholder="Ajouter un commentaire..." class="comment-input">
+      <button class="ajouter-commentaire" (click)="addNewComment()">Ajouter</button>
+    </section>
+  </section>
+
+  <section class="popup-overlay">
+    <app-popup *ngIf="isPopupOpen"
+               [stepPreparation]="currentRecipe.preparation"
+               (closePopupEvent)="closePreparationPopup()">
+    </app-popup>
+  </section>
+</div>

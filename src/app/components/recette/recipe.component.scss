@@ -1,0 +1,242 @@
+.like {
+  vertical-align: middle;
+}
+
+.like-img {
+  width: 30px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.first-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.name-country {
+  display: flex;
+  flex-direction: column;
+}
+
+.recette-info-container-image {
+  width: 420px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: 40px;
+}
+
+.recette-details h1 {
+  margin-top: 0;
+  font-family: serif;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #6F6D63;
+}
+
+.recette-details hr {
+  margin-top: 30px;
+}
+
+.recette-info-container .label {
+  color: #555;
+  text-transform: uppercase;
+  font-family: serif;
+  font-size: 16px;
+}
+
+.recette-info-container .valeur {
+  margin-left: 10px;
+  color: black;
+  font-family: serif;
+  font-size: 16px;
+}
+
+.popup-overlay {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  margin-top: -140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.preparation {
+  margin-top: 25px;
+  width: 100%;
+  margin-bottom: 30px;
+  background-color: white;
+  color: black;
+  border: 1px solid #000;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.preparation:hover {
+  background-color: black;
+  color: white;
+}
+
+.recette-photo {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.font {
+  text-align: center;
+  font-family: serif;
+  color: #666;
+  margin: 0;
+}
+
+.text {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.bouton-container {
+  text-align: center;
+}
+
+.button_commentaire {
+  width: 200px;
+  background-color: white;
+  color: black;
+  border: 1px solid #000;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.button_commentaire:hover {
+  background-color: black;
+  color: white;
+}
+
+.commentaires-container h2 {
+  font-family: serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #6F6D63;
+}
+
+.commentaires-container {
+  margin-top: 20px;
+}
+
+.comment-input {
+  width: 304px;
+  height: 36px;
+  padding: 0 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.recette-info-container {
+  display: flex;
+  margin: 0 auto;
+  padding: 60px;
+  border-radius: 10px;
+}
+
+.recette-info-container {
+  display: flex;
+  margin: 0 auto;
+  padding: 60px;
+  border-radius: 10px;
+
+  .commentaires-container {
+    margin-top: 20px;
+
+    h2 {
+      font-size: 18px;
+    }
+
+    .commentaire {
+      margin-top: 10px;
+
+      .user {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .recette-photo {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .recette-details {
+    flex: 2;
+  }
+
+  .ajout-commentaire-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+
+  }
+}
+
+.ajouter-commentaire {
+  background-color: white;
+  color: black;
+  border: 1px solid #000;
+  padding: 7px 17px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+
+.comments-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 17px;
+  border: 1px solid #ccc;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  border-radius: 10px;
+
+}
+
+.close-popup-button {
+  margin-top: 10px;
+}
+
+
+.entete {
+  justify-content: space-between;
+  display: flex;
+}
+
+.cross {
+  width: 20px;
+  cursor: pointer;
+}
